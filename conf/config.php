@@ -1,6 +1,6 @@
 <?php
 //Global define
-DEFINE('BASE_URL', 'http://localhost/D2M/D2M/');
+DEFINE('BASE_URL', 'http://localhost/D2M/');
 DEFINE('APP_TITLE', '');
 DEFINE('APP_VERSION', '');
 DEFINE('LOG_DIRECTORY', DIRECTORY_SEPARATOR.'logs'.DIRECTORY_SEPARATOR);
