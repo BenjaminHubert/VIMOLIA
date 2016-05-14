@@ -1,6 +1,7 @@
 <?php
 //Global define
 DEFINE('BASE_URL', 'http://vimolia.local/');
+DEFINE('BASE_URL_ADMIN', 'http://vimolia.local/admin');
 DEFINE('APP_TITLE', '');
 DEFINE('APP_VERSION', '');
 DEFINE('LOG_DIRECTORY', DIRECTORY_SEPARATOR.'logs'.DIRECTORY_SEPARATOR);
