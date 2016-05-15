@@ -2,7 +2,7 @@
 //Global define
 DEFINE('BASE_URL', 'http://vimolia.local/');
 DEFINE('BASE_URL_ADMIN', 'http://vimolia.local/admin/');
-DEFINE('APP_TITLE', '');
+DEFINE('APP_TITLE', 'VIMOLIA');
 DEFINE('APP_VERSION', '');
 DEFINE('LOG_DIRECTORY', DIRECTORY_SEPARATOR.'logs'.DIRECTORY_SEPARATOR);
 DEFINE('WEBMASTER_ADDRESS', '');
@@ -14,5 +14,10 @@ DEFINE('DBTYPE', 'mysql');
 DEFINE('DBPORT', '3306');
 DEFINE('DBUSER', 'D2M_USER');
 DEFINE('DBPASSWORD', 'D2M_MDP_$');
+//EMAIL INFO
+DEFINE('EMAIL_FROM', 'exemple@vimolia.fr');
+DEFINE('EMAIL_FROM_NAME', 'Vimolia');
+DEFINE('EMAIL_REPLY', 'noreply@vimolia.fr');
+DEFINE('EMAIL_REPLY_NAME', 'Vimolia');
 
 ?>
