@@ -11,17 +11,13 @@ class signupController extends baseController {
             }
 
             if(!isset($e)){
-                //inscription effectuée
                 $this->registry->template->message = 'Inscription effectuée';
-                //rediriger
-                header('Location: '.BASE_URL.'login');
-                die();
-            }
-        }
-        $this->registry->template->show('index');
+                $this->registry->template->show('successful');
+            }else $this->registry->template->show('index');
+        }else $this->registry->template->show('index');
     }
 
-    private function member(){        
+    private function member(){
         $postExpected = ['first_name', 'last_name', 'pseudo', 'birthday', 'birthday_submit', 'address', 'postal_code', 'city', 'phone', 'mobile', 'email', 'password', 'password_confirmation', 'submit', 'type'];
         if($postExpected == array_keys($_POST)){
             foreach($postExpected as $var){
@@ -35,17 +31,23 @@ class signupController extends baseController {
                         if(!$this->registry->db->isUserMailExist($email)){
                             $_POST['pseudo'] = ($_POST['pseudo'] != '')?$_POST['pseudo']:null;
                             if($this->registry->db->addMember($_POST)){
-                                //send mail
-                                require __SITE_PATH.DIRECTORY_SEPARATOR.'php_libraries'.DIRECTORY_SEPARATOR.'PHPMailer-5.2.15'.DIRECTORY_SEPARATOR.'PHPMailerAutoload.php';
-                                $PHPMailer = new PHPMailer;
+                                $PHPMailer = new MyMail();
                                 $PHPMailer->setFrom(EMAIL_FROM, EMAIL_FROM_NAME);
-                                $PHPMailer->addReplyTo(EMAIL_REPLY, EMAIL_REPLY_NAME);
+                                $PHPMailer->addReplyTo(EMAIL_REPLY, EMAIL_REPLY_NAME);                               
                                 $PHPMailer->addAddress($email);
                                 $PHPMailer->isHTML(true);
                                 $PHPMailer->Subject = 'Inscription sur '.APP_TITLE;
-                                $PHPMailer->Body= '<p>Bonjour,</p><div>Vous vous êtes inscris sur notre site et nous vous remercions...</div>';
+                                $PHPMailer->CharSet = 'UTF-8';
+                                $PHPMailer->Body= '
+                                    <p>Bonjour,</p>
+                                    <div>
+                                        <p>Vous vous êtes inscris sur notre site et nous vous remercions.</p>
+                                        <p>Pour confirmer votre inscription, veuillez <a href="'.BASE_URL.'signup/validation/'.md5($email).'/'.md5($this->registry->db->hashPwd($password)).'">cliquer sur ce lien</a>.</p>
+                                        <p>A bientôt sur '.APP_TITLE.'</p>
+                                    </div>
+                                ';
                                 if(!$PHPMailer->send()){
-                                    $this->registry->template->warning = "Le mail de confirmation n\'a pas pu être envoyé mais l\'inscription est confirmée";
+                                    throw new Exception("Le mail de confirmation n\'a pas pu être envoyé mais l\'inscription est confirmée");
                                 }
                             }else throw new Exception('Erreur lors de la creation de votre compte');
                         }else throw new Exception('Email déjà existant');
@@ -53,6 +55,14 @@ class signupController extends baseController {
                 }else throw new Exception('Email invalide');
             }else throw new Exception('Date de naissance invalide');
         }else throw new Exception('Erreur de formulaire');
+    }
+
+    public function validation($args){
+        if(isset($args[0]) && isset($args[1])){
+            if($this->registry->db->confirmEmail($args[0], $args[1])){
+                $this->registry->template->show('validation');
+            }else $this->registry->template->show('404', true);
+        }else $this->registry->template->show('404', true);
     }
 }
 ?>

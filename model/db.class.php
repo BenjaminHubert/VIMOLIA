@@ -33,7 +33,7 @@ class DB {
         }
     }
 
-    private function hashPwd($pwd){
+    public function hashPwd($pwd){
         return sha1(md5(sha1($pwd).$this->salt));
     }
 
@@ -48,12 +48,24 @@ class DB {
     }
 
     public function addMember($data){
-        $data['member'] = 'Membre';
         $query = $this->connection->prepare('
-            INSERT INTO user(first_name, last_name, pseudo, birthday_date, address, postal_code, city, phone, mobile, email, password, role)
-            SELECT ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+            INSERT INTO user(first_name, last_name, pseudo, birthday_date, address, postal_code, city, phone, mobile, email, password, role, id_status)
+            SELECT ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
         ');
 
-        return $query->execute([$data['first_name'],$data['last_name'],$data['pseudo'],$data['birthday_submit'],$data['address'],$data['postal_code'],$data['city'],$data['phone'],$data['mobile'],$data['email'], $this->hashPwd($data['password']), $data['member']]);
+        return $query->execute([$data['first_name'],$data['last_name'],$data['pseudo'],$data['birthday_submit'],$data['address'],$data['postal_code'],$data['city'],$data['phone'],$data['mobile'],$data['email'], $this->hashPwd($data['password']), 'Membre', 1]);
+    }
+
+    public function confirmEmail($email, $password){
+        $query = $this->connection->prepare('SELECT COUNT(*) AS nb FROM user WHERE md5(email) = ? AND md5(password) = ?;');
+        if($query->execute([$email, $password])){
+            $nb = $query->fetch();
+            if($nb[0] == 1){
+                $query = $this->connection->prepare('UPDATE user SET id_status = 2 WHERE md5(email) = ? AND md5(password) = ?;');
+                if($query->execute([$email, $password])){
+                    return true;
+                }else return false;
+            }else return false;
+        }else return false;
     }
 }

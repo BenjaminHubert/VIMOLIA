@@ -24,6 +24,11 @@ function __autoload($class_name) {
     include $file;
 }
 
+// VERIFICATION DES EXTENSIONS REQUISES POUR L'APPLICATION
+if(!extension_loaded('openssl')){
+    die('Error 500 - Veuillez demander à votre administrateur d\'activer l\'extension openssl');
+}
+
 $registry = new registry;
 $registry->db = DB::getInstance($registry);
 $registry->router = new router($registry);

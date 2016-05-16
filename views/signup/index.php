@@ -32,7 +32,7 @@
             </div>
             <div class="input-field col s6">
                 <i class="material-icons prefix">date_range</i>
-                <input id="birthday" type="date" name="birthday" class="datepicker validate" value="<?php echo (isset($_POST['birthday']))?$_POST['birthday']:'';?>" required>
+                <input id="birthday" type="date" name="birthday" class="datepicker" value="<?php echo (isset($_POST['birthday']))?$_POST['birthday']:'';?>" required>
                 <label for="birthday">Date de naissance *</label>
             </div>
             <div class="input-field col s12">
