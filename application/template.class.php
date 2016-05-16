@@ -61,7 +61,7 @@ Class template {
 
         echo '<script>';
         include($pathJS);
-        if(isset($error)){
+        if(isset($error) && $name != '404'){
             echo $this->displayError($error);
         }
         if(isset($message)){

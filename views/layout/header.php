@@ -22,13 +22,22 @@
         <nav class="light-blue lighten-1" role="navigation">
             <div class="nav-wrapper container"><a id="logo-container" href="<?php echo BASE_URL;?>" class="brand-logo">Logo</a>
                 <ul class="right hide-on-med-and-down">
+                    <?php if(!isset($_SESSION['id'])){?>
                     <li><a href="<?php echo BASE_URL;?>login">Connexion</a></li>
                     <li><a href="<?php echo BASE_URL;?>signup">Créer un compte</a></li>
+                    <?php }else{?>
+                    <li><a href="<?php echo BASE_URL_ADMIN;?>">Mon compte</a></li>
+                    <li><a href="<?php echo BASE_URL;?>login/logout">Me déconnecter</a></li>
+                    <?php }?>
                 </ul>
-
                 <ul id="nav-mobile" class="side-nav">
+                    <?php if(!isset($_SESSION['id'])){?>
                     <li><a href="<?php echo BASE_URL;?>login">Connexion</a></li>
                     <li><a href="<?php echo BASE_URL;?>signup">Créer un compte</a></li>
+                    <?php }else{?>
+                    <li><a href="<?php echo BASE_URL_ADMIN;?>">Mon compte</a></li>
+                    <li><a href="<?php echo BASE_URL;?>login/logout">Me déconnecter</a></li>
+                    <?php }?>
                 </ul>
                 <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
             </div>

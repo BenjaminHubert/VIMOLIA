@@ -68,4 +68,11 @@ class DB {
             }else return false;
         }else return false;
     }
+    
+    public function login($email, $password){
+        $query = $this->connection->prepare('SELECT * FROM user WHERE email = ? AND password = ? AND id_status = 2');
+        if($query->execute([$email, $this->hashPwd($password)])){
+            return $query->fetch(PDO::FETCH_ASSOC);
+        }else return false;
+    }
 }
