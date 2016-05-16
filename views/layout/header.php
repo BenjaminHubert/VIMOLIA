@@ -14,34 +14,32 @@
         <link href="<?php echo BASE_URL;?>css/materialize.min.css" rel="stylesheet" type="text/css">
         <script src="<?php echo BASE_URL;?>js/materialize.min.js"></script>
 
+        <!-- CUSTOME CSS & JS -->
         <link href="<?php echo BASE_URL;?>css/mystyle.css" rel="stylesheet" type="text/css">
         <script src="<?php echo BASE_URL;?>js/functions.js"></script>
     </head>
     <body>
         <nav class="light-blue lighten-1" role="navigation">
-            <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+            <div class="nav-wrapper container"><a id="logo-container" href="<?php echo BASE_URL;?>" class="brand-logo">Logo</a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="#">Navbar Link</a></li>
+                    <?php if(!isset($_SESSION['id'])){?>
+                    <li><a href="<?php echo BASE_URL;?>login">Connexion</a></li>
+                    <li><a href="<?php echo BASE_URL;?>signup">Créer un compte</a></li>
+                    <?php }else{?>
+                    <li><a href="<?php echo BASE_URL_ADMIN;?>">Mon compte</a></li>
+                    <li><a href="<?php echo BASE_URL;?>login/logout">Me déconnecter</a></li>
+                    <?php }?>
                 </ul>
-
                 <ul id="nav-mobile" class="side-nav">
-                    <li><a href="#">Navbar Link</a></li>
+                    <?php if(!isset($_SESSION['id'])){?>
+                    <li><a href="<?php echo BASE_URL;?>login">Connexion</a></li>
+                    <li><a href="<?php echo BASE_URL;?>signup">Créer un compte</a></li>
+                    <?php }else{?>
+                    <li><a href="<?php echo BASE_URL_ADMIN;?>">Mon compte</a></li>
+                    <li><a href="<?php echo BASE_URL;?>login/logout">Me déconnecter</a></li>
+                    <?php }?>
                 </ul>
                 <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
             </div>
         </nav>
-        <div class="section no-pad-bot" id="index-banner">
-            <div class="container">
-                <br><br>
-                <h1 class="header center orange-text">Starter Template</h1>
-                <div class="row center">
-                    <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-                </div>
-                <div class="row center">
-                    <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
-                </div>
-                <br><br>
-
-            </div>
-        </div>
         <div class="container">
