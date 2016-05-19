@@ -1,7 +1,14 @@
 <?php
 class signupController extends baseController {
+    
+    private $facilitatorUsername = 'younes.sadmi-facilitator_api1.gmail.com';
+    private $facilitatorPassword = 'Y8L9MQSJL7MEPJSJ';
+    private $facilitatorSignature = 'AFcWxV21C7fd0v3bYYYRCpSSRl31Aqkx9PCclDaHbdmVkgfpneMdajEk';
 
     public function index(){
+        $this->registry->template->skills = $this->registry->db->getSkills();
+        $this->registry->template->subscriptionTypes = $this->registry->db->getSubscriptionTypes();
+
         if(isset($_POST['type']) && is_callable([$this, $_POST['type']])){
             $type = $_POST['type'];
             try{
@@ -57,10 +64,115 @@ class signupController extends baseController {
         }else throw new Exception('Erreur de formulaire');
     }
 
+    private function doctor(){
+        $postExpected = ['first_name', 'last_name', 'pseudo', 'birthday', 'birthday_submit', 'address', 'postal_code', 'city', 'phone', 'mobile', 'email', 'password', 'password_confirmation', 'specialities', 'siret', 'presentation', 'subscription_type', 'agreement', 'submit', 'type'];
+        if(isset($_POST['specialities'])){
+            if(isset($_POST['agreement'])){
+                if($postExpected == array_keys($_POST)){
+                    foreach($postExpected as $var){
+                        $$var = $_POST[$var];
+                    }
+                    //valid birthday
+                    $d = DateTime::createFromFormat('Y-m-d', $birthday_submit);
+                    if($d && $d->format('Y-m-d') === $birthday_submit ){
+                        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+                            if($password == $password_confirmation){
+                                if(strlen($_POST['siret']) == 14){
+                                    if(!$this->registry->db->isUserMailExist($email)){
+                                        $subscriptionTypes = $this->registry->db->getSubscriptionTypes();
+                                        $subscriptionTrueID = false;
+                                        foreach($subscriptionTypes as $subscriptionType){
+                                            if($subscriptionType['id'] == $_POST['subscription_type']){
+                                                $subscriptionTrueID = true;
+                                                break;
+                                            }
+                                        }
+                                        if($subscriptionTrueID){
+                                            $_POST['pseudo'] = ($_POST['pseudo'] != '')?$_POST['pseudo']:null;
+                                            $payPal = new MyExpressCheckout();
+                                            $payPal->setReturnUrl(BASE_URL.'signup/returnTransaction');
+                                            $payPal->setCancelUrl(BASE_URL.'signup/cancelTransaction');
+                                            $payPal->setAmount($subscriptionType['amount']);
+                                            $payPal->setCurrencyCode($subscriptionType['currencycode']);
+                                            $payPal->setLocaleCode('FR');
+                                            $payPal->isSandbox(true);
+                                            $payPal->setLogo(BASE_URL.'img/logo.png');
+                                            $payPal->setUsername_facilitator($this->facilitatorUsername);
+                                            $payPal->setPassword_facilitator($this->facilitatorPassword);
+                                            $payPal->setSignature_facilitator($this->facilitatorSignature);
+                                            $token = $payPal->getToken();
+                                            if($this->registry->db->addTransaction($token, $subscriptionType['amount'], $subscriptionType['currencycode'], 'FR')){
+                                                if($this->registry->db->addDoctor($_POST)){
+                                                    $idUser = $this->registry->db->getIDUserByEmail($_POST['email']);
+                                                    foreach($_POST['specialities'] as $skill){
+                                                        if(!$this->registry->db->addSkillToUser($idUser, $skill)){
+                                                            throw new Exception('Echec de l ajout des specialités ');
+                                                        }
+                                                    }
+
+                                                    if($this->registry->db->addSubscription($idUser, $_POST['subscription_type'], $token)){
+                                                        $payPal->setExpressCheckout();
+                                                    }else throw new Exception('Echec lors de l insertion en base de données');
+                                                }else throw new Exception('Echec lors de l insertion en base de données');
+                                            }else throw new Exception('Création de la transaction interrompu');
+                                        }else throw new Exception('Type d abonnement incorrect');
+                                    }else throw new Exception('Email déjà existant');
+                                }else throw new Exception('Numéro de SIRET invalide');
+                            }else throw new Exception('La confirmation de mot de passe est fausse');
+                        }else throw new Exception('Email invalide');
+                    }else throw new Exception('Date de naissance invalide');
+                }else throw new Exception('Erreur de formulaire');
+            }else throw new Exception('Veuillez accepter les conditions générales d utilisation');
+        }else throw new Exception('Veuillez sélectionner au moins une spécialité');
+    }
+
     public function validation($args){
         if(isset($args[0]) && isset($args[1])){
             if($this->registry->db->confirmEmail($args[0], $args[1])){
                 $this->registry->template->show('validation');
+            }else $this->registry->template->show('404', true);
+        }else $this->registry->template->show('404', true);
+    }
+
+    public function cancelTransaction(){
+        if(isset($_GET['token'])){
+            $updateTransaction = $this->registry->db->cancelTransactionByToken($_GET['token']);
+            $this->registry->template->error = 'Le paiement a été annulé';
+            $this->registry->template->show('cancelTransaction');
+        }else $this->registry->template->show('404', true);
+    }
+
+    public function returnTransaction(){
+        if(isset($_GET['token'])){
+            $transaction = $this->registry->db->getTransactionByToken($_GET['token']);
+            if($transaction['id_status'] == 1){
+                $payPal = new MyExpressCheckout();
+                $payPal->setAmount($transaction['paypal_amount']);
+                $payPal->setCurrencyCode($transaction['paypal_currencycode']);
+                $payPal->setLocaleCode($transaction['paypal_localecode']);
+                $payPal->isSandbox(true);
+                $payPal->setLogo(BASE_URL.'img/logo.png');
+                $payPal->setUsername_facilitator($this->facilitatorUsername);
+                $payPal->setPassword_facilitator($this->facilitatorPassword);
+                $payPal->setSignature_facilitator($this->facilitatorSignature);
+                try{
+                    $transaction = $payPal->doExpressCheckout();
+                    if($transaction['ACK'] == 'Success'){
+                        if($this->registry->db->updateTransaction($transaction) !== false){
+                            $this->registry->template->message = 'Inscription effectuée';
+                        }else $this->registry->template->error = 'Paiement effectué mais enregistrement en base de données impossible...';
+                    }else $this->registry->template->error = $transaction['L_LONGMESSAGE0'];
+                    echo '<pre>', print_r($transaction, true), '</pre>';
+                }catch(Exception $e){
+                    $this->registry->template->error = $e->getMessage();
+                }
+                $this->registry->template->show('returnTransaction');
+            }elseif($transaction['id_status'] == 2){
+                $this->registry->template->error = 'Cette transaction a déjà été annulé';
+                $this->registry->template->show('returnTransaction');
+            }elseif($transaction['id_status'] == 3){
+                $this->registry->template->message = 'Cette transaction a déjà été payé';
+                $this->registry->template->show('returnTransaction');
             }else $this->registry->template->show('404', true);
         }else $this->registry->template->show('404', true);
     }
