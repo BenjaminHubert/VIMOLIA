@@ -28,6 +28,9 @@ function __autoload($class_name) {
 if(!extension_loaded('openssl')){
     die('Error 500 - Veuillez demander à votre administrateur d\'activer l\'extension openssl');
 }
+if(!extension_loaded('curl')){
+    die('Error 500 - Veuillez demander à votre administrateur d\'activer l\'extension curl');
+}
 
 $registry = new registry;
 $registry->db = DB::getInstance($registry);
