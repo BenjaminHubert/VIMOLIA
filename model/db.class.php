@@ -109,14 +109,14 @@ class DB {
         ');
         return $query->execute([$token, $amount, $currencyCode, $localeCode]);
     }
-    
+
     public function getTransactionByToken($token){
         $query = $this->connection->prepare('SELECT * FROM transaction WHERE paypal_token = ?');
         if($query->execute([$token])){
             return $query->fetch(PDO::FETCH_ASSOC);
         }else return false;
     }
-    
+
     public function cancelTransactionByToken($token){
         $query = $this->connection->prepare('UPDATE transaction SET id_status = 2 WHERE paypal_token = ?');
         return $query->execute([$token]);
@@ -164,16 +164,16 @@ class DB {
             return $query->fetch(PDO::FETCH_ASSOC)['id'];
         }else return false;
     }
-    
+
     public function addSubscription($idUser, $idSubscriptionType, $token){
         $query = $this->connection->prepare('
             INSERT INTO subscription(id_user, id_subscription_type, id_transaction)
             SELECT ?, ?, (SELECT id FROM transaction WHERE paypal_token = ?)
         ');
-        
+
         return $query->execute([$idUser, $idSubscriptionType, $token]);
     }
-    
+
     public function updateTransaction($t){
         $q = $this->connection->prepare('
             UPDATE transaction
@@ -218,6 +218,19 @@ class DB {
             $t['REASONCODE'],
             $t['TOKEN'],
         ]);
-        return $e;
+        if($e){
+            $q = $this->connection->prepare('
+                UPDATE user u
+                JOIN subscription s ON u.id = s.id_user
+                JOIN transaction t on s.id_transaction = t.id
+                SET u.id_status = 2
+                WHERE t.paypal_token = ? 
+            ');
+            $e = $q->execute([
+                $t['TOKEN'],
+            ]);
+            
+            return $e;
+        }else return false;
     }
 }

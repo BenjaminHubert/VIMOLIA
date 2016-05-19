@@ -160,9 +160,12 @@ class signupController extends baseController {
                     if($transaction['ACK'] == 'Success'){
                         if($this->registry->db->updateTransaction($transaction) !== false){
                             $this->registry->template->message = 'Inscription effectuée';
+                            //envoyer un mail récapitulatif
+                            //...
+                            //...
+                            //...
                         }else $this->registry->template->error = 'Paiement effectué mais enregistrement en base de données impossible...';
                     }else $this->registry->template->error = $transaction['L_LONGMESSAGE0'];
-                    echo '<pre>', print_r($transaction, true), '</pre>';
                 }catch(Exception $e){
                     $this->registry->template->error = $e->getMessage();
                 }
