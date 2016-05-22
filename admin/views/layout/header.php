@@ -18,4 +18,19 @@
         <script src="<?php echo BASE_URL_ADMIN;?>js/functions.js"></script>
     </head>
     <body>
-        <div class="container">
+        <header>
+            <nav role="navigation">
+                <div class="nav-wrapper container">
+                    <ul class="right ">
+                        <li><a href="<?php echo BASE_URL;?>">Voir le site</a></li>
+                        <li><a href="<?php echo BASE_URL;?>login/logout">Deconnexion</a></li>
+                    </ul>
+                    <ul id="slide-out" class="side-nav fixed">
+                        <li><a href="#!">First Sidebar Link</a></li>
+                        <li><a href="#!">Second Sidebar Link</a></li>
+                    </ul>
+                    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+                </div>
+            </nav>
+        </header>
+        <main>
