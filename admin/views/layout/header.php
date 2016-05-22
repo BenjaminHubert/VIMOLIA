@@ -26,8 +26,7 @@
                         <li><a href="<?php echo BASE_URL;?>login/logout">Deconnexion</a></li>
                     </ul>
                     <ul id="slide-out" class="side-nav fixed">
-                        <li><a href="#!">First Sidebar Link</a></li>
-                        <li><a href="#!">Second Sidebar Link</a></li>
+                        <li><a href="<?php echo BASE_URL_ADMIN;?>monCompte">Mon compte</a></li>
                     </ul>
                     <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
                 </div>
