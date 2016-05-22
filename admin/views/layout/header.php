@@ -29,6 +29,7 @@
                         <li><a href="<?php echo BASE_URL_ADMIN;?>monCompte">Mon compte</a></li>
                         <li><a href="<?php echo BASE_URL_ADMIN;?>article">Articles</a></li>
                         <li><a href="<?php echo BASE_URL_ADMIN;?>page">Pages</a></li>
+                        <li><a href="<?php echo BASE_URL_ADMIN;?>utilisateur">Utilisateurs</a></li>
                     </ul>
                     <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
                 </div>
