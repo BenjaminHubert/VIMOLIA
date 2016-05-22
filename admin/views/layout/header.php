@@ -21,11 +21,15 @@
         <header>
             <nav role="navigation">
                 <div class="nav-wrapper container">
+                    <a id="logo-container" href="<?php echo BASE_URL;?>" class="brand-logo hide-on-med-and-down">
+                        <img src="<?php echo BASE_URL;?>img/logo.png" alt="<?php echo APP_TITLE;?>">
+                    </a>
                     <ul class="right ">
                         <li><a href="<?php echo BASE_URL;?>">Voir le site</a></li>
                         <li><a href="<?php echo BASE_URL;?>login/logout">Deconnexion</a></li>
                     </ul>
                     <ul id="slide-out" class="side-nav fixed">
+                        <li><img class="hide-on-large-only" src="<?php echo BASE_URL;?>img/logo.png" style="width: 100%;" alt="<?php echo APP_TITLE;?>"></li>
                         <li><a href="<?php echo BASE_URL_ADMIN;?>monCompte">Mon compte</a></li>
                         <li><a href="<?php echo BASE_URL_ADMIN;?>article">Articles</a></li>
                         <li><a href="<?php echo BASE_URL_ADMIN;?>page">Pages</a></li>

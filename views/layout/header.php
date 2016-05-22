@@ -21,7 +21,9 @@
     <body>
         <nav class="light-blue lighten-1" role="navigation">
             <div class="nav-wrapper container">
-                <a id="logo-container" href="<?php echo BASE_URL;?>" class="brand-logo">Logo</a>
+                <a id="logo-container" href="<?php echo BASE_URL;?>" class="brand-logo hide-on-med-and-down">
+                    <img src="<?php echo BASE_URL;?>img/logo.png" alt="<?php echo APP_TITLE;?>" >
+                </a>
                 <ul class="right hide-on-med-and-down">
                     <?php if(!isset($_SESSION['id'])){?>
                     <li><a href="<?php echo BASE_URL;?>login">Connexion</a></li>
@@ -32,6 +34,7 @@
                     <?php }?>
                 </ul>
                 <ul id="nav-mobile" class="side-nav">
+                    <li><img src="<?php echo BASE_URL;?>img/logo.png" style="width: 100%;" alt="<?php echo APP_TITLE;?>"></li>
                     <?php if(!isset($_SESSION['id'])){?>
                     <li><a href="<?php echo BASE_URL;?>login">Connexion</a></li>
                     <li><a href="<?php echo BASE_URL;?>signup">Créer un compte</a></li>
