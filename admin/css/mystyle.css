@@ -1,0 +1,17 @@
+header, main, footer {
+    margin-left: 240px;
+}
+
+@media only screen and (max-width : 992px) {
+    header, main, footer {
+        margin-left: 0;
+    }
+}
+
+main{
+     padding: 10px;   
+}
+
+#logo-container img{
+    height: 64px;
+}

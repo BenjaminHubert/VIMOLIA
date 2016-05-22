@@ -8,3 +8,7 @@
 .input-field label {
     color: inherit;
 }
+
+#logo-container img{
+    height: 64px;
+}
