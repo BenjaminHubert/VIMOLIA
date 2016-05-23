@@ -54,8 +54,8 @@ class DB {
         ');
 
         return $query->execute([
-            $data['first_name'],
-            $data['last_name'],
+            ucfirst(strtolower($data['first_name'])),
+            strtoupper($data['last_name']),
             $data['pseudo'],
             $data['birthday_submit'],
             $data['address'],
@@ -129,8 +129,8 @@ class DB {
         ');
 
         return $query->execute([
-            $data['first_name'],
-            $data['last_name'],
+            ucfirst(strtolower($data['first_name'])),
+            strtoupper($data['last_name']),
             $data['pseudo'],
             $data['birthday_submit'],
             $data['address'],
@@ -243,5 +243,39 @@ class DB {
         if($query->execute()){
             return $query->fetchAll();
         }else return false;
+    }
+    
+    public function addAdministrator($d){
+        $query = $this->connection->prepare('
+            INSERT INTO user(first_name, last_name, birthday_date, email, password, role, id_status)
+            SELECT ?, ?, ?, ?, ?, ?, ?
+        ');
+        
+        return $query->execute([
+            ucfirst(strtolower($d['first_name'])),
+            strtoupper($d['last_name']),
+            $d['birthday_submit'],
+            $d['email'],
+            $this->hashPwd($d['password']),
+            'Administrateur',
+            2,
+        ]);
+    }
+    
+    public function addAuthor($d){
+        $query = $this->connection->prepare('
+            INSERT INTO user(first_name, last_name, birthday_date, email, password, role, id_status)
+            SELECT ?, ?, ?, ?, ?, ?, ?
+        ');
+        
+        return $query->execute([
+            ucfirst(strtolower($d['first_name'])),
+            strtoupper($d['last_name']),
+            $d['birthday_submit'],
+            $d['email'],
+            $this->hashPwd($d['password']),
+            'Auteur',
+            2,
+        ]);
     }
 }

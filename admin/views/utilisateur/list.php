@@ -6,8 +6,9 @@
 <a class="btn-floating btn-large waves-effect waves-light red hide-on-large-only" href="<?php echo BASE_URL_ADMIN;?>utilisateur/add">
     <i class="large material-icons">add</i>
 </a>
+<h3>Utilisateurs</h3>
 
-<table>
+<table class="highlight bordered">
     <thead>
         <tr>
             <th>Prénom</th>

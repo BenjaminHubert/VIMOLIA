@@ -1,6 +1,11 @@
 <?php
-require_once __SITE_PATH.DIRECTORY_SEPARATOR.'php_libraries'.DIRECTORY_SEPARATOR.'PHPMailer-5.2.15'.DIRECTORY_SEPARATOR.'class.phpmailer.php';
-require_once __SITE_PATH.DIRECTORY_SEPARATOR.'php_libraries'.DIRECTORY_SEPARATOR.'PHPMailer-5.2.15'.DIRECTORY_SEPARATOR.'class.smtp.php';
+if(strpos(__SITE_PATH, DIRECTORY_SEPARATOR.'admin') !== false){
+    require_once __SITE_PATH.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'php_libraries'.DIRECTORY_SEPARATOR.'PHPMailer-5.2.15'.DIRECTORY_SEPARATOR.'class.phpmailer.php';
+    require_once __SITE_PATH.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'php_libraries'.DIRECTORY_SEPARATOR.'PHPMailer-5.2.15'.DIRECTORY_SEPARATOR.'class.smtp.php';
+}else{
+    require_once __SITE_PATH.DIRECTORY_SEPARATOR.'php_libraries'.DIRECTORY_SEPARATOR.'PHPMailer-5.2.15'.DIRECTORY_SEPARATOR.'class.phpmailer.php';
+    require_once __SITE_PATH.DIRECTORY_SEPARATOR.'php_libraries'.DIRECTORY_SEPARATOR.'PHPMailer-5.2.15'.DIRECTORY_SEPARATOR.'class.smtp.php';
+}
 class MYMAIL extends PHPMailer{
     public function __construct() {
         $this->SMTPOptions = [
