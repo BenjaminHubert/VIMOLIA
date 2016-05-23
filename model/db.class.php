@@ -233,4 +233,15 @@ class DB {
             return $e;
         }else return false;
     }
+    
+    public function getAllUsers(){
+        $query = $this->connection->prepare('
+            SELECT user.*, status
+            FROM user
+            JOIN status_user ON user.id_status = status_user.id
+        ');
+        if($query->execute()){
+            return $query->fetchAll();
+        }else return false;
+    }
 }
