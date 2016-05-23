@@ -23,15 +23,23 @@
     <tbody>
         <?php if(is_array($users)){?>
         <?php foreach($users as $user){?>
+        <?php if($user['id_status'] != 4){?>
         <tr>
             <td><?php echo $user['first_name'];?></td>
             <td><?php echo $user['last_name'];?></td>
             <td><?php echo $user['email'];?></td>
             <td><?php echo $user['role'];?></td>
             <td><?php echo $user['status'];?></td>
-            <td><a href="<?php echo BASE_URL_ADMIN.'utilisateur/edit/'.sha1($user['id']);?>">Editer</a></td>
-            <td><a href="<?php echo BASE_URL_ADMIN.'utilisateur/delete/'.sha1($user['id']);?>">Supprimer</a></td>
+            <?php if($user['id'] == $_SESSION['id']){?>
+            <td> </td>
+            <td> </td>
+            <?php }else{?>
+            <td><a class="edit-button" data-firstName="<?php echo $user['first_name'];?>" data-lastName="<?php echo $user['last_name'];?>" href="<?php echo BASE_URL_ADMIN.'utilisateur/edit/'.sha1($user['id']);?>">Editer</a></td>
+            <td><a class="remove-button" data-firstName="<?php echo $user['first_name'];?>" data-lastName="<?php echo $user['last_name'];?>" href="<?php echo BASE_URL_ADMIN.'utilisateur/delete/'.sha1($user['id']);?>">Supprimer</a></td>
+
+            <?php }?>
         </tr>
+        <?php }?>
         <?php }?>
         <?php }else{?>
         <tr><td>Erreur</td></tr>

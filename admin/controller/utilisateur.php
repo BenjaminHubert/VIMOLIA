@@ -97,9 +97,10 @@ class utilisateurController extends baseController {
     }
 
     public function delete($args){
-        if(isset($args[0]) && isset($args[1])){
-            $this->registry->template->users = $users;
-            $this->registry->template->show('index');
+        if(isset($args[0])){
+            var_dump($this->registry->db->deleteUser($args[0], 'sha1'));
+            header('Location: '.BASE_URL_ADMIN.'utilisateur/list');
+            die();
         }
     }
 }

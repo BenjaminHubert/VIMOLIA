@@ -229,11 +229,11 @@ class DB {
             $e = $q->execute([
                 $t['TOKEN'],
             ]);
-            
+
             return $e;
         }else return false;
     }
-    
+
     public function getAllUsers(){
         $query = $this->connection->prepare('
             SELECT user.*, status
@@ -244,13 +244,13 @@ class DB {
             return $query->fetchAll();
         }else return false;
     }
-    
+
     public function addAdministrator($d){
         $query = $this->connection->prepare('
             INSERT INTO user(first_name, last_name, birthday_date, email, password, role, id_status)
             SELECT ?, ?, ?, ?, ?, ?, ?
         ');
-        
+
         return $query->execute([
             ucfirst(strtolower($d['first_name'])),
             strtoupper($d['last_name']),
@@ -261,13 +261,13 @@ class DB {
             2,
         ]);
     }
-    
+
     public function addAuthor($d){
         $query = $this->connection->prepare('
             INSERT INTO user(first_name, last_name, birthday_date, email, password, role, id_status)
             SELECT ?, ?, ?, ?, ?, ?, ?
         ');
-        
+
         return $query->execute([
             ucfirst(strtolower($d['first_name'])),
             strtoupper($d['last_name']),
@@ -277,5 +277,23 @@ class DB {
             'Auteur',
             2,
         ]);
+    }
+
+    public function deleteUser($id, $hash = false){
+        if($hash == false){
+            $query = $this->connection->prepare('
+                UPDATE user
+                SET id_status = 4
+                WHERE id = ?
+            ');
+            return $query->execute([$id]);
+        }elseif($hash == 'sha1'){
+            $query = $this->connection->prepare('
+                UPDATE user
+                SET id_status = 4
+                WHERE sha1(id) = ?
+            ');
+            return $query->execute([$id]);
+        }else return false;
     }
 }
