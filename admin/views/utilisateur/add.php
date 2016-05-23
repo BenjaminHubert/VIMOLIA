@@ -5,32 +5,32 @@
     <div class="row">
         <div class="input-field col s12 m6">
             <i class="material-icons prefix">person</i>
-            <input id="first_name" name="first_name" type="text" class="validate" required>
+            <input id="first_name" name="first_name" type="text" class="validate" required value="<?php echo (isset($_POST['first_name']))? $_POST['first_name'] : '' ;?>">
             <label for="first_name">Prénom *</label>
         </div>
         <div class="input-field col s12 m6">
             <i class="material-icons prefix">person</i>
-            <input id="last_name" name="last_name" type="text" class="validate" required>
+            <input id="last_name" name="last_name" type="text" class="validate" required value="<?php echo (isset($_POST['last_name']))? $_POST['last_name'] : '' ;?>">
             <label for="last_name">Nom *</label>
         </div>
         <div class="input-field col s12 m6">
             <i class="material-icons prefix">date_range</i>
-            <input id="birthday" type="date" name="birthday" class="datepicker" required>
+            <input id="birthday" type="date" name="birthday" class="datepicker" required value="<?php echo (isset($_POST['birthday']))? $_POST['birthday'] : '' ;?>">
             <label for="birthday">Date de naissance *</label>
         </div>
         <div class="input-field col s12 m6">
             <i class="material-icons prefix">contact_mail</i>
-            <input id="email" name="email" type="email" class="validate" required>
+            <input id="email" name="email" type="email" class="validate" required value="<?php echo (isset($_POST['email']))? $_POST['email'] : '' ;?>">
             <label for="email" data-error="Veuillez saisir une adresse email valide">Email *</label>
         </div>
         <div class="input-field col s12 m6">
             <i class="material-icons prefix">vpn_key</i>
-            <input id="password" name="password" type="password" class="validate" required>
+            <input id="password" name="password" type="password" class="validate" required value="<?php echo (isset($_POST['password']))? $_POST['password'] : '' ;?>">
             <label for="password">Mot de passe *</label>
         </div>
         <div class="input-field col s12 m6">
             <i class="material-icons prefix">vpn_key</i>
-            <input id="password_confirmation" name="password_confirmation" type="password" class="validate" required>
+            <input id="password_confirmation" name="password_confirmation" type="password" class="validate" required value="<?php echo (isset($_POST['password_confirmation']))? $_POST['password_confirmation'] : '' ;?>">
             <label for="password_confirmation" data-error="Le mot de passe n'est pas identique">Confirmation mot de passe *</label>
         </div>
         <div class="input-field col s6">
@@ -38,13 +38,13 @@
             <select name="role" required>
                 <option value="" disabled selected>Aucun sélectionné</option>
                 <?php foreach($roles as $role){?>
-                <option><?php echo $role;?></option>
+                <option <?php echo (isset($_POST['first_name']) && $_POST['first_name'] == $role)? 'selected' : '' ;?>><?php echo $role;?></option>
                 <?php }?>
             </select>
             <label>Rôle</label>
         </div>
         <div class="input-field col s12">
-            <input type="checkbox" id="send_mail" name="send_mail">
+            <input type="checkbox" id="send_mail" name="send_mail" <?php echo (isset($_POST['send_mail']))? 'checked' : '' ;?>>
             <label for="send_mail">Envoyer un message au nouvel utilisateur à propos de son compte.</label>
         </div>
         <div class="input-field col s12">

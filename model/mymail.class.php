@@ -20,6 +20,7 @@ class MYMAIL extends PHPMailer{
         $this->Username = EMAIL_SMTP_ADDRESS;
         $this->Password = EMAIL_SMTP_PWD;
         $this->SMTPAuth = true;
+        $this->CharSet = 'UTF-8';
         $this->Port = EMAIL_SMTP_PORT;
         $this->SMTPSecure = 'ssl';
         //        $this->SMTPDebug = 2;

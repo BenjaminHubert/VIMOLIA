@@ -44,7 +44,6 @@ class signupController extends baseController {
                                 $PHPMailer->addAddress($email);
                                 $PHPMailer->isHTML(true);
                                 $PHPMailer->Subject = 'Inscription sur '.APP_TITLE;
-                                $PHPMailer->CharSet = 'UTF-8';
                                 $PHPMailer->Body= '
                                     <p>Bonjour,</p>
                                     <div>

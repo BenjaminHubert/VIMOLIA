@@ -23,10 +23,7 @@ class utilisateurController extends baseController {
     }
 
     public function add(){
-        showArray($_POST);
-
         if(isset($_POST['submit'])){
-
             if(isset($_POST['role'])){
                 if(isset($_POST['send_mail'])){
                     $send_mail = true;
@@ -65,7 +62,6 @@ class utilisateurController extends baseController {
                                             $PHPMailer->addAddress($email);
                                             $PHPMailer->isHTML(true);
                                             $PHPMailer->Subject = 'Inscription sur '.APP_TITLE;
-                                            $PHPMailer->CharSet = 'UTF-8';
                                             $PHPMailer->Body= '
                                                 <p>Bonjour,</p>
                                                 <div>
