@@ -9,14 +9,16 @@ if(file_exists($conf_file)){
     include $conf_file;
 }else die("<b>Error</b>: <br>Config file not exist");
 
+include __SITE_PATH.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'application'.DIRECTORY_SEPARATOR.'extensions.php'; //check extensions loaded
 include __SITE_PATH.DIRECTORY_SEPARATOR.'application'.DIRECTORY_SEPARATOR.'baseController.class.php';
 include __SITE_PATH.DIRECTORY_SEPARATOR.'application'.DIRECTORY_SEPARATOR.'registry.class.php';
 include __SITE_PATH.DIRECTORY_SEPARATOR.'application'.DIRECTORY_SEPARATOR.'router.class.php';
 include __SITE_PATH.DIRECTORY_SEPARATOR.'application'.DIRECTORY_SEPARATOR.'template.class.php';
+include __SITE_PATH.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'application'.DIRECTORY_SEPARATOR.'functions.php'; // add own global functions
 
 function __autoload($class_name) {
     $filename = strtolower($class_name) . '.class.php';
-    $file = __SITE_PATH.DIRECTORY_SEPARATOR.'model'.DIRECTORY_SEPARATOR.$filename;
+    $file = __SITE_PATH.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'model'.DIRECTORY_SEPARATOR.$filename;
 
     if(file_exists($file) == false){
         return false;

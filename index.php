@@ -9,10 +9,12 @@ if(file_exists($conf_file)){
     include $conf_file;
 }else die("<b>Error</b>: <br>Config file not exist");
 
+include __SITE_PATH.DIRECTORY_SEPARATOR.'application'.DIRECTORY_SEPARATOR.'extensions.php'; //check extensions loaded
 include __SITE_PATH.DIRECTORY_SEPARATOR.'application'.DIRECTORY_SEPARATOR.'baseController.class.php';
 include __SITE_PATH.DIRECTORY_SEPARATOR.'application'.DIRECTORY_SEPARATOR.'registry.class.php';
 include __SITE_PATH.DIRECTORY_SEPARATOR.'application'.DIRECTORY_SEPARATOR.'router.class.php';
 include __SITE_PATH.DIRECTORY_SEPARATOR.'application'.DIRECTORY_SEPARATOR.'template.class.php';
+include __SITE_PATH.DIRECTORY_SEPARATOR.'application'.DIRECTORY_SEPARATOR.'functions.php'; // add own global functions
 
 function __autoload($class_name) {
     $filename = strtolower($class_name) . '.class.php';
@@ -22,14 +24,6 @@ function __autoload($class_name) {
         return false;
     }
     include $file;
-}
-
-// VERIFICATION DES EXTENSIONS REQUISES POUR L'APPLICATION
-if(!extension_loaded('openssl')){
-    die('Error 500 - Veuillez demander à votre administrateur d\'activer l\'extension openssl');
-}
-if(!extension_loaded('curl')){
-    die('Error 500 - Veuillez demander à votre administrateur d\'activer l\'extension curl');
 }
 
 $registry = new registry;

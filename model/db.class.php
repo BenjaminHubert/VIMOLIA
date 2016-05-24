@@ -54,8 +54,8 @@ class DB {
         ');
 
         return $query->execute([
-            $data['first_name'],
-            $data['last_name'],
+            ucfirst(strtolower($data['first_name'])),
+            strtoupper($data['last_name']),
             $data['pseudo'],
             $data['birthday_submit'],
             $data['address'],
@@ -129,8 +129,8 @@ class DB {
         ');
 
         return $query->execute([
-            $data['first_name'],
-            $data['last_name'],
+            ucfirst(strtolower($data['first_name'])),
+            strtoupper($data['last_name']),
             $data['pseudo'],
             $data['birthday_submit'],
             $data['address'],
@@ -229,8 +229,104 @@ class DB {
             $e = $q->execute([
                 $t['TOKEN'],
             ]);
-            
+
             return $e;
         }else return false;
+    }
+
+    public function getAllUsers(){
+        $query = $this->connection->prepare('
+            SELECT user.*, status
+            FROM user
+            JOIN status_user ON user.id_status = status_user.id
+        ');
+        if($query->execute()){
+            return $query->fetchAll();
+        }else return false;
+    }
+
+    public function addAdministrator($d){
+        $query = $this->connection->prepare('
+            INSERT INTO user(first_name, last_name, birthday_date, email, password, role, id_status)
+            SELECT ?, ?, ?, ?, ?, ?, ?
+        ');
+
+        return $query->execute([
+            ucfirst(strtolower($d['first_name'])),
+            strtoupper($d['last_name']),
+            $d['birthday_submit'],
+            $d['email'],
+            $this->hashPwd($d['password']),
+            'Administrateur',
+            2,
+        ]);
+    }
+
+    public function addAuthor($d){
+        $query = $this->connection->prepare('
+            INSERT INTO user(first_name, last_name, birthday_date, email, password, role, id_status)
+            SELECT ?, ?, ?, ?, ?, ?, ?
+        ');
+
+        return $query->execute([
+            ucfirst(strtolower($d['first_name'])),
+            strtoupper($d['last_name']),
+            $d['birthday_submit'],
+            $d['email'],
+            $this->hashPwd($d['password']),
+            'Auteur',
+            2,
+        ]);
+    }
+
+    public function deleteUser($id, $hash = false){
+        if($hash == false){
+            $query = $this->connection->prepare('
+                UPDATE user
+                SET id_status = 4
+                WHERE id = ?
+            ');
+            return $query->execute([$id]);
+        }elseif($hash == 'sha1'){
+            $query = $this->connection->prepare('
+                UPDATE user
+                SET id_status = 4
+                WHERE sha1(id) = ?
+            ');
+            return $query->execute([$id]);
+        }else return false;
+    }
+
+    public function getUser($id, $hash = false){
+        if($hash == false){
+            $query = $this->connection->prepare('
+                SELECT *
+                FROM user
+                WHERE id = ?
+            ');
+            if($query->execute([$id])){
+                return $query->fetch(PDO::FETCH_ASSOC);
+            }else return false;
+        }elseif($hash == 'sha1'){
+            $query = $this->connection->prepare('
+                SELECT *
+                FROM user
+                WHERE sha1(id) = ?
+            ');
+            if($query->execute([$id])){
+                return $query->fetch(PDO::FETCH_ASSOC);
+            }else return false;
+        }else return false;
+    }
+    
+    public function updateUser($user){
+        $sql = 'UPDATE user SET ';
+        $sql .= implode('=?, ', array_keys($user)).'=? ';
+        $sql .= 'WHERE id = ?';
+        
+        $toExecute = array_values($user);
+        $toExecute[] = $user['id'];
+        $query = $this->connection->prepare($sql);
+        return $query->execute($toExecute);
     }
 }

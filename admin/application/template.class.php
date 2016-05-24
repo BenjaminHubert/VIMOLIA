@@ -3,12 +3,12 @@ Class template {
     private $registry;
     private $vars = [];
     private $title = APP_TITLE;
-    
+
     function __construct($registry){
         $this->registry = $registry;
 
     }
-    
+
     public function __set($index, $value){
         $this->vars[$index] = $value;
     }
@@ -48,21 +48,59 @@ Class template {
         foreach($this->vars as $key => $value){
             $$key = $value;
         }
-        
+
         $this->title .= ' - '.$controller.' > '.$action;
 
         include($header);
+
         echo '<style>';
         include($pathCSS);
         echo '</style>';
+
         include($pathView);
+
         echo '<script>';
         include($pathJS);
+        if(isset($error) && $name != '404'){
+            echo $this->displayError($error);
+        }
+        if(isset($message)){
+            echo $this->displayMessage($message);
+        }
+        if(isset($warning)){
+            echo $this->displayWarning($warning);
+        }
         echo '</script>';
+
+
         include($footer);
     }
-    
+
     public function getTitle(){
         return $this->title;   
+    }
+
+    private function displayError($e){
+        return "
+            $(document).ready(function(){
+                Materialize.toast('".htmlentities($e)."', 4000, 'red')
+            });
+        ";
+    }
+
+    private function displayMessage($m){
+        return "
+            $(document).ready(function(){
+                Materialize.toast('".htmlentities($m)."', 4000)
+            });
+        ";
+    }
+
+    private function displayWarning($m){
+        return "
+            $(document).ready(function(){
+                Materialize.toast('".htmlentities($m)."', 4000, 'yellow')
+            });
+        ";
     }
 }

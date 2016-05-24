@@ -25,15 +25,15 @@
                         <img src="<?php echo BASE_URL;?>img/logo.png" alt="<?php echo APP_TITLE;?>">
                     </a>
                     <ul class="right ">
-                        <li><a href="<?php echo BASE_URL;?>">Voir le site</a></li>
-                        <li><a href="<?php echo BASE_URL;?>login/logout">Deconnexion</a></li>
+                        <li><a href="<?php echo BASE_URL;?>"><i class="material-icons left">airplay</i> Voir le site</a></li>
+                        <li><a href="<?php echo BASE_URL;?>login/logout"><i class="material-icons">exit_to_app</i></a></li>
                     </ul>
                     <ul id="slide-out" class="side-nav fixed">
                         <li><img class="hide-on-large-only" src="<?php echo BASE_URL;?>img/logo.png" style="width: 100%;" alt="<?php echo APP_TITLE;?>"></li>
                         <li><a href="<?php echo BASE_URL_ADMIN;?>monCompte">Mon compte</a></li>
                         <li><a href="<?php echo BASE_URL_ADMIN;?>article">Articles</a></li>
                         <li><a href="<?php echo BASE_URL_ADMIN;?>page">Pages</a></li>
-                        <li><a href="<?php echo BASE_URL_ADMIN;?>utilisateur">Utilisateurs</a></li>
+                        <?php if(in_array($_SESSION['role'], ['Administrateur'])){?><li><a href="<?php echo BASE_URL_ADMIN;?>utilisateur">Utilisateurs</a></li><?php }?>
                         <li><a href="<?php echo BASE_URL_ADMIN;?>reglage">Réglages</a></li>
                     </ul>
                     <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
