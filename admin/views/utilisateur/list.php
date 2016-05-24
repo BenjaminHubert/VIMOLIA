@@ -23,7 +23,7 @@
     <tbody>
         <?php if(is_array($users)){?>
         <?php foreach($users as $user){?>
-        <?php if($user['id_status'] != 4){?>
+        <?php if(in_array($user['id_status'], [1, 2, 3])){?>
         <tr>
             <td><?php echo $user['first_name'];?></td>
             <td><?php echo $user['last_name'];?></td>

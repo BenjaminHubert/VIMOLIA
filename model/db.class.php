@@ -296,4 +296,37 @@ class DB {
             return $query->execute([$id]);
         }else return false;
     }
+
+    public function getUser($id, $hash = false){
+        if($hash == false){
+            $query = $this->connection->prepare('
+                SELECT *
+                FROM user
+                WHERE id = ?
+            ');
+            if($query->execute([$id])){
+                return $query->fetch(PDO::FETCH_ASSOC);
+            }else return false;
+        }elseif($hash == 'sha1'){
+            $query = $this->connection->prepare('
+                SELECT *
+                FROM user
+                WHERE sha1(id) = ?
+            ');
+            if($query->execute([$id])){
+                return $query->fetch(PDO::FETCH_ASSOC);
+            }else return false;
+        }else return false;
+    }
+    
+    public function updateUser($user){
+        $sql = 'UPDATE user SET ';
+        $sql .= implode('=?, ', array_keys($user)).'=? ';
+        $sql .= 'WHERE id = ?';
+        
+        $toExecute = array_values($user);
+        $toExecute[] = $user['id'];
+        $query = $this->connection->prepare($sql);
+        return $query->execute($toExecute);
+    }
 }

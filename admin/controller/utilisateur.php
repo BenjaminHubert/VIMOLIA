@@ -14,6 +14,7 @@ class utilisateurController extends baseController {
 
     public function index(){
         header('Location: '.BASE_URL_ADMIN.'utilisateur/list');
+        die();
     }
 
     public function list(){
@@ -87,18 +88,51 @@ class utilisateurController extends baseController {
             }else $this->registry->template->error = 'Veuillez sélectionner un rôle';
         }
 
-
-        $this->registry->template->roles = ['Administrateur', 'Auteur'];
+        $this->registry->template->roles = ['Administrateur', 'Auteur', 'Expert'];
         $this->registry->template->show('add');
     }
 
-    public function edit($args){        
-        $this->registry->template->show('edit');
+    public function edit($args){
+        if(isset($args[0])){
+            $user = $this->registry->db->getUser($args[0], 'sha1');
+
+            if(isset($_POST['submit'])){
+                $postExpected = ['first_name', 'last_name', 'birthday', 'birthday_submit', 'email', 'submit'];
+                if($postExpected == array_keys($_POST)){
+                    foreach($postExpected as $var){
+                        $$var = $_POST[$var];
+                    }
+                    $d = DateTime::createFromFormat('Y-m-d', $birthday_submit);
+                    if($d && $d->format('Y-m-d') === $birthday_submit ){
+                        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+                            if($user['email'] == $email || !$this->registry->db->isUserMailExist($email)){
+                                $user['first_name'] = $_POST['first_name'];
+                                $user['last_name'] = $_POST['last_name'];
+                                $user['birthday_date'] = $_POST['birthday_submit'];
+                                $user['email'] = $_POST['email'];
+                                if($this->registry->db->updateUser($user)){
+                                    $this->registry->template->message = 'Utilisateur modifié avec succès';
+                                }else $this->registry->template->error = 'Email non valide';
+                            }else $this->registry->template->error = 'Email existant';
+                        }else $this->registry->template->error = 'Email non valide';
+                    }else $this->registry->template->error = 'Date de naissance invalide';
+                }else $this->registry->template->error = 'Erreur de formulaire';
+            }
+
+            $this->registry->template->user = $user;
+            $this->registry->template->show('edit');
+        }else{
+            header('Location: '.BASE_URL_ADMIN.'utilisateur/list');
+            die();
+        }
     }
 
     public function delete($args){
         if(isset($args[0])){
             var_dump($this->registry->db->deleteUser($args[0], 'sha1'));
+            header('Location: '.BASE_URL_ADMIN.'utilisateur/list');
+            die();
+        }else{
             header('Location: '.BASE_URL_ADMIN.'utilisateur/list');
             die();
         }
