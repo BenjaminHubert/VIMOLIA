@@ -32,7 +32,7 @@
                 <a id="logo-container" href="<?php echo BASE_URL;?>" class="brand-logo hide-on-med-and-down">
                     <img src="<?php echo BASE_URL;?>img/logo.png" alt="<?php echo APP_TITLE;?>" >
                 </a>
-                <ul class="right hide-on-med-and-down">
+                <ul class="right">
                     <?php if(!isset($_SESSION['id'])){?>
                     <li><a href="<?php echo BASE_URL;?>login">Connexion</a></li>
                     <li><a href="<?php echo BASE_URL;?>signup">Créer un compte</a></li>
