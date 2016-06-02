@@ -318,18 +318,18 @@ class DB {
             }else return false;
         }else return false;
     }
-    
+
     public function updateUser($user){
         $sql = 'UPDATE user SET ';
         $sql .= implode('=?, ', array_keys($user)).'=? ';
         $sql .= 'WHERE id = ?';
-        
+
         $toExecute = array_values($user);
         $toExecute[] = $user['id'];
         $query = $this->connection->prepare($sql);
         return $query->execute($toExecute);
     }
-    
+
     public function getAllDoctors(){
         $users = [];
         $query = $this->connection->prepare('
@@ -337,6 +337,7 @@ class DB {
             FROM user
             JOIN possesses ON possesses.id_user = user.id
             WHERE role = "Praticien"
+            AND id_status != 4
         ');
         if($query->execute()){
             while($data = $query->fetch(PDO::FETCH_ASSOC)){
@@ -347,6 +348,22 @@ class DB {
                 }else $users[$data['id']]['skills'][] = $data['skill'];
             }
             return $users;
+        }else return false;
+    }
+
+    public function getSkillsByUserId($id){
+        $query = $this->connection->prepare('SELECT skill FROM possesses WHERE id_user = ?');
+        if($query->execute([$id])){
+            return $query->fetchAll(PDO::FETCH_COLUMN);
+        }else return false;
+    }
+
+    public function getDoctorById($id){
+        $query = $this->connection->prepare('SELECT * FROM user WHERE role = "Praticien" AND id_status != 4 AND id = ?');
+        if($query->execute([$id])){
+            $user = $query->fetch(PDO::FETCH_ASSOC);
+            $user['skills'] = $this->getSkillsByUserId($id);
+            return $user;
         }else return false;
     }
 }
