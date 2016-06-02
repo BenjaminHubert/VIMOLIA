@@ -46,8 +46,10 @@
                     <li><a href="<?php echo BASE_URL;?>login">Connexion</a></li>
                     <li><a href="<?php echo BASE_URL;?>signup">Créer un compte</a></li>
                     <?php }else{?>
-                    <li><a href="<?php echo BASE_URL_ADMIN;?>">Mon compte</a></li>
-                    <li><a href="<?php echo BASE_URL;?>login/logout">Me déconnecter</a></li>
+                    <li><a href="<?php echo BASE_URL_ADMIN;?>"><i class="material-icons left">account_circle</i> Mon compte</a></li>
+                    <li><a href="<?php echo BASE_URL;?>search/praticien"><i class="material-icons left">search</i> Praticien</a></li>
+                    <li class="divider"></li>
+                    <li><a href="<?php echo BASE_URL;?>login/logout"><i class="material-icons left">lock_open</i> Déconnexion</a></li>
                     <?php }?>
                 </ul>
                 <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
