@@ -19,18 +19,25 @@
         <script src="<?php echo BASE_URL;?>js/functions.js"></script>
     </head>
     <body>
+        <?php if(isset($_SESSION['id'])){?>
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a href="<?php echo BASE_URL_ADMIN;?>"><i class="material-icons left">account_circle</i> Mon compte</a></li>
+            <li><a href="<?php echo BASE_URL;?>search/praticien"><i class="material-icons left">search</i> Praticien</a></li>
+            <li class="divider"></li>
+            <li><a href="<?php echo BASE_URL;?>login/logout"><i class="material-icons left">lock_open</i> Déconnexion</a></li>
+        </ul>
+        <?php }?>
         <nav class="light-blue lighten-1" role="navigation">
             <div class="nav-wrapper container">
                 <a id="logo-container" href="<?php echo BASE_URL;?>" class="brand-logo hide-on-med-and-down">
                     <img src="<?php echo BASE_URL;?>img/logo.png" alt="<?php echo APP_TITLE;?>" >
                 </a>
-                <ul class="right hide-on-med-and-down">
+                <ul class="right">
                     <?php if(!isset($_SESSION['id'])){?>
                     <li><a href="<?php echo BASE_URL;?>login">Connexion</a></li>
                     <li><a href="<?php echo BASE_URL;?>signup">Créer un compte</a></li>
                     <?php }else{?>
-                    <li><a href="<?php echo BASE_URL_ADMIN;?>">Mon compte</a></li>
-                    <li><a href="<?php echo BASE_URL;?>login/logout">Me déconnecter</a></li>
+                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons left">account_circle</i><?php echo $_SESSION['first_name'].' '.$_SESSION['last_name'];?><i class="material-icons right">arrow_drop_down</i></a></li>
                     <?php }?>
                 </ul>
                 <ul id="nav-mobile" class="side-nav">

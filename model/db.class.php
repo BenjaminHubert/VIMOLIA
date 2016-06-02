@@ -329,4 +329,24 @@ class DB {
         $query = $this->connection->prepare($sql);
         return $query->execute($toExecute);
     }
+    
+    public function getAllDoctors(){
+        $users = [];
+        $query = $this->connection->prepare('
+            SELECT user.*, possesses.skill 
+            FROM user
+            JOIN possesses ON possesses.id_user = user.id
+            WHERE role = "Praticien"
+        ');
+        if($query->execute()){
+            while($data = $query->fetch(PDO::FETCH_ASSOC)){
+                if(!isset($users[$data['id']])){
+                    $users[$data['id']] = $data;
+                    unset($users[$data['id']]['skill']);
+                    $users[$data['id']]['skills'] = [$data['skill']];
+                }else $users[$data['id']]['skills'][] = $data['skill'];
+            }
+            return $users;
+        }else return false;
+    }
 }
