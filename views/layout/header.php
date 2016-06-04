@@ -22,7 +22,8 @@
         <?php if(isset($_SESSION['id'])){?>
         <ul id="dropdown1" class="dropdown-content">
             <li><a href="<?php echo BASE_URL_ADMIN;?>"><i class="material-icons left">account_circle</i> Mon compte</a></li>
-            <li><a href="<?php echo BASE_URL;?>search/praticien"><i class="material-icons left">search</i> Praticien</a></li>
+            <li><a href="<?php echo BASE_URL;?>search/praticien"><i class="material-icons left">search</i> Praticiens</a></li>
+            <li><a href="<?php echo BASE_URL;?>question"><i class="material-icons left">question_answer</i> Questions</a></li>
             <li class="divider"></li>
             <li><a href="<?php echo BASE_URL;?>login/logout"><i class="material-icons left">lock_open</i> Déconnexion</a></li>
         </ul>
@@ -34,20 +35,25 @@
                 </a>
                 <ul class="right">
                     <?php if(!isset($_SESSION['id'])){?>
-                    <li><a href="<?php echo BASE_URL;?>login">Connexion</a></li>
-                    <li><a href="<?php echo BASE_URL;?>signup">Créer un compte</a></li>
+					<div class="hide-on-med-and-down">
+	                    <li><a href="<?php echo BASE_URL;?>search/praticien"><i class="material-icons left">search</i> Praticiens</a></li>
+	                    <li><a href="<?php echo BASE_URL;?>question"><i class="material-icons left">question_answer</i> Questions</a></li>
+	                </div>
                     <?php }else{?>
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons left">account_circle</i><?php echo $_SESSION['first_name'].' '.$_SESSION['last_name'];?><i class="material-icons right">arrow_drop_down</i></a></li>
                     <?php }?>
                 </ul>
                 <ul id="nav-mobile" class="side-nav">
-                    <li><img src="<?php echo BASE_URL;?>img/logo.png" style="width: 100%;" alt="<?php echo APP_TITLE;?>"></li>
-                    <?php if(!isset($_SESSION['id'])){?>
-                    <li><a href="<?php echo BASE_URL;?>login">Connexion</a></li>
-                    <li><a href="<?php echo BASE_URL;?>signup">Créer un compte</a></li>
+	                    <li><img src="<?php echo BASE_URL;?>img/logo.png" style="width: 100%;" alt="<?php echo APP_TITLE;?>"></li>
+	                    <?php if(!isset($_SESSION['id'])){?>
+	                    <li><a href="<?php echo BASE_URL;?>login"><i class="material-icons left">lock_open</i>Connexion</a></li>
+	                    <li><a href="<?php echo BASE_URL;?>signup"><i class="material-icons left">open_in_new</i>Créer un compte</a></li>
+	                    <li><a href="<?php echo BASE_URL;?>question"><i class="material-icons left">question_answer</i> Questions</a></li>
+	                    <li><a href="<?php echo BASE_URL;?>search/praticien"><i class="material-icons left">search</i> Praticiens</a></li>
                     <?php }else{?>
                     <li><a href="<?php echo BASE_URL_ADMIN;?>"><i class="material-icons left">account_circle</i> Mon compte</a></li>
-                    <li><a href="<?php echo BASE_URL;?>search/praticien"><i class="material-icons left">search</i> Praticien</a></li>
+                    <li><a href="<?php echo BASE_URL;?>search/praticien"><i class="material-icons left">search</i> Praticiens</a></li>
+                    <li><a href="<?php echo BASE_URL;?>question"><i class="material-icons left">question_answer</i> Questions</a></li>
                     <li class="divider"></li>
                     <li><a href="<?php echo BASE_URL;?>login/logout"><i class="material-icons left">lock_open</i> Déconnexion</a></li>
                     <?php }?>
@@ -56,3 +62,11 @@
             </div>
         </nav>
         <div class="container">
+        	<?php if(!isset($_SESSION['id'])){?>
+        	<div class="row">
+        		<div class="col s12 hide-on-med-and-down" style="text-align:right; padding:10px">        			
+                    <a style="padding:10px" href="<?php echo BASE_URL;?>signup">Créer un compte</a>
+                   	<a style="padding:10px" href="<?php echo BASE_URL;?>login">Connexion</a>
+        		</div>
+        	</div>
+        	<?php }?>
