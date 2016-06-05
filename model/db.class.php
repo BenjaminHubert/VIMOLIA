@@ -366,4 +366,31 @@ class DB {
             return $user;
         }else return false;
     }
+    
+    public function getAllQuestions(){
+    	$query = $this->connection->prepare('SELECT * FROM question ORDER BY question_date');
+    	if($query->execute()){
+    		return $query->fetchAll(PDO::FETCH_ASSOC);
+    	}else return false;
+    }
+    
+    public function getQuestion($id){
+    	$query = $this->connection->prepare('SELECT * FROM question WHERE id = ?');
+    	if($query->execute([$id])){
+    		return $query->fetch(PDO::FETCH_ASSOC);
+    	}else return false;
+    }
+    
+    public function getAnswersQuestion($idQuestion){
+    	$query = $this->connection->prepare('
+    			SELECT a.*, u.date_inscription, u.first_name, u.last_name, u.birthday_date, u.email, u.pseudo, u.address, u.postal_code, u.city, u.phone, u.mobile, u.siret, u.diploma, u.url_avatar, u.presentation, u.role, u.id_status
+				FROM answer a 
+				JOIN user u ON u.id = a.id_user 
+				WHERE a.id_question = ?
+				ORDER BY answer_date
+    	');
+    	if($query->execute([$idQuestion])){
+    		return $query->fetchAll(PDO::FETCH_ASSOC);
+    	}else return false;
+    }
 }
