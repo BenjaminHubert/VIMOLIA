@@ -366,4 +366,11 @@ class DB {
             return $user;
         }else return false;
     }
+    
+    public function getAllQuestions(){
+    	$query = $this->connection->prepare('SELECT * FROM question ORDER BY question_date');
+    	if($query->execute()){
+    		return $query->fetchAll(PDO::FETCH_ASSOC);
+    	}else return false;
+    }
 }
