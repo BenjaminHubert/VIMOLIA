@@ -1,7 +1,7 @@
 <h3>Détail du praticien</h3>
 <div class="row">
     <div class="col s3">
-        <img src="<?php echo ($doctor['url_avatar'] == NULL)?BASE_URL.'img/avatar/user.png':$doctor['url_avatar'];?>" class="responsive-img" alt="">
+        <img src="<?php echo ($doctor['url_avatar'] == NULL)?BASE_URL.'img/avatar/user.png':$doctor['url_avatar'];?>" class="responsive-img materialboxed" alt="">
     </div>
     <div class="col s9">
         <div class="row">
