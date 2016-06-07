@@ -15,5 +15,11 @@ class questionController extends baseController {
 			}else $this->registry->template->show('404', true);
 		}else $this->registry->template->show('404', true);
 	}
+	
+	public function add(){
+		if(isset($_SESSION['id'])){
+			$this->registry->template->show('add');
+		}else $this->registry->template->show('403', true);
+	}
 }
 ?>
