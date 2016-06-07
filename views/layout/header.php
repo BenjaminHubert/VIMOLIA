@@ -66,7 +66,7 @@
         	<div class="row">
         		<div class="col s12 hide-on-med-and-down" style="text-align:right; padding:10px">        			
                     <a style="padding:10px" href="<?php echo BASE_URL;?>signup">Créer un compte</a>
-                   	<a style="padding:10px" href="<?php echo BASE_URL;?>login">Connexion</a>
+                   	<a style="padding:10px" href="<?php echo BASE_URL.'login?url='.trim(BASE_URL, '/').strtok($_SERVER["REQUEST_URI"],'?');?>">Connexion</a>
         		</div>
         	</div>
         	<?php }?>
