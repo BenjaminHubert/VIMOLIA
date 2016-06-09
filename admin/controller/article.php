@@ -6,21 +6,35 @@ class articleController extends baseController {
         $this->registry->template->listArticle = $this->registry->db->getListArticle();
         $this->registry->template->show('index');
     }
-    
+
     public function add($args){   
         // Ajouter un article
-        if(isset($_POST['submit']) && $_POST['submit'] == 'create'){
-            
-            $this->registry->db->addArticle($article);
-            $this->registry->template->show('index');
+        $postExpected = ['title', 'main_picture', 'description', 'content', 'date_publish', 'date_publish_submit', 'hour_publish', 'minute_publish', 'submit'];
+        $fileExpected = ['main_picture_file'];
+
+        if($postExpected == array_keys($_POST) && $fileExpected == array_keys($_FILES)){
+
+            $info = pathinfo($_FILES['main_picture_file']['name']);
+            $ext = $info['extension'];
+
+            $_POST['main_picture'] = '/img/articleImage/'.preg_replace("/[^A-Za-z0-9]/", "", $_POST['title']).'_'.time().'.'.$ext;
+            $_POST['date_publish'] = date('Y-m-d H:i:s', strtotime($_POST['date_publish_submit']."+".$_POST['hour_publish']." hours +".$_POST['minute_publish']." minutes"));
+            $_POST['id_user'] = $_SESSION['id'];
+
+            foreach($postExpected as $var){
+                $$var = $_POST[$var];
+            }
+            uploadFile($_FILES, 'main_picture_file', $_POST['main_picture']);
+            $this->registry->db->addArticle($_POST);
+            header('Location:'.$this->registry->config['base_url'].'/admin/article');
         }
-        $this->registry->template->show('add');
+        else $this->registry->template->show('add');
     }
-    
+
     public function edit($args){
         // Modifier un article
         if(isset($_POST['submit']) && $_POST['submit'] == 'update'){
-            
+
             $this->registry->db->editArticle($article);
             $this->registry->template->show('index');
         }

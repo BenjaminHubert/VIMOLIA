@@ -480,6 +480,21 @@ class DB {
         ]);
     }
     
+    public function editArticle($article, $id){
+        $query = $this->connection->prepare('
+            UPDATE article SET title = ?, content = ?, main_picture = ?, date_publish = ?, description = ?
+            WHERE id = ?');
+        
+        return $query->execute([
+            $article['title'],
+            $article['content'],
+            $article['main_picture'],
+            $article['date_publish'],
+            $article['description'],
+            $id
+        ]);
+    }
+    
     public function getListPage(){
         $query = $this->connection->prepare('SELECT * FROM page ORDER BY date_create DESC');
         if($query->execute()){
@@ -504,6 +519,19 @@ class DB {
             $page['content'],
             $page['date_publish'],
             $page['id_user']
+        ]);
+    }
+
+    public function editPage($page, $id){
+        $query = $this->connection->prepare('
+            UPDATE page SET title = ?, content = ?, date_publish = ?
+            WHERE id = ?');
+        
+        return $query->execute([
+            $page['title'],
+            $page['content'],
+            $page['date_publish'],
+            $id
         ]);
     }
 
