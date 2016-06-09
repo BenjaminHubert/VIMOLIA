@@ -444,8 +444,7 @@ class DB {
 				$idUser,
 				$idStatus
 		]);
-	}
-
+	
     	if($query->execute([$idQuestion])){
     		return $query->fetchAll(PDO::FETCH_ASSOC);
     	}else return false;
