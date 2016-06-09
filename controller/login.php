@@ -9,8 +9,13 @@ class loginController extends baseController {
                 if(filter_var($email, FILTER_VALIDATE_EMAIL)){
                     if(($userData = $this->registry->db->login($email, $password)) !== false){
                         $_SESSION = array_merge($_SESSION, $userData);
-                        header('Location: '.BASE_URL_ADMIN);
-                        die();
+                        if(isset($_GET['url'])){
+	                        header('Location: '.$_GET['url']);
+	                        die();
+                        }else{
+	                        header('Location: '.BASE_URL);
+	                        die();                        	
+                        }
                     }else $this->registry->template->error = 'Email ou mot de passe incorrect';
                 }else $this->registry->template->error = 'Email non valide';
             }else $this->registry->template->error = 'Formulaire incomplet';
