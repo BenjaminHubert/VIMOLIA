@@ -19,7 +19,7 @@
     </head>
     <body>
         <header>
-            <nav role="navigation">
+            <nav class="light-blue lighten-1" role="navigation">
                 <div class="nav-wrapper container">
                     <a id="logo-container" href="<?php echo BASE_URL;?>" class="brand-logo hide-on-med-and-down">
                         <img src="<?php echo BASE_URL;?>img/logo.png" alt="<?php echo APP_TITLE;?>">
