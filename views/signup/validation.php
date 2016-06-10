@@ -1,1 +1,1 @@
-<h4>Merci, votre adresse email a été confirmé</h4>
+<h4>Merci, votre adresse email a été confirmée</h4>
