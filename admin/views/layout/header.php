@@ -33,6 +33,7 @@
                         <li><a href="<?php echo BASE_URL_ADMIN;?>monCompte">Mon compte</a></li>
                         <li><a href="<?php echo BASE_URL_ADMIN;?>article">Articles</a></li>
                         <li><a href="<?php echo BASE_URL_ADMIN;?>page">Pages</a></li>
+                        <?php if(in_array($_SESSION['role'], ['Administrateur', 'Expert'])){?><li><a href="<?php echo BASE_URL_ADMIN;?>question/list">Questions</a></li><?php }?>
                         <?php if(in_array($_SESSION['role'], ['Administrateur'])){?><li><a href="<?php echo BASE_URL_ADMIN;?>utilisateur">Utilisateurs</a></li><?php }?>
                         <li><a href="<?php echo BASE_URL_ADMIN;?>reglage">Réglages</a></li>
                     </ul>

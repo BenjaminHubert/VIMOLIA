@@ -1,7 +1,7 @@
 <?php
 
-function showArray($a){
-    echo '<pre>', print_r($a, true), '</pre>';
+function showArray($array){
+    echo '<pre>', print_r($array, true), '</pre>';
 }
 
 function uploadFile($file, $input, $name){
