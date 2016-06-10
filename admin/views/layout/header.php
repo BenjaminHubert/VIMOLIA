@@ -19,7 +19,7 @@
     </head>
     <body>
         <header>
-            <nav role="navigation">
+            <nav class="light-blue lighten-1" role="navigation">
                 <div class="nav-wrapper container">
                     <a id="logo-container" href="<?php echo BASE_URL;?>" class="brand-logo hide-on-med-and-down">
                         <img src="<?php echo BASE_URL;?>img/logo.png" alt="<?php echo APP_TITLE;?>">
@@ -33,6 +33,7 @@
                         <li><a href="<?php echo BASE_URL_ADMIN;?>monCompte">Mon compte</a></li>
                         <li><a href="<?php echo BASE_URL_ADMIN;?>article">Articles</a></li>
                         <li><a href="<?php echo BASE_URL_ADMIN;?>page">Pages</a></li>
+                        <?php if(in_array($_SESSION['role'], ['Administrateur', 'Expert'])){?><li><a href="<?php echo BASE_URL_ADMIN;?>question/list">Questions</a></li><?php }?>
                         <?php if(in_array($_SESSION['role'], ['Administrateur'])){?><li><a href="<?php echo BASE_URL_ADMIN;?>utilisateur">Utilisateurs</a></li><?php }?>
                         <li><a href="<?php echo BASE_URL_ADMIN;?>reglage">Réglages</a></li>
                     </ul>
