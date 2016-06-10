@@ -1,3 +1,8 @@
+## ECLIPSE FILES
+
 .buildpath
 .project
 .settings/
+
+## CONFIG FILE
+conf/config.php
