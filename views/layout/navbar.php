@@ -25,6 +25,11 @@
 			<li><a href="<?php echo BASE_URL_ADMIN;?>article"><i class="material-icons left">description</i>Gérer les articles</a></li>
             <li><a href="<?php echo BASE_URL_ADMIN;?>page"><i class="material-icons left">description</i>Gérer les pages</a></li>
 			<?php }?>
+			<!-- MEMBERS & ADMINISTRATORS -->
+			<?php if(isset($_SESSION['id']) && in_array($_SESSION['role'], ['Member', 'Administrateur'])){?>
+			<li class="divider"></li>
+				<li><a href="<?php echo BASE_URL;?>question/index?mesQuestions"><i class="material-icons left">feedback</i> Mes questions</a></li>
+			<?php }?>
 			<!-- EXPERTS & ADMINISTRATORS -->
 			<?php if(isset($_SESSION['id']) && in_array($_SESSION['role'], ['Administrateur', 'Expert'])){?>
 			<li class="divider"></li>
@@ -38,18 +43,20 @@
 			<?php }?>
 		</ul>
 		
+		<!-- RIGHT MENU -->
+		
 		<!-- if non loggued in -->
 		<?php if(!isset($_SESSION['id'])){?>
 		<ul class="right hide-on-med-and-down">
 			<li><a href="<?php echo BASE_URL;?>login">Connexion</a></li>
 			<li><a href="<?php echo BASE_URL;?>signup">Créer un compte</a></li>
 		</ul>
-		<?php }?>
-		
+		<?php }?>		
 		<!-- if loggued in -->
 		<?php if(isset($_SESSION['id'])){?>
 		<ul id="logguedIn" class="dropdown-content">
 			<li><a href="<?php echo BASE_URL_ADMIN;?>"><i class="material-icons left">account_circle</i> Mon compte</a></li>
+			<li><a href="<?php echo BASE_URL;?>question/index?mesQuestions"><i class="material-icons left">feedback</i> Mes questions</a></li>
 			<li class="divider"></li>
 			<li><a href="<?php echo BASE_URL;?>login/logout"><i class="material-icons left">exit_to_app</i> Déconnexion</a></li>
 		</ul>

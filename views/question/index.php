@@ -6,8 +6,8 @@
 	<?php if(isset($_SESSION['id'])){?>
 	<div class="col s12">
 		<ul class="tabs">
-			<li class="tab col s6"><a class="active" href="#allQuestions">Toutes les questions</a></li>
-			<li class="tab col s6"><a href="#myQuestions">Mes questions</a></li>
+			<li class="tab col s6"><a class="<?php echo (!isset($_GET['mesQuestions']))?'active':'';?>" href="#allQuestions">Toutes les questions</a></li>
+			<li class="tab col s6"><a class="<?php echo (isset($_GET['mesQuestions']))?'active':'';?>" href="#myQuestions">Mes questions</a></li>
 		</ul>
 	</div>
 	<?php }?>
