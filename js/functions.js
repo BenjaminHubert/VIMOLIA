@@ -19,4 +19,5 @@ jQuery.extend( jQuery.fn.pickadate.defaults, {
 $(document).ready(function(){
     $('.button-collapse').sideNav();
     $(".dropdown-button").dropdown();
+    $('textarea[lenght], input[lenght]').characterCounter();
 });

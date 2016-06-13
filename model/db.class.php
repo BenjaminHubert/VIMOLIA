@@ -423,7 +423,7 @@ class DB {
 				WHERE a.id_question = ?
 				ORDER BY answer_date
     	');
-
+		
 		if($query->execute([
 				$idQuestion
 		])){
@@ -444,94 +444,131 @@ class DB {
 				$idUser,
 				$idStatus
 		]);
-	
-    	if($query->execute([$idQuestion])){
-    		return $query->fetchAll(PDO::FETCH_ASSOC);
-    	}else return false;
-    }
-    
-    public function getListArticle(){
-        $query = $this->connection->prepare('SELECT * FROM article ORDER BY date_create DESC');
-        if($query->execute()){
-    		return $query->fetchAll(PDO::FETCH_ASSOC);
-    	}else return false;
-    }
-    
-    public function getArticleById($id){
-        $query = $this->connection->prepare('SELECT * FROM article WHERE id = ?');
-        if($query->execute([$id])){
-    		return $query->fetch(PDO::FETCH_ASSOC);
-    	}else return false;
-    }
-    
-    public function addArticle($article){
-        $query = $this->connection->prepare('
+		
+		if($query->execute([
+				$idQuestion
+		])){
+			return $query->fetchAll(PDO::FETCH_ASSOC);
+		}else
+			return false;
+	}
+	public function getListArticle(){
+		$query = $this->connection->prepare('SELECT * FROM article ORDER BY date_create DESC');
+		if($query->execute()){
+			return $query->fetchAll(PDO::FETCH_ASSOC);
+		}else
+			return false;
+	}
+	public function getArticleById($id){
+		$query = $this->connection->prepare('SELECT * FROM article WHERE id = ?');
+		if($query->execute([
+				$id
+		])){
+			return $query->fetch(PDO::FETCH_ASSOC);
+		}else
+			return false;
+	}
+	public function addArticle($article){
+		$query = $this->connection->prepare('
             INSERT INTO article(title, content, main_picture, date_create, date_publish, description, id_user)
             SELECT ?, ?, ?, CURRENT_TIMESTAMP, ?, ?, ?');
-        
-        return $query->execute([
-            $article['title'],
-            $article['content'],
-            $article['main_picture'],
-            $article['date_publish'],
-            $article['description'],
-            $article['id_user']
-        ]);
-    }
-    
-    public function editArticle($article, $id){
-        $query = $this->connection->prepare('
+		
+		return $query->execute([
+				$article['title'],
+				$article['content'],
+				$article['main_picture'],
+				$article['date_publish'],
+				$article['description'],
+				$article['id_user']
+		]);
+	}
+	public function editArticle($article, $id){
+		$query = $this->connection->prepare('
             UPDATE article SET title = ?, content = ?, main_picture = ?, date_publish = ?, description = ?
             WHERE id = ?');
-        
-        return $query->execute([
-            $article['title'],
-            $article['content'],
-            $article['main_picture'],
-            $article['date_publish'],
-            $article['description'],
-            $id
-        ]);
-    }
-    
-    public function getListPage(){
-        $query = $this->connection->prepare('SELECT * FROM page ORDER BY date_create DESC');
-        if($query->execute()){
-    		return $query->fetchAll(PDO::FETCH_ASSOC);
-    	}else return false;
-    }
-    
-    public function getPageById($id){
-        $query = $this->connection->prepare('SELECT * FROM page WHERE id = ?');
-        if($query->execute([$id])){
-    		return $query->fetch(PDO::FETCH_ASSOC);
-    	}else return false;
-    }
-    
-    public function addPage($page){
-        $query = $this->connection->prepare('
+		
+		return $query->execute([
+				$article['title'],
+				$article['content'],
+				$article['main_picture'],
+				$article['date_publish'],
+				$article['description'],
+				$id
+		]);
+	}
+	public function getListPage(){
+		$query = $this->connection->prepare('SELECT * FROM page ORDER BY date_create DESC');
+		if($query->execute()){
+			return $query->fetchAll(PDO::FETCH_ASSOC);
+		}else
+			return false;
+	}
+	public function getPageById($id){
+		$query = $this->connection->prepare('SELECT * FROM page WHERE id = ?');
+		if($query->execute([
+				$id
+		])){
+			return $query->fetch(PDO::FETCH_ASSOC);
+		}else
+			return false;
+	}
+	public function addPage($page){
+		$query = $this->connection->prepare('
             INSERT INTO page(title, content, date_create, date_publish, id_user)
             SELECT ?, ?, CURRENT_TIMESTAMP, ?, ?');
-        
-        return $query->execute([
-            $page['title'],
-            $page['content'],
-            $page['date_publish'],
-            $page['id_user']
-        ]);
-    }
-
-    public function editPage($page, $id){
-        $query = $this->connection->prepare('
+		
+		return $query->execute([
+				$page['title'],
+				$page['content'],
+				$page['date_publish'],
+				$page['id_user']
+		]);
+	}
+	public function editPage($page, $id){
+		$query = $this->connection->prepare('
             UPDATE page SET title = ?, content = ?, date_publish = ?
             WHERE id = ?');
-        
-        return $query->execute([
-            $page['title'],
-            $page['content'],
-            $page['date_publish'],
-            $id
-        ]);
-    }
-
+		
+		return $query->execute([
+				$page['title'],
+				$page['content'],
+				$page['date_publish'],
+				$id
+		]);
+	}
+	public function getQuestionStatus(){
+		$query = $this->connection->prepare('
+            SELECT status
+			FROM status_question 
+    	');
+		
+		if($query->execute()){
+			return $query->fetchAll(PDO::FETCH_COLUMN);
+		}else
+			return false;
+	}
+	public function changeStatusQuestion($idQuestion, $status){
+		$query = $this->connection->prepare('
+			UPDATE question 
+			SET status = ?
+			WHERE id = ?
+		');
+		
+		return $query->execute([
+				$status,
+				$idQuestion
+		]);
+	}
+	public function addAnswer($answer, $idUser, $idQuestion){
+		$query = $this->connection->prepare('
+			INSERT INTO answer(answer_text, id_user, id_question)
+			SELECT ?, ?, ?
+		');
+		
+		return $query->execute([
+				$answer,
+				$idUser,
+				$idQuestion
+		]);
+	}
 }
