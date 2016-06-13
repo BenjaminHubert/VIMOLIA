@@ -18,27 +18,5 @@
         <script src="<?php echo BASE_URL_ADMIN;?>js/functions.js"></script>
     </head>
     <body>
-        <header>
-            <nav class="light-blue lighten-1" role="navigation">
-                <div class="nav-wrapper container">
-                    <a id="logo-container" href="<?php echo BASE_URL;?>" class="brand-logo hide-on-med-and-down">
-                        <img src="<?php echo BASE_URL;?>img/logo.png" alt="<?php echo APP_TITLE;?>">
-                    </a>
-                    <ul class="right ">
-                        <li><a href="<?php echo BASE_URL;?>"><i class="material-icons left">airplay</i> Voir le site</a></li>
-                        <li><a href="<?php echo BASE_URL;?>login/logout"><i class="material-icons">exit_to_app</i></a></li>
-                    </ul>
-                    <ul id="slide-out" class="side-nav fixed">
-                        <li><img class="hide-on-large-only" src="<?php echo BASE_URL;?>img/logo.png" style="width: 100%;" alt="<?php echo APP_TITLE;?>"></li>
-                        <li><a href="<?php echo BASE_URL_ADMIN;?>monCompte">Mon compte</a></li>
-                        <li><a href="<?php echo BASE_URL_ADMIN;?>article">Articles</a></li>
-                        <li><a href="<?php echo BASE_URL_ADMIN;?>page">Pages</a></li>
-                        <?php if(in_array($_SESSION['role'], ['Administrateur', 'Expert'])){?><li><a href="<?php echo BASE_URL_ADMIN;?>question/list">Questions</a></li><?php }?>
-                        <?php if(in_array($_SESSION['role'], ['Administrateur'])){?><li><a href="<?php echo BASE_URL_ADMIN;?>utilisateur">Utilisateurs</a></li><?php }?>
-                        <li><a href="<?php echo BASE_URL_ADMIN;?>reglage">Réglages</a></li>
-                    </ul>
-                    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-                </div>
-            </nav>
-        </header>
-        <main>
+        <?php include('../views/layout/navbar.php');?>
+        <div class="container">
