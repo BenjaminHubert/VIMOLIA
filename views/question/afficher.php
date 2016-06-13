@@ -15,14 +15,21 @@
 <?php foreach($answers as $answer){?>
 <div class="col s12 card grey">
 		<div class="row">
-			<div class="col s2">
+			<div class="col s1">
 				<img style="width: 100%; margin: 10px" src="<?php echo ($answer['url_avatar'] !== NULL)?$answer['url_avatar']:BASE_URL.'img/avatar/user.png';?>" alt="">
 			</div>
-			<div class="col s10">
+			<div class="col s11">
 				<p><?php echo $answer['answer_text'];?></p>
 				<p style="text-align: right"><?php echo ($answer['pseudo'] !== NULL)?$answer['pseudo']:$answer['first_name'].' '.$answer['last_name'];?>, expert <?php echo APP_TITLE;?></p>
-				<p style="text-align:right; font-style:italic"><?php echo date('d/m/Y à H\hm', strtotime($answer['answer_date']));?></p>
+				<p style="text-align: right; font-style: italic"><?php echo date('d/m/Y à H\hm', strtotime($answer['answer_date']));?></p>
 			</div>
+		</div>
+	</div>
+<?php }?>
+<?php if(isset($_SESSION['id']) && $question['id_user'] == $_SESSION['id']){?>
+<div class="row">
+		<div class="col s12">
+			<!-- a class="waves-effect waves-light btn">button</a> <a class="waves-effect waves-light btn">button</a> -->
 		</div>
 	</div>
 <?php }?>
