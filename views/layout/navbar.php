@@ -8,7 +8,7 @@
 			<li><a href="<?php echo BASE_URL;?>login/logout"><i class="material-icons left">exit_to_app</i> Déconnexion</a></li>
 			<?php }else{?>
 			<li><a href="<?php echo BASE_URL;?>login"><i class="material-icons left">lock_open</i>Connexion</a></li>
-			<li><a href="<?php echo BASE_URL;?>signup"><i class="material-icons left">add</i>Créer un compte</a></li>
+			<li><a href="<?php echo BASE_URL;?>signup"><i class="material-icons left">add_circle</i>Créer un compte</a></li>
 			<?php }?>
 			<li class="divider"></li>
 			<!-- EVERYONE -->
@@ -38,16 +38,16 @@
 			<?php }?>
 		</ul>
 		
-		<?php if(!isset($_SESSION['id'])){?>
 		<!-- if non loggued in -->
+		<?php if(!isset($_SESSION['id'])){?>
 		<ul class="right hide-on-med-and-down">
 			<li><a href="<?php echo BASE_URL;?>login">Connexion</a></li>
 			<li><a href="<?php echo BASE_URL;?>signup">Créer un compte</a></li>
 		</ul>
 		<?php }?>
 		
-		<?php if(isset($_SESSION['id'])){?>
 		<!-- if loggued in -->
+		<?php if(isset($_SESSION['id'])){?>
 		<ul id="logguedIn" class="dropdown-content">
 			<li><a href="<?php echo BASE_URL_ADMIN;?>"><i class="material-icons left">account_circle</i> Mon compte</a></li>
 			<li class="divider"></li>
