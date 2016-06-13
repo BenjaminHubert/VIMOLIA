@@ -71,10 +71,12 @@ class questionController extends baseController {
 						if($PHPMailer->send()){
 							$this->registry->template->message = 'Un mail a été envoyé à l auteur afin de l avertir de la réponse';
 						}
-					}else
+					}else{
 						$this->registry->template->error = 'Erreur lors de l insertion en base de données';
+					}
 				}
 				
+				$this->registry->template->answers = $this->registry->db->getAnswersQuestion($question['id']);
 				$this->registry->template->user = $user;
 				$this->registry->template->questionStatus = $questionStatus;
 				$this->registry->template->question = $question;

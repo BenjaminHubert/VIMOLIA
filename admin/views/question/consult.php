@@ -38,8 +38,27 @@
 
 <form action="" method="POST">
 	<div class="row">
+		<?php if(count($answers) > 0){?>
 		<div class="col s12">
-			<h4>Réponse :</h4>
+			<h4>Réponse(s) :</h4>
+		</div>
+		<?php }?>
+		<?php foreach($answers as $answer){?>
+		<div class="col s12 card grey">
+				<div class="row">
+					<div class="col s2">
+						<img style="width: 100%; margin: 10px" src="<?php echo ($answer['url_avatar'] !== NULL)?$answer['url_avatar']:BASE_URL.'img/avatar/user.png';?>" alt="">
+					</div>
+					<div class="col s10">
+						<p><?php echo $answer['answer_text'];?></p>
+						<p style="text-align: right"><?php echo ($answer['pseudo'] !== NULL)?$answer['pseudo']:$answer['first_name'].' '.$answer['last_name'];?>, expert <?php echo APP_TITLE;?></p>
+						<p style="text-align:right; font-style:italic"><?php echo date('d/m/Y à H\hm', strtotime($answer['answer_date']));?></p>
+					</div>
+				</div>
+			</div>
+		<?php }?>
+		<div class="col s12">
+			<h4>Ajouter une réponse :</h4>
 		</div>
 		<div class="col s12">
 			<textarea name="answer" class="materialize-textarea" length="1000" placeholder="Ajouter une réponse..." required><?php echo '';?></textarea>
