@@ -1,4 +1,5 @@
-<div class="row">
+<h2>Créer une page</h2>
+   <div class="row">
     <form method="POST" class="col s12">
         <div class="row">
             <div class="input-field col s12">
