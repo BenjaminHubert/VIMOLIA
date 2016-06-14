@@ -131,5 +131,18 @@ class questionController extends baseController {
 			$this->registry->template->show('404', true);
 		}
 	}
+	public function close($args){
+		if(isset($args[0]) && is_numeric($args[0])){
+			if(isset($_SESSION['id'])){
+				$question = $this->registry->db->getQuestion($args[0]);
+				if($question && $question['id_user'] == $_SESSION['id'] && $question['status'] == 'Question en attente de validation de réponse'){
+					$this->registry->db->changeStatusQuestion($question['id'], 'Question clôturé');
+				}
+			}
+		}
+		
+		header('Location: '.BASE_URL.'question/afficher/'.$args[0]);
+		die();
+	}
 }
 ?>
