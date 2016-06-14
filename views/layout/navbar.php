@@ -56,7 +56,7 @@
 		<?php if(isset($_SESSION['id'])){?>
 		<ul id="logguedIn" class="dropdown-content">
 			<li><a href="<?php echo BASE_URL_ADMIN;?>"><i class="material-icons left">account_circle</i> Mon compte</a></li>
-			<li><a href="<?php echo BASE_URL;?>question/index?mesQuestions"><i class="material-icons left">feedback</i> Mes questions</a></li>
+			<?php if(in_array($_SESSION['role'], ['Member', 'Administrateur'])){?><li><a href="<?php echo BASE_URL;?>question/index?mesQuestions"><i class="material-icons left">feedback</i> Mes questions</a></li><?php }?>
 			<li class="divider"></li>
 			<li><a href="<?php echo BASE_URL;?>login/logout"><i class="material-icons left">exit_to_app</i> Déconnexion</a></li>
 		</ul>
