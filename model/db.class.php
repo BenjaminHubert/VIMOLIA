@@ -571,4 +571,19 @@ class DB {
 				$idQuestion
 		]);
 	}
+	public function addQuestionnaire($symptoms, $pain, $history, $other, $id_user, $id_question, $id_doctor = null){
+		$query = $this->connection->prepare('
+			INSERT INTO questionnaire(symptome, pain, history, other, id_doctor, id_user, id_question)
+			SELECT ?, ?, ?, ?, ?, ?, ?
+		');
+		return $query->execute([
+				$symptoms,
+				$pain,
+				$history,
+				$other,
+				$id_doctor,
+				$id_user,
+				$id_question
+		]);
+	}
 }

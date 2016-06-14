@@ -6,3 +6,6 @@
 
 ## CONFIG FILE
 conf/config.php
+
+## IGNORING UPLOAD FILES
+#img/medical-files/

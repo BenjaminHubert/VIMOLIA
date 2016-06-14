@@ -26,10 +26,13 @@
 		</div>
 	</div>
 <?php }?>
-<?php if(isset($_SESSION['id']) && $question['id_user'] == $_SESSION['id']){?>
+<?php if(isset($_SESSION['id']) && $question['id_user'] == $_SESSION['id'] && $question['status'] == 'Question en attente de validation de réponse'){?>
 <div class="row">
 		<div class="col s12">
-			<!-- a class="waves-effect waves-light btn">button</a> <a class="waves-effect waves-light btn">button</a> -->
+			<div class="right">
+				<a href="<?php echo BASE_URL.'question/addDetails/'.$question['id'];?>" class="waves-effect waves-light btn">Je souhaite plus de détails</a>
+				<a href="<?php echo BASE_URL.'question/close/'.$question['id'];?>" class="waves-effect waves-light btn">Cette réponse me convient</a>
+			</div>
 		</div>
 	</div>
 <?php }?>
