@@ -32,18 +32,34 @@ class articleController extends baseController {
     }
 
     public function edit($args){
-        // Modifier un article
-        if(isset($_POST['submit']) && $_POST['submit'] == 'update'){
-
-            $this->registry->db->editArticle($article);
-            $this->registry->template->show('index');
-        }
-
-        // Affichage par défaut
         if(isset($args[0]) && is_numeric($args[0])){
             if(!empty($article = $this->registry->db->getArticleById($args[0]))){
                 $this->registry->template->article = $article;
-                $this->registry->template->show('article/edit');
+                
+                // Modifier un article
+                $postExpected = ['title', 'original_file', 'main_picture', 'description', 'content', 'date_publish', 'date_publish_submit', 'hour_publish', 'minute_publish', 'submit'];
+                $fileExpected = ['main_picture_file'];
+
+                if($postExpected == array_keys($_POST) && $fileExpected == array_keys($_FILES)){
+                    $editFile = $_FILES['main_picture_file']['name'];
+                    if($editFile != ''){
+                        $info = pathinfo($_FILES['main_picture_file']['name']);
+                        $ext = $info['extension'];
+
+                        $_POST['main_picture'] = '/img/articleImage/'.preg_replace("/[^A-Za-z0-9]/", "", $_POST['title']).'_'.time().'.'.$ext;
+                        uploadFile($_FILES, 'main_picture_file', $_POST['main_picture']);
+                    } else{$_POST['main_picture'] = $_POST['original_file'];}
+
+                    $_POST['date_publish'] = date('Y-m-d H:i:s', strtotime($_POST['date_publish_submit']."+".$_POST['hour_publish']." hours +".$_POST['minute_publish']." minutes"));
+                    $_POST['id_user'] = $_SESSION['id'];
+
+                    foreach($postExpected as $var){
+                        $$var = $_POST[$var];
+                    }
+
+                    $this->registry->db->editArticle($_POST, $args[0]);
+                    header('Location:'.$this->registry->config['base_url'].'/admin/article');
+                }else $this->registry->template->show('edit');
             }else $this->registry->template->show('not_found');
         }else $this->registry->template->show('not_found');
     }

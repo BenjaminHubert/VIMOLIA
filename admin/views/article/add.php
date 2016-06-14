@@ -1,3 +1,4 @@
+<h2>Ecrire un article</h2>
 <div class="row">
     <form method="POST" class="col s12" enctype="multipart/form-data">
         <div class="row">
@@ -6,7 +7,7 @@
                 <label for="title">Titre</label>
             </div>
         </div>
-        <div>
+        <div class="row">
             <div class="input-field col s6">
                 <div class="file-field input-field">
                     <div class="btn">
@@ -60,5 +61,3 @@
         </div>
     </form>
 </div>
-<?php var_dump($_POST); ?>
-<?php var_dump($_FILES); ?>
