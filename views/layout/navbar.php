@@ -1,4 +1,4 @@
-<nav class="light-blue lighten-1" role="navigation">
+<nav class="blue-grey darken-2" role="navigation">
 	<div class="nav-wrapper container">
 		<a id="logo-container" href="<?php echo BASE_URL;?>" class="brand-logo  center"> <img src="<?php echo BASE_URL;?>img/logo.png" alt="<?php echo APP_TITLE;?>"></a>
 		<ul id="slide-out" class="side-nav">
