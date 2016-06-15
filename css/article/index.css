@@ -1,0 +1,15 @@
+.card{
+    height: 550px;
+}
+
+.card .card-content{
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.card .card-action{
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

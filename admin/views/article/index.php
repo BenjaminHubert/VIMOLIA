@@ -18,7 +18,7 @@ if(!empty($listArticle)){
         ?>
         <tr>
             <td><img class="article_thumbnail" src="<?php echo $article['main_picture']; ?>"></td>
-            <td><a href="#" target="_blank"><?php echo $article['title']; ?></a></td>
+            <td><a href="<?php echo BASE_URL.'article/display/'.$article['id']; ?>" target="_blank"><?php echo $article['title']; ?></a></td>
             <td><?php echo $user['first_name']." ".$user['last_name']; ?></td>
             <td><?php echo date('\L\e d/m/Y \à H\hi', strtotime($article['date_publish'])); ?></td>
             <td>
