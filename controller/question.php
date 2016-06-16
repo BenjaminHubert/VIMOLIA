@@ -8,7 +8,7 @@ class questionController extends baseController {
 		if(isset($args[0]) && is_numeric($args[0])){
 			$question = $this->registry->db->getQuestion($args[0]);
 			if($question){
-				$this->registry->template->answers = $this->registry->db->getAnswersQuestion($args[0]);
+				$this->registry->template->answer = $this->registry->db->getAnswerQuestion($args[0]);
 				$this->registry->template->question = $question;
 				$this->registry->template->show('afficher');
 			}else{

@@ -47,35 +47,19 @@
 
 <form action="" method="POST">
 	<div class="row">
-		<?php if(count($answers) > 0){?>
-		<div class="col s12">
-			<h4>Réponse(s) :</h4>
-		</div>
-		<?php }?>
-		<?php foreach($answers as $answer){?>
-		<div class="col s12 grey lighten-2">
-			<div class="row">
-				<div class="col s1">
-					<img style="width: 100%; margin: 10px" src="<?php echo ($answer['url_avatar'] !== NULL)?$answer['url_avatar']:BASE_URL.'img/avatar/user.png';?>" alt="">
-				</div>
-				<div class="col s11">
-					<p><?php echo $answer['answer_text'];?></p>
-					<p style="text-align: right"><?php echo ($answer['pseudo'] !== NULL)?$answer['pseudo']:$answer['first_name'].' '.$answer['last_name'];?>, expert <?php echo APP_TITLE;?></p>
-					<p style="text-align: right; font-style: italic"><?php echo date('d/m/Y à H\hm', strtotime($answer['answer_date']));?></p>
-				</div>
-			</div>
-		</div>
-		<?php }?>
+		<?php if(count($answer) == 0){?>
 		<div class="col s12">
 			<h4>Ajouter une réponse :</h4>
 		</div>
+		<?php }?>
 		<div class="col s12">
-			<textarea name="answer" class="materialize-textarea" length="1000" placeholder="Ajouter une réponse..." required><?php echo '';?></textarea>
+			<label for="answer">Réponse</label>
+			<textarea id="answer" name="answer" class="materialize-textarea" length="1000" placeholder="Ajouter une réponse..." required><?php echo (isset($answer['answer_text'])?$answer['answer_text']:'');?></textarea>
 		</div>
 		<div class="col s12 offset-m10 m2">
 			<br>
 			<br>
-			<button class="btn waves-effect waves-light" type="submit" name="addAnswer" style="width: 100%">Enregistrer</button>
+			<button class="btn waves-effect waves-light" type="submit" name="reply" style="width: 100%" value="<?php echo (!isset($answer['answer_text'])?'addAnswer':$answer['id']);?>">Enregistrer</button>
 		</div>
 	</div>
 	<input type="hidden" name="idQuestion" value="<?php echo $question['id'];?>">

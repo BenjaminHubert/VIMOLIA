@@ -47,16 +47,22 @@ class questionController extends baseController {
 						$this->registry->template->error = 'Statut inconnu';
 				}
 				// si on ajoute une réponse à la question
-				if(isset($_POST['answer'], $_POST['addAnswer'], $_POST['idQuestion'])){
-					if($this->registry->db->addAnswer($_POST['answer'], $_SESSION['id'], $_POST['idQuestion'])){
+				if(isset($_POST['answer'], $_POST['reply'], $_POST['idQuestion'])){
+					if($_POST['reply'] == 'addAnswer'){
+						$action = $this->registry->db->addAnswer($_POST['answer'], $_SESSION['id'], $_POST['idQuestion']);
+					}else{
+						$action = $this->registry->db->updateAnswer($_POST['answer'], $_SESSION['id'], $_POST['reply']);
+					}
+					if($action){
 						$this->registry->template->message = 'Votre réponse a bien été prise en compte';
-						$PHPMailer = new MyMail();
-						$PHPMailer->setFrom(EMAIL_FROM, EMAIL_FROM_NAME);
-						$PHPMailer->addReplyTo(EMAIL_REPLY, EMAIL_REPLY_NAME);
-						$PHPMailer->addAddress($user['email']);
-						$PHPMailer->isHTML(true);
-						$PHPMailer->Subject = '[' . APP_TITLE . ']Réponse à votre question';
-						$PHPMailer->Body = '
+						if($_POST['reply'] == 'addAnswer'){
+							$PHPMailer = new MyMail();
+							$PHPMailer->setFrom(EMAIL_FROM, EMAIL_FROM_NAME);
+							$PHPMailer->addReplyTo(EMAIL_REPLY, EMAIL_REPLY_NAME);
+							$PHPMailer->addAddress($user['email']);
+							$PHPMailer->isHTML(true);
+							$PHPMailer->Subject = '[' . APP_TITLE . ']Réponse à votre question';
+							$PHPMailer->Body = '
                         	<p>Bonjour ' . (($user['pseudo'] != null) ? $user['pseudo'] : $user['first_name'] . ' ' . $user['last_name']) . '</p>
                         	<div>
                             	<p>Vous avez posé une question sur ' . APP_TITLE . ':</p>
@@ -68,15 +74,16 @@ class questionController extends baseController {
                                 <p>A bientôt sur ' . APP_TITLE . '</p>
                             </div>
                         ';
-						if($PHPMailer->send()){
-							$this->registry->template->message = 'Un mail a été envoyé à l auteur afin de l avertir de la réponse';
+							if($PHPMailer->send()){
+								$this->registry->template->message = 'Un mail a été envoyé à l auteur afin de l avertir de la réponse';
+							}
 						}
 					}else{
 						$this->registry->template->error = 'Erreur lors de l insertion en base de données';
 					}
 				}
 				
-				$this->registry->template->answers = $this->registry->db->getAnswersQuestion($question['id']);
+				$this->registry->template->answer = $this->registry->db->getAnswerQuestion($question['id']);
 				$this->registry->template->user = $user;
 				$this->registry->template->questionStatus = $questionStatus;
 				$this->registry->template->question = $question;

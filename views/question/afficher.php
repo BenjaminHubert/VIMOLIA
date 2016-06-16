@@ -18,8 +18,7 @@
 </div>
 <p style="font-weight: bold">Réponse de notre expert</p>
 <div class="row">
-<?php if($answers){?>
-<?php foreach($answers as $answer){?>
+<?php if($answer){?>
 <div class="col s12 grey lighten-2">
 		<div class="row">
 			<div class="col s1">
@@ -32,7 +31,6 @@
 			</div>
 		</div>
 	</div>
-<?php }?>
 <?php if(isset($_SESSION['id']) && $question['id_user'] == $_SESSION['id'] && $question['status'] == 'Question en attente de validation de réponse'){?>
 <div class="row">
 		<div class="col s12">

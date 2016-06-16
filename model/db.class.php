@@ -420,7 +420,7 @@ class DB {
 		}else
 			return false;
 	}
-	public function getAnswersQuestion($idQuestion){
+	public function getAnswerQuestion($idQuestion){
 		$query = $this->connection->prepare('
     			SELECT a.*, u.date_inscription, u.first_name, u.last_name, u.birthday_date, u.email, u.pseudo, u.address, u.postal_code, u.city, u.phone, u.mobile, u.siret, u.diploma, u.url_avatar, u.presentation, u.role, u.id_status
 				FROM answer a 
@@ -432,7 +432,7 @@ class DB {
 		if($query->execute([
 				$idQuestion
 		])){
-			return $query->fetchAll(PDO::FETCH_ASSOC);
+			return $query->fetch(PDO::FETCH_ASSOC);
 		}else
 			return false;
 	}
@@ -581,6 +581,19 @@ class DB {
 				$answer,
 				$idUser,
 				$idQuestion
+		]);
+	}
+	public function updateAnswer($answer, $idUser, $idAnswer){
+		$query = $this->connection->prepare('
+			UPDATE answer
+			SET answer_text = ?, id_user = ?
+			WHERE id = ?
+		');
+		
+		return $query->execute([
+				$answer,
+				$idUser,
+				$idAnswer
 		]);
 	}
 	public function addQuestionnaire($symptoms, $pain, $history, $other, $id_user, $id_question, $id_doctor = null){
