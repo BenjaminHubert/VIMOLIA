@@ -17,9 +17,10 @@
 		<p>Il n'y a actuellement aucune question posée. Soyez la première personne à poser une question!</p>
 		<?php }else{?>
 		<?php foreach($questions as $question){?>
-		<!-- Seulement les questions autorisées à être publiées -->
-		<?php if($question['is_public'] == 1){?> 
+		<!-- Seulement les questions autorisées à être publiées ou mes questions privées -->
+		<?php if($question['is_public'] == 1 || ($question['is_public'] == 0 && isset($_SESSION['id']) && $question['id_user'] == $_SESSION['id'])){?> 
 		<div class="question col s12">
+			<?php if($question['is_public'] == 0 && isset($_SESSION['id']) && $question['id_user'] == $_SESSION['id']){?><p><i class="material-icons right">visibility_off</i></p><?php }?>
 			<h5><?php echo htmlentities($question['question_title']);?></h5>
 			<div class="question_text">
 				<?php
@@ -44,9 +45,10 @@
 		<p>Il n'y a actuellement aucune question posée. Soyez la première personne à poser une question!</p>
 		<?php }else{?>
 		<?php foreach($questions as $question){?>
-		<!-- Seulement les questions autorisées à être publiées -->
-		<?php if($question['is_public'] == 1 && $question['id_user'] == $_SESSION['id']){?> 
+		<!-- Seulement les questions autorisées à être publiées ou mes questions privées-->
+		<?php if($question['is_public'] == 1 && $question['id_user'] == $_SESSION['id'] || ($question['is_public'] == 0 && $question['id_user'] == $_SESSION['id'])){?> 
 		<div class="question col s12">
+			<p><i class="material-icons right">visibility_off</i></p>
 			<h5><?php echo htmlentities($question['question_title']);?></h5>
 			<div class="question_text">
 				<?php
