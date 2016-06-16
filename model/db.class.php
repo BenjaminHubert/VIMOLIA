@@ -452,8 +452,12 @@ class DB {
 		}else
 			return false;
 	}
-	public function getListArticle(){
-		$query = $this->connection->prepare('SELECT * FROM article ORDER BY date_create DESC');
+	public function getListArticle($isPublished = false){
+        if($isPublished){
+            $where = 'WHERE date_publish < NOW() ';
+        }else $where = '';
+        
+		$query = $this->connection->prepare('SELECT * FROM article '.$where.'ORDER BY date_create DESC');
 		if($query->execute()){
 			return $query->fetchAll(PDO::FETCH_ASSOC);
 		}else
@@ -496,8 +500,11 @@ class DB {
 				$id
 		]);
 	}
-	public function getListPage(){
-		$query = $this->connection->prepare('SELECT * FROM page ORDER BY date_create DESC');
+	public function getListPage($isPublished = false){
+        if($isPublished){
+            $where = 'WHERE date_publish < NOW() ';
+        }else $where = '';
+		$query = $this->connection->prepare('SELECT * FROM page '.$where.'ORDER BY date_create DESC');
 		if($query->execute()){
 			return $query->fetchAll(PDO::FETCH_ASSOC);
 		}else
