@@ -407,7 +407,12 @@ class DB {
 			return false;
 	}
 	public function getQuestion($id){
-		$query = $this->connection->prepare('SELECT * FROM question WHERE id = ?');
+		$query = $this->connection->prepare('
+			SELECT q.id, question_title, question_text, question_date, is_public, satisfaction, id_user, `status`, u.first_name, u.last_name, u.pseudo
+			FROM question q
+			JOIN user u ON u.id = q.id_user
+			WHERE q.id = ?
+		');
 		if($query->execute([
 				$id
 		])){
