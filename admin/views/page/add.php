@@ -1,5 +1,5 @@
 <h2>Créer une page</h2>
-   <div class="row">
+<div class="row">
     <form method="POST" class="col s12">
         <div class="row">
             <div class="input-field col s12">
@@ -9,8 +9,9 @@
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <textarea id="content" class="materialize-textarea" name="content"></textarea>
-                <label for="content">Contenu</label>
+                <h6>Contenu</h6>
+                <textarea id="content" name="content"></textarea>
+                <br>
             </div>
         </div>
         <div class="row">
@@ -36,9 +37,11 @@
             </div>
         </div>
         <div class="row">
-            <button class="btn waves-effect waves-light" type="submit" name="submit">Enregistrer
-                <i class="material-icons right">done</i>
-            </button>
+            <div class="col s12">
+                <button class="btn waves-effect waves-light" type="submit" name="submit" id="submit">Enregistrer
+                    <i class="material-icons right">done</i>
+                </button>
+            </div>
         </div>
     </form>
 </div>

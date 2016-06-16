@@ -16,6 +16,13 @@
 
         <link href="<?php echo BASE_URL_ADMIN;?>css/mystyle.css" rel="stylesheet" type="text/css">
         <script src="<?php echo BASE_URL_ADMIN;?>js/functions.js"></script>
+
+        <script src='<?php echo BASE_URL; ?>php_libraries/tinymce/js/tinymce/tinymce.min.js'></script>
+        <script>
+            tinymce.init({
+                selector: 'textarea#content'
+            });
+        </script>
     </head>
     <body>
         <?php include('../views/layout/navbar.php');?>

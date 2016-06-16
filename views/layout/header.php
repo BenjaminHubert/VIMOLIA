@@ -30,6 +30,7 @@
         <meta itemprop="og:description"   content="<?php echo $article['description']; ?>" />
         <meta property="og:image"         content="<?php echo BASE_URL.$article['main_picture']; ?>" />
         <?php } ?>
+
     </head>
     <body>
         <?php include('navbar.php');?>
