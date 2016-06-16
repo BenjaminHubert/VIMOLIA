@@ -56,10 +56,10 @@
 			<label for="answer">Réponse</label>
 			<textarea id="answer" name="answer" class="materialize-textarea" length="1000" placeholder="Ajouter une réponse..." required><?php echo (isset($answer['answer_text'])?$answer['answer_text']:'');?></textarea>
 		</div>
-		<div class="col s12 offset-m10 m2">
+		<div class="col s12 offset-m9 m3">
 			<br>
 			<br>
-			<button class="btn waves-effect waves-light" type="submit" name="reply" style="width: 100%" value="<?php echo (!isset($answer['answer_text'])?'addAnswer':$answer['id']);?>">Enregistrer</button>
+			<button class="btn waves-effect waves-light" type="submit" name="reply" style="width: 100%" value="<?php echo (!isset($answer['answer_text'])?'addAnswer':$answer['id']);?>"><?php echo (isset($answer['answer_text'])?'Mettre à jour':'Ajouter');?></button>
 		</div>
 	</div>
 	<input type="hidden" name="idQuestion" value="<?php echo $question['id'];?>">
