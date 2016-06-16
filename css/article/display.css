@@ -1,0 +1,41 @@
+.slider{
+    margin: 1% 0 1% 0;
+}
+
+.slider .slides li .caption {
+    background: rgba(0, 0, 0, 0.43);
+    width: 100%;
+    bottom: 5%;
+    left: 0;
+    top: initial;
+}
+
+#author, #date_pub{
+    text-align: right;
+}
+
+p#desc{
+    font-weight: bold;
+}
+
+div.social_network {
+    display: block;
+    width: 100%;
+}
+
+ul.share-buttons {
+    list-style: none;
+    padding: 0;
+}
+
+ul.share-buttons li {
+    display: inline;
+}
+
+.fb-share-button{
+    vertical-align: super;
+}
+
+#comments{
+    margin-top: 5%;
+}

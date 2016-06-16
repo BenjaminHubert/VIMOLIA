@@ -7,7 +7,7 @@ if(!empty($listArticle)){
     foreach($listArticle as $article){
         $user = $this->registry->db->getUser($article['id_user']);
     ?>
-    <div class="col s4">
+    <div class="col s12 m6 l4">
         <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="<?php echo $article['main_picture']; ?>">
