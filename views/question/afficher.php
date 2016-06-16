@@ -1,19 +1,26 @@
 <div class="row">
 	<div class="col s12">
-		<h4>Question:</h4>
+		<h4>Question</h4>
 	</div>
-	<div class="col s12">
-		<p><?php echo $question['question_title'];?></p>
-	</div>
-	<div class="col s12 ">
-		<p><?php echo $question['question_text'];?></p>
+	<div class="question col s12 grey lighten-2">
+		<div id="status">
+			<div class="chip right  blue-grey">
+		    	<?php echo $question['status'];?>
+		  	</div>
+		</div>
+		<p id="name"><i class="material-icons left">perm_identity</i> <?php echo ($question['pseudo']!=null)?$question['pseudo']:$question['first_name'].' '.$question['last_name'];?></p>
+		<div class="divider"></div>
+		<p id="question"><?php echo $question['question_title'];?></p>
+		<p id="details"><?php echo $question['question_text'];?></p>
+		<div class="divider"></div>
+		<p id="datetime"><i class="material-icons right">access_time</i><?php echo date('d/m/Y à H\hm', strtotime($question['question_date']))?></p>
 	</div>
 </div>
 <p style="font-weight: bold">Réponse de notre expert</p>
 <div class="row">
 <?php if($answers){?>
 <?php foreach($answers as $answer){?>
-<div class="col s12 card grey">
+<div class="col s12 grey lighten-2">
 		<div class="row">
 			<div class="col s1">
 				<img style="width: 100%; margin: 10px" src="<?php echo ($answer['url_avatar'] !== NULL)?$answer['url_avatar']:BASE_URL.'img/avatar/user.png';?>" alt="">
@@ -37,7 +44,7 @@
 	</div>
 <?php }?>
 <?php }else{?>
-	<div class="col s12 card grey">
+	<div class="col s12 grey lighten-2">
 		<p>Cette question n'a pas encore trouvé réponse</p>
 	</div>
 <?php }?>
