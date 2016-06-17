@@ -670,4 +670,74 @@ class DB {
 			$id_proposed_doctor,
 		]);
 	}
+    
+    public function addVideoCategory($category){
+        $query = $this->connection->prepare('
+            INSERT INTO video_category(name)
+            SELECT ?
+        ');
+        return $query->execute([$category]);
+    }
+    
+    public function editVideoCategory($category, $id){
+        $query = $this->connection->prepare('
+            UPDATE video_category
+            SET name = ?
+            WHERE category = ?
+        ');
+        return $query->execute([
+                $category,
+                $id;
+        ]);
+    }
+    
+    public function deleteVideoCategory($id){
+        $query = $this->connection->prepare('
+            DELETE FROM video_category
+            WHERE category = ?
+        ');
+        return $query->execute([$id]);
+    }
+    
+    public function listVideoCategory(){
+        $query = $this->connection->prepare('
+            SELECT * FROM video_category ORDER BY name
+        ');
+        return $query->execute();
+    }
+    
+    public function addVideoThematic($thematic){
+        $query = $this->connection->prepare('
+            INSERT INTO video_thematic(name)
+            SELECT ?
+        ');
+        return $query->execute([$thematic]);
+    }
+    
+    public function editVideoThematic($thematic, $id){
+        $query = $this->connection->prepare('
+            UPDATE video_thematic
+            SET name = ?
+            WHERE thematic = ?
+        ');
+        return $query->execute([
+                $thematic,
+                $id;
+        ]);
+    }
+    
+    public function deleteVideoThematic($id){
+        $query = $this->connection->prepare('
+            DELETE FROM video_thematic
+            WHERE thematic = ?
+        ');
+        return $query->execute([$id]);
+    }
+    
+    public function listVideoThematic(){
+        $query = $this->connection->prepare('
+            SELECT * FROM video_thematic ORDER BY name
+        ');
+        return $query->execute();
+    }
 }
