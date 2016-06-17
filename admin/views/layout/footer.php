@@ -1,6 +1,1 @@
-</div>
-<footer>
-
-</footer>
-</body>
-</html>
+<?php include('../views/layout/footer.php');?>
