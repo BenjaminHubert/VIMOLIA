@@ -25,4 +25,6 @@ $(document).ready(function(){
 	);
 	$(".dropdown-button").dropdown();
 	$('textarea[lenght], input[lenght]').characterCounter();
+
+	$('[data-tooltip]').tooltip();
 });
