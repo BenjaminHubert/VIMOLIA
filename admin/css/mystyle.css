@@ -2,7 +2,11 @@
     color: inherit;
 }
 
-
 #logo-container img{
     height: 64px;
+}
+
+.collapsible-header{
+	color: #444;
+	font-weight: bold;
 }
