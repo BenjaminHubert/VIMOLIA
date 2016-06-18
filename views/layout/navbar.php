@@ -23,14 +23,8 @@
 			<li>
 				<div class="collapsible-header"><i class="material-icons left">public</i>Espace Public<i class="material-icons right">arrow_drop_down</i></div>
 				<div class="collapsible-body">
-					<a href="<?php echo BASE_URL;?>search/praticien">
-						<i class="material-icons left">search</i>
-						Consulter nos praticiens
-					</a>
-					<a href="<?php echo BASE_URL;?>question">
-						<i class="material-icons left">question_answer</i>
-						Consulter les questions
-					</a>
+					<a href="<?php echo BASE_URL;?>search/praticien">Consulter nos praticiens</a>
+					<a href="<?php echo BASE_URL;?>question">Consulter les questions</a>
 				</div>
 			</li>
 			<!-- AUTHORS & ADMINISTRATORS -->
