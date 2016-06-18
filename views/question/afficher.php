@@ -8,12 +8,14 @@
 		    	<?php echo $question['status'];?>
 		  	</div>
 		</div>
-		<p id="name"><i class="material-icons left">perm_identity</i> <?php echo ($question['pseudo']!=null)?$question['pseudo']:$question['first_name'].' '.$question['last_name'];?></p>
+		<p id="name">
+			<i class="material-icons left">perm_identity</i> <?php echo ($question['pseudo']!=null)?$question['pseudo']:$question['first_name'].' '.$question['last_name'];?></p>
 		<div class="divider"></div>
 		<p id="question"><?php echo $question['question_title'];?></p>
 		<p id="details"><?php echo $question['question_text'];?></p>
 		<div class="divider"></div>
-		<p id="datetime"><i class="material-icons right">access_time</i><?php echo date('d/m/Y à H\hm', strtotime($question['question_date']))?></p>
+		<p id="datetime">
+			<i class="material-icons right">access_time</i><?php echo date('d/m/Y à H\hm', strtotime($question['question_date']))?></p>
 	</div>
 </div>
 <p style="font-weight: bold">Réponse de notre expert</p>
@@ -35,8 +37,7 @@
 <div class="row">
 		<div class="col s12">
 			<div class="right">
-				<a href="<?php echo BASE_URL.'question/addDetails/'.$question['id'];?>" class="waves-effect waves-light btn">Je souhaite plus de détails</a>
-				<a href="<?php echo BASE_URL.'question/close/'.$question['id'];?>" class="waves-effect waves-light btn">Cette réponse me convient</a>
+				<a href="<?php echo BASE_URL.'question/addDetails/'.$question['id'];?>" class="waves-effect waves-light btn">Je souhaite plus de détails</a> <a href="<?php echo BASE_URL.'question/close/'.$question['id'];?>" class="waves-effect waves-light btn">Cette réponse me convient</a>
 			</div>
 		</div>
 	</div>
@@ -47,3 +48,11 @@
 	</div>
 <?php }?>
 </div>
+
+<!--  FLOATING BUTTON -->
+<?php if(isset($_SESSION['id']) && in_array($_SESSION['role'], ['Administrateur', 'Expert'])){ ?>
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+	<a href="<?php echo BASE_URL.'admin/question/consult/'.$question['id'];?>" class="btn-floating btn-large red"> <i class="large material-icons">mode_edit</i>
+	</a>
+</div>
+<?php }?>
