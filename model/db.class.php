@@ -33,7 +33,7 @@ class DB {
 	public function isUserMailExist($e){
 		$query = $this->connection->prepare('SELECT COUNT(*) AS nb FROM user WHERE email = ?');
 		if($query->execute([
-				$e
+			$e
 		])){
 			$nb = $query->fetch();
 			if($nb[0] == 0){
@@ -50,33 +50,33 @@ class DB {
         ');
 		
 		return $query->execute([
-				ucfirst(strtolower($data['first_name'])),
-				strtoupper($data['last_name']),
-				$data['pseudo'],
-				$data['birthday_submit'],
-				$data['address'],
-				$data['postal_code'],
-				$data['city'],
-				$data['phone'],
-				$data['mobile'],
-				$data['email'],
-				$this->hashPwd($data['password']),
-				'Membre',
-				1
+			ucfirst(strtolower($data['first_name'])),
+			strtoupper($data['last_name']),
+			$data['pseudo'],
+			$data['birthday_submit'],
+			$data['address'],
+			$data['postal_code'],
+			$data['city'],
+			$data['phone'],
+			$data['mobile'],
+			$data['email'],
+			$this->hashPwd($data['password']),
+			'Membre',
+			1
 		]);
 	}
 	public function confirmEmail($email, $password){
 		$query = $this->connection->prepare('SELECT COUNT(*) AS nb FROM user WHERE md5(email) = ? AND md5(password) = ?;');
 		if($query->execute([
-				$email,
-				$password
+			$email,
+			$password
 		])){
 			$nb = $query->fetch();
 			if($nb[0] == 1){
 				$query = $this->connection->prepare('UPDATE user SET id_status = 2 WHERE md5(email) = ? AND md5(password) = ?;');
 				if($query->execute([
-						$email,
-						$password
+					$email,
+					$password
 				])){
 					return true;
 				}else
@@ -89,8 +89,8 @@ class DB {
 	public function login($email, $password){
 		$query = $this->connection->prepare('SELECT * FROM user WHERE email = ? AND password = ? AND id_status = 2');
 		if($query->execute([
-				$email,
-				$this->hashPwd($password)
+			$email,
+			$this->hashPwd($password)
 		])){
 			return $query->fetch(PDO::FETCH_ASSOC);
 		}else
@@ -112,16 +112,16 @@ class DB {
             SELECT 1, ?, ?, ?, ?
         ');
 		return $query->execute([
-				$token,
-				$amount,
-				$currencyCode,
-				$localeCode
+			$token,
+			$amount,
+			$currencyCode,
+			$localeCode
 		]);
 	}
 	public function getTransactionByToken($token){
 		$query = $this->connection->prepare('SELECT * FROM transaction WHERE paypal_token = ?');
 		if($query->execute([
-				$token
+			$token
 		])){
 			return $query->fetch(PDO::FETCH_ASSOC);
 		}else
@@ -130,7 +130,7 @@ class DB {
 	public function cancelTransactionByToken($token){
 		$query = $this->connection->prepare('UPDATE transaction SET id_status = 2 WHERE paypal_token = ?');
 		return $query->execute([
-				$token
+			$token
 		]);
 	}
 	public function addDoctor($data){
@@ -140,21 +140,21 @@ class DB {
         ');
 		
 		return $query->execute([
-				ucfirst(strtolower($data['first_name'])),
-				strtoupper($data['last_name']),
-				$data['pseudo'],
-				$data['birthday_submit'],
-				$data['address'],
-				$data['postal_code'],
-				$data['city'],
-				$data['phone'],
-				$data['mobile'],
-				$data['email'],
-				$this->hashPwd($data['password']),
-				'Praticien',
-				3,
-				$data['siret'],
-				$data['presentation']
+			ucfirst(strtolower($data['first_name'])),
+			strtoupper($data['last_name']),
+			$data['pseudo'],
+			$data['birthday_submit'],
+			$data['address'],
+			$data['postal_code'],
+			$data['city'],
+			$data['phone'],
+			$data['mobile'],
+			$data['email'],
+			$this->hashPwd($data['password']),
+			'Praticien',
+			3,
+			$data['siret'],
+			$data['presentation']
 		]);
 	}
 	public function addSkillToUser($idUser, $skill){
@@ -165,8 +165,8 @@ class DB {
                 SELECT ?, ?
             ');
 			return $query->execute([
-					$idUser,
-					$skill
+				$idUser,
+				$skill
 			]);
 		}else
 			return false;
@@ -174,7 +174,7 @@ class DB {
 	public function getIDUserByEmail($e){
 		$query = $this->connection->prepare('SELECT id FROM user WHERE email = ?');
 		if($query->execute([
-				$e
+			$e
 		])){
 			return $query->fetch(PDO::FETCH_ASSOC)['id'];
 		}else
@@ -187,9 +187,9 @@ class DB {
         ');
 		
 		return $query->execute([
-				$idUser,
-				$idSubscriptionType,
-				$token
+			$idUser,
+			$idSubscriptionType,
+			$token
 		]);
 	}
 	public function updateTransaction($t){
@@ -217,24 +217,24 @@ class DB {
             WHERE paypal_token = ?
         ');
 		$e = $q->execute([
-				$t['SUCCESSPAGEREDIRECTREQUESTED'],
-				date('Y-m-d H:i:s', strtotime($t['TIMESTAMP'])),
-				$t['CORRELATIONID'],
-				$t['ACK'],
-				intval($t['VERSION']),
-				$t['BUILD'],
-				$t['TRANSACTIONID'],
-				$t['TRANSACTIONTYPE'],
-				$t['PAYMENTTYPE'],
-				date('Y-m-d H:i:s', strtotime($t['ORDERTIME'])),
-				floatval($t['AMT']),
-				floatval($t['FEEAMT']),
-				floatval($t['TAXAMT']),
-				$t['CURRENCYCODE'],
-				$t['PAYMENTSTATUS'],
-				$t['PENDINGREASON'],
-				$t['REASONCODE'],
-				$t['TOKEN']
+			$t['SUCCESSPAGEREDIRECTREQUESTED'],
+			date('Y-m-d H:i:s', strtotime($t['TIMESTAMP'])),
+			$t['CORRELATIONID'],
+			$t['ACK'],
+			intval($t['VERSION']),
+			$t['BUILD'],
+			$t['TRANSACTIONID'],
+			$t['TRANSACTIONTYPE'],
+			$t['PAYMENTTYPE'],
+			date('Y-m-d H:i:s', strtotime($t['ORDERTIME'])),
+			floatval($t['AMT']),
+			floatval($t['FEEAMT']),
+			floatval($t['TAXAMT']),
+			$t['CURRENCYCODE'],
+			$t['PAYMENTSTATUS'],
+			$t['PENDINGREASON'],
+			$t['REASONCODE'],
+			$t['TOKEN']
 		]);
 		if($e){
 			$q = $this->connection->prepare('
@@ -245,7 +245,7 @@ class DB {
                 WHERE t.paypal_token = ? 
             ');
 			$e = $q->execute([
-					$t['TOKEN']
+				$t['TOKEN']
 			]);
 			
 			return $e;
@@ -270,13 +270,13 @@ class DB {
         ');
 		
 		return $query->execute([
-				ucfirst(strtolower($d['first_name'])),
-				strtoupper($d['last_name']),
-				$d['birthday_submit'],
-				$d['email'],
-				$this->hashPwd($d['password']),
-				'Administrateur',
-				2
+			ucfirst(strtolower($d['first_name'])),
+			strtoupper($d['last_name']),
+			$d['birthday_submit'],
+			$d['email'],
+			$this->hashPwd($d['password']),
+			'Administrateur',
+			2
 		]);
 	}
 	public function addAuthor($d){
@@ -286,13 +286,13 @@ class DB {
         ');
 		
 		return $query->execute([
-				ucfirst(strtolower($d['first_name'])),
-				strtoupper($d['last_name']),
-				$d['birthday_submit'],
-				$d['email'],
-				$this->hashPwd($d['password']),
-				'Auteur',
-				2
+			ucfirst(strtolower($d['first_name'])),
+			strtoupper($d['last_name']),
+			$d['birthday_submit'],
+			$d['email'],
+			$this->hashPwd($d['password']),
+			'Auteur',
+			2
 		]);
 	}
 	public function deleteUser($id, $hash = false){
@@ -303,7 +303,7 @@ class DB {
                 WHERE id = ?
             ');
 			return $query->execute([
-					$id
+				$id
 			]);
 		}elseif($hash == 'sha1'){
 			$query = $this->connection->prepare('
@@ -312,7 +312,7 @@ class DB {
                 WHERE sha1(id) = ?
             ');
 			return $query->execute([
-					$id
+				$id
 			]);
 		}else
 			return false;
@@ -325,7 +325,7 @@ class DB {
                 WHERE id = ?
             ');
 			if($query->execute([
-					$id
+				$id
 			])){
 				return $query->fetch(PDO::FETCH_ASSOC);
 			}else
@@ -337,7 +337,7 @@ class DB {
                 WHERE sha1(id) = ?
             ');
 			if($query->execute([
-					$id
+				$id
 			])){
 				return $query->fetch(PDO::FETCH_ASSOC);
 			}else
@@ -370,7 +370,7 @@ class DB {
 					$users[$data['id']] = $data;
 					unset($users[$data['id']]['skill']);
 					$users[$data['id']]['skills'] = [
-							$data['skill']
+						$data['skill']
 					];
 				}else
 					$users[$data['id']]['skills'][] = $data['skill'];
@@ -382,7 +382,7 @@ class DB {
 	public function getSkillsByUserId($id){
 		$query = $this->connection->prepare('SELECT skill FROM possesses WHERE id_user = ?');
 		if($query->execute([
-				$id
+			$id
 		])){
 			return $query->fetchAll(PDO::FETCH_COLUMN);
 		}else
@@ -391,7 +391,7 @@ class DB {
 	public function getDoctorById($id){
 		$query = $this->connection->prepare('SELECT * FROM user WHERE role = "Praticien" AND id_status != 4 AND id = ?');
 		if($query->execute([
-				$id
+			$id
 		])){
 			$user = $query->fetch(PDO::FETCH_ASSOC);
 			$user['skills'] = $this->getSkillsByUserId($id);
@@ -414,7 +414,7 @@ class DB {
 			WHERE q.id = ?
 		');
 		if($query->execute([
-				$id
+			$id
 		])){
 			return $query->fetch(PDO::FETCH_ASSOC);
 		}else
@@ -430,7 +430,7 @@ class DB {
     	');
 		
 		if($query->execute([
-				$idQuestion
+			$idQuestion
 		])){
 			return $query->fetch(PDO::FETCH_ASSOC);
 		}else
@@ -443,26 +443,27 @@ class DB {
     	');
 		
 		return $query->execute([
-				$question_title,
-				$question_text,
-				$isPublic,
-				$idUser,
-				$idStatus
+			$question_title,
+			$question_text,
+			$isPublic,
+			$idUser,
+			$idStatus
 		]);
 		
 		if($query->execute([
-				$idQuestion
+			$idQuestion
 		])){
 			return $query->fetchAll(PDO::FETCH_ASSOC);
 		}else
 			return false;
 	}
 	public function getListArticle($isPublished = false){
-        if($isPublished){
-            $where = 'WHERE date_publish < NOW() ';
-        }else $where = '';
-        
-		$query = $this->connection->prepare('SELECT * FROM article '.$where.'ORDER BY date_create DESC');
+		if($isPublished){
+			$where = 'WHERE date_publish < NOW() ';
+		}else
+			$where = '';
+		
+		$query = $this->connection->prepare('SELECT * FROM article ' . $where . 'ORDER BY date_create DESC');
 		if($query->execute()){
 			return $query->fetchAll(PDO::FETCH_ASSOC);
 		}else
@@ -471,7 +472,7 @@ class DB {
 	public function getArticleById($id){
 		$query = $this->connection->prepare('SELECT * FROM article WHERE id = ?');
 		if($query->execute([
-				$id
+			$id
 		])){
 			return $query->fetch(PDO::FETCH_ASSOC);
 		}else
@@ -483,12 +484,12 @@ class DB {
             SELECT ?, ?, ?, CURRENT_TIMESTAMP, ?, ?, ?');
 		
 		return $query->execute([
-				$article['title'],
-				$article['content'],
-				$article['main_picture'],
-				$article['date_publish'],
-				$article['description'],
-				$article['id_user']
+			$article['title'],
+			$article['content'],
+			$article['main_picture'],
+			$article['date_publish'],
+			$article['description'],
+			$article['id_user']
 		]);
 	}
 	public function editArticle($article, $id){
@@ -497,19 +498,20 @@ class DB {
             WHERE id = ?');
 		
 		return $query->execute([
-				$article['title'],
-				$article['content'],
-				$article['main_picture'],
-				$article['date_publish'],
-				$article['description'],
-				$id
+			$article['title'],
+			$article['content'],
+			$article['main_picture'],
+			$article['date_publish'],
+			$article['description'],
+			$id
 		]);
 	}
 	public function getListPage($isPublished = false){
-        if($isPublished){
-            $where = 'WHERE date_publish < NOW() ';
-        }else $where = '';
-		$query = $this->connection->prepare('SELECT * FROM page '.$where.'ORDER BY date_create DESC');
+		if($isPublished){
+			$where = 'WHERE date_publish < NOW() ';
+		}else
+			$where = '';
+		$query = $this->connection->prepare('SELECT * FROM page ' . $where . 'ORDER BY date_create DESC');
 		if($query->execute()){
 			return $query->fetchAll(PDO::FETCH_ASSOC);
 		}else
@@ -518,7 +520,7 @@ class DB {
 	public function getPageById($id){
 		$query = $this->connection->prepare('SELECT * FROM page WHERE id = ?');
 		if($query->execute([
-				$id
+			$id
 		])){
 			return $query->fetch(PDO::FETCH_ASSOC);
 		}else
@@ -530,10 +532,10 @@ class DB {
             SELECT ?, ?, CURRENT_TIMESTAMP, ?, ?');
 		
 		return $query->execute([
-				$page['title'],
-				$page['content'],
-				$page['date_publish'],
-				$page['id_user']
+			$page['title'],
+			$page['content'],
+			$page['date_publish'],
+			$page['id_user']
 		]);
 	}
 	public function editPage($page, $id){
@@ -542,10 +544,10 @@ class DB {
             WHERE id = ?');
 		
 		return $query->execute([
-				$page['title'],
-				$page['content'],
-				$page['date_publish'],
-				$id
+			$page['title'],
+			$page['content'],
+			$page['date_publish'],
+			$id
 		]);
 	}
 	public function getQuestionStatus(){
@@ -567,8 +569,8 @@ class DB {
 		');
 		
 		return $query->execute([
-				$status,
-				$idQuestion
+			$status,
+			$idQuestion
 		]);
 	}
 	public function addAnswer($answer, $idUser, $idQuestion){
@@ -578,9 +580,9 @@ class DB {
 		');
 		
 		return $query->execute([
-				$answer,
-				$idUser,
-				$idQuestion
+			$answer,
+			$idUser,
+			$idQuestion
 		]);
 	}
 	public function updateAnswer($answer, $idUser, $idAnswer){
@@ -591,9 +593,9 @@ class DB {
 		');
 		
 		return $query->execute([
-				$answer,
-				$idUser,
-				$idAnswer
+			$answer,
+			$idUser,
+			$idAnswer
 		]);
 	}
 	public function addQuestionnaire($symptoms, $pain, $history, $other, $id_user, $id_question, $id_doctor = null){
@@ -602,13 +604,70 @@ class DB {
 			SELECT ?, ?, ?, ?, ?, ?, ?
 		');
 		return $query->execute([
-				$symptoms,
-				$pain,
-				$history,
-				$other,
-				$id_doctor,
-				$id_user,
-				$id_question
+			$symptoms,
+			$pain,
+			$history,
+			$other,
+			$id_doctor,
+			$id_user,
+			$id_question
+		]);
+	}
+	public function getProposedDoctors(){
+		$users = [];
+		$query = $this->connection->prepare('
+			SELECT p.id, p.date_suggestion,
+				u_exp.first_name AS first_name_expert, u_exp.last_name AS last_name_expert, u_exp.pseudo AS pseudo_expert,
+				u_pra.id AS id_praticien, u_pra.first_name AS first_name_praticien, u_pra.last_name AS last_name_praticien, u_pra.pseudo AS pseudo_praticien,
+				u_mem.first_name AS first_name_member, u_mem.last_name AS last_name_member, u_mem.pseudo AS pseudo_member,
+				q.id AS id_question, q.question_title, q.question_text, q.question_date, q.is_public, q.satisfaction, q.id_user, q.`status`,
+				possesses.skill
+			FROM proposed_praticien p
+			JOIN user u_exp ON u_exp.id = p.id_expert
+			JOIN user u_pra ON u_pra.id = p.id_praticien
+			JOIN question q ON q.id = p.id_question
+			JOIN user u_mem ON u_mem.id = q.id_user
+			JOIN possesses ON possesses.id_user = u_pra.id
+			WHERE u_exp.id_status != 4 
+				AND u_pra.id_status != 4 
+				AND u_mem.id_status != 4  
+		');
+		
+		if($query->execute()){
+			while($data = $query->fetch(PDO::FETCH_ASSOC)){
+				if(!isset($users[$data['id']])){
+					$users[$data['id']] = $data;
+					unset($users[$data['id']]['skill']);
+					$users[$data['id']]['skills'] = [
+						$data['skill']
+					];
+				}else
+					$users[$data['id']]['skills'][] = $data['skill'];
+			}
+			return $users;
+		}else
+			return false;
+	}
+	public function addPropopsedPraticien($id_expert, $id_praticien, $id_question){
+		$query = $this->connection->prepare('
+			INSERT INTO proposed_praticien(id_expert, id_praticien, id_question)
+			SELECT ?, ?, ?
+		');
+		return $query->execute([
+			$id_expert,
+			$id_praticien,
+			$id_question
+		]);
+	}
+	
+	public function deleteProposedDoctor($id_proposed_doctor){
+		$query = $this->connection->prepare('
+			DELETE
+			FROM proposed_praticien
+			WHERE id = ?
+		');
+		return $query->execute([
+			$id_proposed_doctor,
 		]);
 	}
 }
