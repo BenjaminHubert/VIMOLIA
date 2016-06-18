@@ -8,7 +8,10 @@ function uploadFile($file, $input, $name){
     move_uploaded_file($file[$input]['tmp_name'], $_SERVER['DOCUMENT_ROOT'].$name);
 }
 
-
+function getCurrentUrl(){
+	$protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on")?'https':'http';
+	return $protocol.'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+}
 
 
 
