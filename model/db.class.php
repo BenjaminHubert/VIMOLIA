@@ -673,71 +673,85 @@ class DB {
     
     public function addVideoCategory($category){
         $query = $this->connection->prepare('
-            INSERT INTO video_category(name)
+            INSERT INTO video_category(category)
             SELECT ?
         ');
         return $query->execute([$category]);
     }
-    
+
     public function editVideoCategory($category, $id){
         $query = $this->connection->prepare('
             UPDATE video_category
-            SET name = ?
-            WHERE category = ?
+            SET category = ?
+            WHERE id = ?
         ');
         return $query->execute([
-                $category,
-                $id;
+            $category,
+            $id
         ]);
     }
-    
+
     public function deleteVideoCategory($id){
         $query = $this->connection->prepare('
-            DELETE FROM video_category
-            WHERE category = ?
+            UPDATE video
+            SET id_category = 1
+            WHERE id_category = ?
         ');
-        return $query->execute([$id]);
+        if($query->execute([$id])){
+            $query = $this->connection->prepare('
+            DELETE FROM video_category
+            WHERE id = ?
+        ');
+            return $query->execute([$id]);
+        }else
+            return false;
     }
-    
+
     public function listVideoCategory(){
         $query = $this->connection->prepare('
-            SELECT * FROM video_category ORDER BY name
+            SELECT * FROM video_category ORDER BY category
         ');
-        return $query->execute();
+        if($query->execute()){
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+        }else
+            return false;
     }
-    
+
     public function addVideoThematic($thematic){
         $query = $this->connection->prepare('
-            INSERT INTO video_thematic(name)
+            INSERT INTO video_thematic(thematic)
             SELECT ?
         ');
         return $query->execute([$thematic]);
     }
-    
+
     public function editVideoThematic($thematic, $id){
         $query = $this->connection->prepare('
             UPDATE video_thematic
-            SET name = ?
-            WHERE thematic = ?
+            SET thematic = ?
+            WHERE id = ?
         ');
         return $query->execute([
-                $thematic,
-                $id;
+            $thematic,
+            $id
         ]);
     }
-    
+
     public function deleteVideoThematic($id){
         $query = $this->connection->prepare('
             DELETE FROM video_thematic
-            WHERE thematic = ?
+            WHERE id = ?
         ');
         return $query->execute([$id]);
     }
-    
+
     public function listVideoThematic(){
         $query = $this->connection->prepare('
-            SELECT * FROM video_thematic ORDER BY name
+            SELECT * FROM video_thematic ORDER BY thematic
         ');
-        return $query->execute();
+        if($query->execute()){
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+        }else
+            return false;
     }
 }
