@@ -49,5 +49,51 @@ class reglageController extends baseController {
         $this->registry->template->listCategory = $this->registry->db->listVideoCategory();
         $this->registry->template->show('listVideoCategory');
     }
+    
+    
+    public function videoThematics($args){
+        $expectedArgs = ['create', 'edit', 'delete', 'list'];
+
+        if(isset($args[0]) && in_array($args[0], $expectedArgs)){
+            switch($args[0]){
+                case 'create':
+                    $this->createVideoThematic();
+                    break;
+                case 'edit':
+                    if(isset($args[1]) && is_numeric($args[1])){
+                        $this->editVideoThematic($args[1]);
+                    }else $this->registry->template->show('404', true);
+                    break;
+                case 'delete':
+                    if(isset($args[1]) && is_numeric($args[1])){
+                        $this->deleteVideoThematic($args[1]);
+                    }else $this->registry->template->show('404', true);
+                    break;
+                case 'list':
+                    $this->listVideoThematic();
+                    break;
+                default:
+                    $this->registry->template->show('404', true);
+                    break;
+            }
+        }else $this->registry->template->show('404', true);
+    }
+    
+    private function createVideoThematic(){
+        echo json_encode($this->registry->db->addVideoThematic($_POST['thematic']));
+    }
+    
+    private function editVideoThematic($id){
+        echo json_encode($this->registry->db->editVideoThematic($_POST['thematic'], $id));
+    }
+    
+    private function deleteVideoThematic($id){
+        echo json_encode($this->registry->db->deleteVideoThematic($id));
+    }
+    
+    private function listVideoThematic(){
+        $this->registry->template->listThematic = $this->registry->db->listVideoThematic();
+        $this->registry->template->show('listVideoThematic');
+    }
 }
 ?>

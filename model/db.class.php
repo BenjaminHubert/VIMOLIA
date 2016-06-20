@@ -739,10 +739,18 @@ class DB {
 
     public function deleteVideoThematic($id){
         $query = $this->connection->prepare('
+            UPDATE video
+            SET id_thematic = 1
+            WHERE id_thematic = ?
+        ');
+        if($query->execute([$id])){
+            $query = $this->connection->prepare('
             DELETE FROM video_thematic
             WHERE id = ?
         ');
-        return $query->execute([$id]);
+            return $query->execute([$id]);
+        }else
+            return false;
     }
 
     public function listVideoThematic(){
