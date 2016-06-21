@@ -666,6 +666,7 @@ class DB {
 			FROM proposed_praticien
 			WHERE id = ?
 		');
+
         return $query->execute([
             $id_proposed_doctor,
         ]);
@@ -855,4 +856,42 @@ class DB {
         }else
             return false;
     }
+	
+	public function getProposedDoctorsByQuestion($idQuestion){
+		$users = [];
+		$query = $this->connection->prepare('
+			SELECT p.id, p.date_suggestion,
+				u_exp.first_name AS first_name_expert, u_exp.last_name AS last_name_expert, u_exp.pseudo AS pseudo_expert,
+				u_pra.id AS id_praticien, u_pra.first_name AS first_name_praticien, u_pra.last_name AS last_name_praticien, u_pra.pseudo AS pseudo_praticien, u_pra.url_avatar AS url_avatar_praticien, u_pra.presentation AS presentation_praticien,
+				u_mem.first_name AS first_name_member, u_mem.last_name AS last_name_member, u_mem.pseudo AS pseudo_member,
+				q.id AS id_question, q.question_title, q.question_text, q.question_date, q.is_public, q.satisfaction, q.id_user, q.`status`,
+				possesses.skill
+			FROM proposed_praticien p
+			JOIN user u_exp ON u_exp.id = p.id_expert
+			JOIN user u_pra ON u_pra.id = p.id_praticien
+			JOIN question q ON q.id = p.id_question
+			JOIN user u_mem ON u_mem.id = q.id_user
+			JOIN possesses ON possesses.id_user = u_pra.id
+			WHERE u_exp.id_status != 4
+				AND u_pra.id_status != 4
+				AND u_mem.id_status != 4
+				AND q.id = ?
+				
+		');
+	
+		if($query->execute([$idQuestion])){
+			while($data = $query->fetch(PDO::FETCH_ASSOC)){
+				if(!isset($users[$data['id']])){
+					$users[$data['id']] = $data;
+					unset($users[$data['id']]['skill']);
+					$users[$data['id']]['skills'] = [
+						$data['skill']
+					];
+				}else
+					$users[$data['id']]['skills'][] = $data['skill'];
+			}
+			return $users;
+		}else
+			return false;
+	}
 }
