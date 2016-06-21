@@ -14,6 +14,12 @@
             </div>
         </div>
         <div class="row">
+            <div class="input-field col s12">
+                <textarea id="description" class="materialize-textarea" name="description"></textarea>
+                <label for="description">Description</label>
+            </div>
+        </div>
+        <div class="row">
             <div class="input-field col s6">
                 <select name="id_category">
                     <?php foreach($listCategory as $category){ ?>

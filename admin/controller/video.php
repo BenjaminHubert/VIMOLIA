@@ -9,7 +9,7 @@ class videoController extends baseController {
 
     public function add(){
         // Ajouter une vidéo
-        $postExpected = ['title', 'url', 'id_category', 'id_thematic', 'submit'];
+        $postExpected = ['title', 'url', 'description', 'id_category', 'id_thematic', 'submit'];
         if($postExpected == array_keys($_POST)){
 
             $url = '/^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/';
@@ -40,7 +40,7 @@ class videoController extends baseController {
                 $this->registry->template->video = $video;
 
                 // Modifier une vidéo
-                $postExpected = ['title', 'url', 'id_category', 'id_thematic', 'submit'];
+                $postExpected = ['title', 'url', 'description', 'id_category', 'id_thematic', 'submit'];
 
                 if($postExpected == array_keys($_POST)){
 

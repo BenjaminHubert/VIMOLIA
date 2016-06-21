@@ -765,12 +765,13 @@ class DB {
 
     public function addVideo($video){
         $query = $this->connection->prepare('
-            INSERT INTO video(url, title, id_category, id_user, id_thematic)
+            INSERT INTO video(url, title, description, id_category, id_user, id_thematic)
             SELECT ?, ?, ?, ?, ?
         ');
         return $query->execute([
             $video['url'],
             $video['title'],
+            $video['description'],
             $video['id_category'],
             $video['id_user'],
             $video['id_thematic']
@@ -779,12 +780,13 @@ class DB {
 
     public function editVideo($video, $id){
         $query = $this->connection->prepare('
-            UPDATE video SET url = ?, title = ?, id_category = ?, id_user = ?, id_thematic = ?
+            UPDATE video SET url = ?, title = ?, description = ?, id_category = ?, id_user = ?, id_thematic = ?
             WHERE id = ?
         ');
         return $query->execute([
             $video['url'],
             $video['title'],
+            $video['description'],
             $video['id_category'],
             $video['id_user'],
             $video['id_thematic'],

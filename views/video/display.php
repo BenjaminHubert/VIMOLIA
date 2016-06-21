@@ -56,6 +56,9 @@
             <iframe width="853" height="480" src="<?php echo str_replace('watch?v=', 'embed/', $video['url']); ?>" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
+    <div class="col s12">
+        <p id="desc"><?php echo $article['description']; ?></p>
+    </div>
 
     <div class="col s12" id="comments">
         <div class="fb-comments" data-href="<?php echo BASE_URL.'video/display/'.$video['id']; ?>" data-numposts="5" data-width="100%"></div>
