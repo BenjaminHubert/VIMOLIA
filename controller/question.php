@@ -135,8 +135,8 @@ class questionController extends baseController {
 		if(isset($args[0]) && is_numeric($args[0])){
 			if(isset($_SESSION['id'])){
 				$question = $this->registry->db->getQuestion($args[0]);
-				if($question && $question['id_user'] == $_SESSION['id'] && $question['status'] == 'Question en attente de validation de réponse'){
-					$this->registry->db->changeStatusQuestion($question['id'], 'Question clôturé');
+				if($question && $question['id_user'] == $_SESSION['id'] && in_array($question['status'], ['Question en attente de validation de réponse', 'Question en attente du choix d\'un praticien par le patient'])){
+					var_dump($this->registry->db->changeStatusQuestion($question['id'], 'Question clôturé'));
 				}
 			}
 		}

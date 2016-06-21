@@ -19,9 +19,9 @@
 	</div>
 </div>
 <p style="font-weight: bold">Réponse de notre expert</p>
-<div class="row">
 <?php if($answer){?>
-<div class="col s12 grey lighten-2">
+<div class="row">
+	<div class="col s12 grey lighten-2">
 		<div class="row">
 			<div class="col s1">
 				<img style="width: 100%; margin: 10px" src="<?php echo ($answer['url_avatar'] !== NULL)?$answer['url_avatar']:BASE_URL.'img/avatar/user.png';?>" alt="">
@@ -33,26 +33,42 @@
 			</div>
 		</div>
 	</div>
+</div>
+<!-- Question en attente de validation de réponse -->
 <?php if(isset($_SESSION['id']) && $question['id_user'] == $_SESSION['id'] && $question['status'] == 'Question en attente de validation de réponse'){?>
 <div class="row">
-		<div class="col s12">
-			<div class="right">
-				<a href="<?php echo BASE_URL.'question/addDetails/'.$question['id'];?>" class="waves-effect waves-light btn">Je souhaite plus de détails</a> <a href="<?php echo BASE_URL.'question/close/'.$question['id'];?>" class="waves-effect waves-light btn">Cette réponse me convient</a>
-			</div>
+	<div class="col s12">
+		<div class="right">
+			<a href="<?php echo BASE_URL.'question/addDetails/'.$question['id'];?>" class="waves-effect waves-light btn">Je souhaite plus de détails</a>
+			<a href="<?php echo BASE_URL.'question/close/'.$question['id'];?>" class="waves-effect waves-light btn">Cette réponse me convient</a>
 		</div>
 	</div>
+</div>
+<?php }?>
+<!-- Question en attente du choix d'un praticien par le patient -->
+<?php if(isset($_SESSION['id']) && $question['id_user'] == $_SESSION['id'] && $question['status'] == 'Question en attente du choix d\'un praticien par le patient'){?>
+<div class="row">
+	<div class="col s12">
+		<div class="right">
+			<a href="<?php echo BASE_URL.'question/makeAnAppointment/'.$question['id'];?>" class="waves-effect waves-light btn">Prendre un rendez-vous</a>
+			<a href="<?php echo BASE_URL.'question/close/'.$question['id'];?>" class="waves-effect waves-light btn">Clôturer la question</a>
+		</div>
+	</div>
+</div>
 <?php }?>
 <?php }else{?>
+<div class="row">
 	<div class="col s12 grey lighten-2">
 		<p>Cette question n'a pas encore trouvé réponse</p>
 	</div>
-<?php }?>
 </div>
+<?php }?>
 
 <!--  FLOATING BUTTON -->
 <?php if(isset($_SESSION['id']) && in_array($_SESSION['role'], ['Administrateur', 'Expert'])){ ?>
 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-	<a href="<?php echo BASE_URL.'admin/question/consult/'.$question['id'];?>" class="btn-floating btn-large red"> <i class="large material-icons">mode_edit</i>
+	<a href="<?php echo BASE_URL.'admin/question/consult/'.$question['id'];?>" class="btn-floating btn-large red">
+		<i class="large material-icons">mode_edit</i>
 	</a>
 </div>
 <?php }?>
