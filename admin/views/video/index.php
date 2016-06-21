@@ -6,22 +6,25 @@ if(!empty($listVideo)){
     <thead>
         <tr>
             <th data-field="title">Titre</th>
-            <th data-field="author">Auteur</th>
             <th data-field="date">Date de publication</th>
+            <th data-field="category">Catégorie</th>
+            <th data-field="thematic">Thématique</th>
             <th data-field="action">Actions</th>
         </tr>
     </thead>
     <tbody>
         <?php
             foreach($listVideo as $video){
-                $user = $this->registry->db->getUser($video['id_user']);
+                $category = $this->registry->db->getCategoryById($video['id_category']);
+                $thematic = $this->registry->db->getThematicById($video['id_thematic']);
         ?>
                 <tr>
-                    <td><a href="#"><?php echo $video['title']; ?></a></td>
-                    <td><?php echo $user['first_name']." ".$user['last_name']; ?></td>
+                    <td><a href="<?php echo BASE_URL.'video/display/'.$video['id']; ?>"><?php echo $video['title']; ?></a></td>
                     <td><?php echo date('\L\e d/m/Y \à H\hi', strtotime($video['date_create'])); ?></td>
+                    <td><?php echo $category['category']; ?></td>
+                    <td><?php echo $thematic['thematic']; ?></td>
                     <td>
-                        <a <?php echo(($video['id_user'] == $_SESSION['id'])?'href="'.BASE_URL_ADMIN.'page/edit/'.$video['id'].'"':'');?> 
+                        <a <?php echo(($video['id_user'] == $_SESSION['id'])?'href="'.BASE_URL_ADMIN.'video/edit/'.$video['id'].'"':'');?> 
                            class="waves-effect waves-light btn <?php echo(($video['id_user'] == $_SESSION['id'])?'':'disabled'); ?>">
                             Modifier
                             <i class="material-icons right">create</i> 

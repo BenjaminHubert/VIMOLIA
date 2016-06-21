@@ -777,7 +777,7 @@ class DB {
         ]);
     }
 
-    public function editVideo($video){
+    public function editVideo($video, $id){
         $query = $this->connection->prepare('
             UPDATE video SET url = ?, title = ?, id_category = ?, id_user = ?, id_thematic = ?
             WHERE id = ?
@@ -788,7 +788,7 @@ class DB {
             $video['id_category'],
             $video['id_user'],
             $video['id_thematic'],
-            $video['id']
+            $id
         ]);
     }
 
@@ -805,12 +805,51 @@ class DB {
             $where = '';
         }else
             $where = '';
-        
+
         $query = $this->connection->prepare('
             SELECT * FROM video '.$where.' ORDER BY date_create DESC
         ');
         if($query->execute()){
             return $query->fetchAll(PDO::FETCH_ASSOC);
+        }else
+            return false;
+    }
+
+    public function getVideoById($id){
+        $query = $this->connection->prepare('
+            SELECT * FROM video 
+            WHERE id = ?
+        ');
+        if($query->execute([
+            $id
+        ])){
+            return $query->fetch(PDO::FETCH_ASSOC);
+        }else
+            return false;
+    }
+
+    public function getCategoryById($id){
+        $query = $this->connection->prepare('
+            SELECT * FROM video_category 
+            WHERE id = ?
+        ');
+        if($query->execute([
+            $id
+        ])){
+            return $query->fetch(PDO::FETCH_ASSOC);
+        }else
+            return false;
+    }
+
+    public function getThematicById($id){
+        $query = $this->connection->prepare('
+            SELECT * FROM video_thematic 
+            WHERE id = ?
+        ');
+        if($query->execute([
+            $id
+        ])){
+            return $query->fetch(PDO::FETCH_ASSOC);
         }else
             return false;
     }
