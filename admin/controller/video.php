@@ -70,7 +70,9 @@ class videoController extends baseController {
     }
 
     public function delete($args){
-
+        if(isset($args[0]) && is_numeric($args[0])){
+            echo json_encode($this->registry->db->deleteVideo($args[0]));
+        }else $this->registry->template->show('404', true);
     }
 }
 ?>
