@@ -463,7 +463,7 @@ class DB {
         }else
             $where = '';
 
-        $query = $this->connection->prepare('SELECT * FROM article ' . $where . 'ORDER BY date_create DESC');
+        $query = $this->connection->prepare('SELECT * FROM article ' . $where . 'ORDER BY date_publish DESC');
         if($query->execute()){
             return $query->fetchAll(PDO::FETCH_ASSOC);
         }else

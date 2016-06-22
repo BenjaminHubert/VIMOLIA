@@ -27,3 +27,8 @@
         position: initial;
     }
 }
+
+.cat-them{
+    color: #CCC;
+    font-style: italic;
+}
