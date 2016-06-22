@@ -35,10 +35,20 @@
 <!-- Modal Structure -->
 <div id="methodRDV" class="modal bottom-sheet">
 	<div class="modal-content">
-		<h4>Modal Header</h4>
-		<p>A bunch of text</p>
-	</div>
-	<div class="modal-footer">
-		<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+		<h5>Votre méthode de rendez-vous</h5>
+		<div class="container">
+			<div class="row">
+				<div class="col s6 center">
+					<i class="material-icons large">laptop_mac</i>
+					<br>
+					<p>Visio-conférence</p>
+				</div>
+				<div class="col s6 center">
+					<i class="material-icons large">directions_walk</i>
+					<br>
+					<p>Se déokacer dans son cabinet</p>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
