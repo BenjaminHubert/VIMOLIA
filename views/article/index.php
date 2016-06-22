@@ -10,7 +10,9 @@ if(!empty($listArticle)){
     <div class="col s12 m6 l4">
         <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="<?php echo $article['main_picture']; ?>">
+                <a href="<?php echo BASE_URL.'article/display/'.$article['id']; ?>">
+                    <img src="<?php echo $article['main_picture']; ?>">
+                </a>
             </div>
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">

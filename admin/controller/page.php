@@ -42,8 +42,8 @@ class pageController extends baseController {
                     $this->registry->db->editPage($_POST, $args[0]);
                     header('Location:'.$this->registry->config['base_url'].'/admin/page');
                 }else $this->registry->template->show('edit');
-            }else $this->registry->template->show('not_found');
-        }else $this->registry->template->show('not_found');
+            }else $this->registry->template->show('404', true);
+        }else $this->registry->template->show('404', true);
     }
 }
 ?>

@@ -1,0 +1,30 @@
+#date_pub{
+    float: right;
+    margin-top: 1em;
+}
+
+p#desc{
+    font-weight: bold;
+}
+
+div.social_network {
+    display: block;
+    width: 100%;
+}
+
+ul.share-buttons {
+    list-style: none;
+    padding: 0;
+}
+
+ul.share-buttons li {
+    display: inline;
+}
+
+.fb-share-button{
+    vertical-align: super;
+}
+
+#comments{
+    margin-top: 5%;
+}

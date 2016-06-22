@@ -60,8 +60,8 @@ class articleController extends baseController {
                     $this->registry->db->editArticle($_POST, $args[0]);
                     header('Location:'.$this->registry->config['base_url'].'/admin/article');
                 }else $this->registry->template->show('edit');
-            }else $this->registry->template->show('not_found');
-        }else $this->registry->template->show('not_found');
+            }else $this->registry->template->show('404', true);
+        }else $this->registry->template->show('404', true);
     }
 }
 ?>
