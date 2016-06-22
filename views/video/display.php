@@ -57,7 +57,7 @@
         </div>
     </div>
     <div class="col s12">
-        <p id="desc"><?php echo $article['description']; ?></p>
+        <p id="desc"><?php echo $video['description']; ?></p>
     </div>
 
     <div class="col s12" id="comments">
