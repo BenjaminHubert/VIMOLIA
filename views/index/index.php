@@ -1,30 +1,59 @@
-
-    <!--   Icon Section   -->
-    <div class="row">
-        <div class="col s12 m4">
-            <div class="icon-block">
-                <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-                <h5 class="center">Speeds up development</h5>
-
-                <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-            </div>
-        </div>
-
-        <div class="col s12 m4">
-            <div class="icon-block">
-                <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-                <h5 class="center">User Experience Focused</h5>
-
-                <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-            </div>
-        </div>
-
-        <div class="col s12 m4">
-            <div class="icon-block">
-                <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-                <h5 class="center">Easy to work with</h5>
-
-                <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-            </div>
+<div class="row">
+    <div class="col s12 m6">
+        <div class="slider">
+            <ul class="slides">
+                <?php 
+                $i = 0;
+                foreach($listVideo as $video){ 
+                    if($i < 5){
+                ?>
+                <li>
+                    <div class="video-container">
+                        <iframe width="853" height="480" src="<?php echo str_replace('watch?v=', 'embed/', $video['url']); ?>" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="caption center-align">
+                        <h5 class="light white-text text-lighten-3 truncate"><?php echo $video['title']; ?></h5>
+                    </div>
+                </li>
+                <?php 
+                        $i++;
+                    }else break;
+                }
+                ?>
+            </ul>
         </div>
     </div>
+    <div class="col s12">
+        <h4>
+            Derniers articles 
+            <a id="more_article" class="waves-effect waves-light btn" href="<?php echo BASE_URL.'article/'; ?>">
+                Voir tout
+                <i class="material-icons right">navigate_next</i>
+            </a>
+        </h4>
+        <div class="collection">
+            <?php 
+            $j = 0;
+            foreach($listArticle as $article){
+                if($j < 3){
+                    $user = $this->registry->db->getUser($article['id_user']);
+            ?>
+            <a class="collection-item" href="<?php echo BASE_URL.'article/display/'.$article['id']; ?>">
+                <div class="article_thumbnail">
+                    <img src="<?php echo $article['main_picture']; ?>">
+                    <p class="author">Par <?php echo $user['first_name']." ".$user['last_name']; ?><br>
+                        <?php echo date('\L\e d/m/Y \à H\hi', strtotime($article['date_publish'])); ?></p>
+                </div>
+                <div class="article_details">
+                    <h5><?php echo $article['title']; ?></h5>
+                    <p class="desc"><?php echo $article['description']; ?></p>
+                </div>
+            </a>
+            <?php 
+                    $j++;
+                }else break;
+            }
+            ?>
+        </div>
+    </div>
+</div>

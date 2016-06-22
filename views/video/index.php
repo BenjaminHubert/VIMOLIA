@@ -13,6 +13,8 @@ if(!empty($listVideo)){
             $image['v'] = basename(parse_url($video['url'], PHP_URL_PATH));
             $video['main_picture'] = 'http://img.youtube.com/vi/'.$image['v'].'/0.jpg';
         }
+        $category = $this->registry->db->getCategoryById($video['id_category']);
+        $thematic = $this->registry->db->getThematicById($video['id_thematic']);
     ?>
     <div class="col s12 m6 l4">
         <div class="card">
@@ -26,6 +28,7 @@ if(!empty($listVideo)){
                     <?php echo $video['title']; ?>
                     <i class="material-icons right">more_vert</i>
                 </span>
+                <p class="cat-them"><?php echo $category['category']; ?><br><?php echo $thematic['thematic']; ?></p>
                 <p><?php echo date('\L\e d/m/Y \à H\hi', strtotime($video['date_create'])); ?></p>
             </div>
             <div class="card-action">

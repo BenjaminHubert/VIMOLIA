@@ -1,0 +1,41 @@
+.slider{
+    margin-top: 5%;
+}
+.slider .slides{
+    background-color: #455a64;   
+}
+.slider .slides li .caption{
+    top: 86%;
+    width: 98%;
+    left: 1%;
+    text-align: center;
+}
+
+#more_article{
+    float: right;
+    font-size: 12pt;
+}
+
+.collection a.collection-item{
+    display: inline-flex;
+    width: 100%;
+}
+.article_thumbnail img{
+    max-height: 100px;
+}
+.article_thumbnail{
+    width: 20%;
+    text-align: center;
+}
+.article_details{
+    width: 75%;
+    margin-left: 5%;
+}
+
+.author{
+    color: #666;
+    font-style: italic;
+}
+.desc{
+    color: #333;
+}
