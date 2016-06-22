@@ -1,9 +1,6 @@
-h3{
-    text-align: center;
-}
-
 #date_pub{
-    text-align: right;
+    float: right;
+    margin-top: 1em;
 }
 
 p#desc{

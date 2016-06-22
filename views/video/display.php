@@ -28,13 +28,20 @@
     }(document, "script", "twitter-wjs"));
 </script>
 
-<h3><?php echo $video['title'] ?></h3>
-
 <div class="row">
-    <?php $user = $this->registry->db->getUser($video['id_user']); ?>
-    <div class="col s12" id="date_pub"><?php echo date('\L\e d/m/Y \à H\hi', strtotime($video['date_create'])); ?></div>
+    <div class="col s12 m10 offset-m1">
+        <h3><?php echo $video['title'] ?></h3>
+    </div>
 
-    <div class="social_network col s12">
+    <div class="col s12 m10 offset-m1">
+        <div class="video-container">
+            <iframe width="853" height="480" src="<?php echo str_replace('watch?v=', 'embed/', $video['url']); ?>" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="social_network col s12 m10 offset-m1">
+       
+       <span id="date_pub"><?php echo date('\L\e d/m/Y \à H\hi', strtotime($video['date_create'])); ?></span>
         <ul class="share-buttons">
             <li id="fb">
                 <div class="fb-share-button" 
@@ -49,18 +56,14 @@
                 <div class="g-plus" data-action="share" data-annotation="none" data-href="<?php echo BASE_URL.'video/display/'.$video['id']; ?>"></div>
             </li>
         </ul>
+        
     </div>
 
-    <div class="col s12">
-        <div class="video-container">
-            <iframe width="853" height="480" src="<?php echo str_replace('watch?v=', 'embed/', $video['url']); ?>" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </div>
-    <div class="col s12">
+    <div class="col s12 m10 offset-m1">
         <p id="desc"><?php echo $video['description']; ?></p>
     </div>
 
-    <div class="col s12" id="comments">
+    <div class="col s12 m10 offset-m1" id="comments">
         <div class="fb-comments" data-href="<?php echo BASE_URL.'video/display/'.$video['id']; ?>" data-numposts="5" data-width="100%"></div>
     </div>
 </div>
