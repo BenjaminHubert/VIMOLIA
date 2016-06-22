@@ -64,7 +64,7 @@ class questionController extends baseController {
 															if($this->registry->db->addQuestionnaire($_POST['symptoms'], $_POST['particularPains'], $_POST['antecedents'], $_POST['usefulInfo'], $question['id_user'], $question['id'])){
 																$this->registry->db->changeStatusQuestion($question['id'], 'Question qui demande une liste de praticiens');
 																
-																header('Location: '.BASE_URL.'question/addDetails/successful');
+																header('Location: ' . BASE_URL . 'question/addDetails/successful');
 																die();
 															}else
 																$this->registry->template->error = 'Une erreur a été rencontrée lors de la création du questionnaire remplie';
@@ -135,14 +135,40 @@ class questionController extends baseController {
 		if(isset($args[0]) && is_numeric($args[0])){
 			if(isset($_SESSION['id'])){
 				$question = $this->registry->db->getQuestion($args[0]);
-				if($question && $question['id_user'] == $_SESSION['id'] && $question['status'] == 'Question en attente de validation de réponse'){
-					$this->registry->db->changeStatusQuestion($question['id'], 'Question clôturé');
+				if($question && $question['id_user'] == $_SESSION['id'] && in_array($question['status'], [
+					'Question en attente de validation de réponse',
+					'Question en attente du choix d\'un praticien par le patient'
+				])){
+					var_dump($this->registry->db->changeStatusQuestion($question['id'], 'Question clôturé'));
 				}
 			}
 		}
 		
-		header('Location: '.BASE_URL.'question/afficher/'.$args[0]);
+		header('Location: ' . BASE_URL . 'question/afficher/' . $args[0]);
 		die();
+	}
+	public function makeAnAppointment($args){
+		if(isset($args[0]) && is_numeric($args[0])){
+			if(isset($_SESSION['id'])){
+				$question = $this->registry->db->getQuestion($args[0]);
+				if($question && $question['id_user'] == $_SESSION['id'] && $question['status'] == 'Question en attente du choix d\'un praticien par le patient'){
+					$proposedDoctors = $this->registry->db->getProposedDoctorsByQuestion($args[0]);
+					if($proposedDoctors){
+						$this->registry->template->proposedDoctors = $this->registry->db->getProposedDoctorsByQuestion($args[0]);
+						$this->registry->template->show('makeAnAppointment');
+					}else{
+						$this->registry->template->show('404', true);
+					}
+				}else{
+					$this->registry->template->show('404', true);
+				}
+			}else{
+				header('Location: ' . BASE_URL . 'login?url=' . getCurrentUrl());
+				die();
+			}
+		}else{
+			$this->registry->template->show('404', true);
+		}
 	}
 }
 ?>
