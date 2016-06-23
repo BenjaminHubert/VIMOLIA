@@ -35,6 +35,7 @@
 				<div class="collapsible-body">
 					<a href="<?php echo BASE_URL_ADMIN;?>article">Gérer les articles</a>
 					<a href="<?php echo BASE_URL_ADMIN;?>page">Gérer les pages</a>
+					<a href="<?php echo BASE_URL_ADMIN;?>video">Gérer les vidéos</a>
 				</div>
 			</li>
 			<?php }?>
