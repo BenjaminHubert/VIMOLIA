@@ -1,6 +1,18 @@
 <?php
 class pageController extends baseController {
-
+	protected $registry;
+	public function __construct($registry){
+		// default behavior
+		parent::__construct($registry);
+		// check rights
+		if(!in_array($_SESSION['role'], [
+			'Administrateur',
+			'Auteur'
+		])){
+			$registry->template->show('403', true);
+			die();
+		}
+	}
     public function index(){
         // Liste des pages
         $this->registry->template->listPage = $this->registry->db->getListPage();
