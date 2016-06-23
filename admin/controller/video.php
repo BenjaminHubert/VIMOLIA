@@ -1,6 +1,18 @@
 <?php
 class videoController extends baseController {
-
+	protected $registry;
+	public function __construct($registry){
+		// default behavior
+		parent::__construct($registry);
+		// check rights
+		if(!in_array($_SESSION['role'], [
+			'Administrateur',
+			'Auteur'
+		])){
+			$registry->template->show('403', true);
+			die();
+		}
+	}
     public function index(){
         // Liste des vidéos
         $this->registry->template->listVideo = $this->registry->db->getListVideo();
