@@ -1,6 +1,18 @@
 <?php
 class articleController extends baseController {
-
+	protected $registry;
+	public function __construct($registry){
+		// default behavior
+		parent::__construct($registry);
+		// check rights
+		if(!in_array($_SESSION['role'], [
+			'Administrateur',
+			'Auteur'
+		])){
+			$registry->template->show('403', true);
+			die();
+		}
+	}
     public function index(){
         // Liste des articles
         $this->registry->template->listArticle = $this->registry->db->getListArticle();
