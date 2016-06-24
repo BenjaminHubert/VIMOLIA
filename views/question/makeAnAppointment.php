@@ -5,7 +5,7 @@
 	</div>
 </div>
 
-<h5>Choissiez un médecin parmi la liste définie pour vous par votre expert <?php echo APP_TITLE;?></h5>
+<h5>Choisissez un médecin parmi la liste définie pour vous par votre expert <?php echo APP_TITLE;?></h5>
 <?php foreach($proposedDoctors as $doctor){?>
 <div class="row" style="border: black 1px solid; padding: 10px;">
 	<div class="col s12 m3">
@@ -46,7 +46,7 @@
 				<div class="col s6 center">
 					<i class="material-icons large">directions_walk</i>
 					<br>
-					<p>Se déokacer dans son cabinet</p>
+					<p>Se déplacer dans son cabinet</p>
 				</div>
 			</div>
 		</div>
