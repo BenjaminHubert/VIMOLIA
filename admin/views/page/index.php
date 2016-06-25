@@ -13,23 +13,38 @@ if(!empty($listPage)){
     </thead>
     <tbody>
         <?php
-            foreach($listPage as $page){
-                $user = $this->registry->db->getUser($page['id_user']);
+    foreach($listPage as $page){
+        $user = $this->registry->db->getUser($page['id_user']);
         ?>
-                <tr>
-                    <td><a href="#"><?php echo $page['title']; ?></a></td>
-                    <td><?php echo $user['first_name']." ".$user['last_name']; ?></td>
-                    <td><?php echo date('\L\e d/m/Y \à H\hi', strtotime($page['date_publish'])); ?></td>
-                    <td>
-                        <a <?php echo(($page['id_user'] == $_SESSION['id'])?'href="'.BASE_URL_ADMIN.'page/edit/'.$page['id'].'"':'');?> 
-                           class="waves-effect waves-light btn <?php echo(($page['id_user'] == $_SESSION['id'])?'':'disabled'); ?>">
-                            Modifier
-                            <i class="material-icons right">create</i> 
-                        </a> 
-                    </td>
-                </tr> 
+        <tr>
+            <td><a href="#"><?php echo $page['title']; ?></a></td>
+            <td><?php echo $user['first_name']." ".$user['last_name']; ?></td>
+            <td><?php echo date('\L\e d/m/Y \à H\hi', strtotime($page['date_publish'])); ?></td>
+            <td>
+                <a <?php echo(($page['id_user'] == $_SESSION['id'])?'href="'.BASE_URL_ADMIN.'page/edit/'.$page['id'].'"':'');?> 
+                   class="waves-effect waves-light btn <?php echo(($page['id_user'] == $_SESSION['id'])?'':'disabled'); ?>">
+                    Modifier
+                    <i class="material-icons right">create</i> 
+                </a> 
+                <button data-target="modal-<?php echo $page['id']; ?>" class="btn modal-trigger">
+                    <i class="material-icons">delete</i>
+                </button> 
+            </td>
+        </tr>
+
+        <div id="modal-<?php echo $page['id']; ?>" class="modal bottom-sheet">
+            <div class="modal-content">
+                <h4>Suppression</h4>
+                <p>Êtes vous sûr de vouloir supprimer la page "<?php echo $page['title']; ?>" ?</p>
+            </div>
+            <div class="modal-footer">
+                <a data-value="<?php echo $page['id']; ?>" 
+                   class="delete-page modal-action modal-close waves-effect waves-green btn-flat">Oui</a>
+                <a class="modal-action modal-close waves-effect waves-green btn-flat">Annuler</a>
+            </div>
+        </div> 
         <?php   
-            }
+    }
         ?>
     </tbody>
 </table>

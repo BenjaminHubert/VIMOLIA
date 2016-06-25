@@ -983,4 +983,21 @@ class DB {
 		
 		return $query->execute($execute);
 	}
+    
+    public function deleteArticle($id){
+        $query = $this->connection->prepare('
+            DELETE FROM article
+            WHERE id = ?
+        ');
+        return $query->execute([$id]);
+    }
+    
+    public function deletePage($id){
+        $query = $this->connection->prepare('
+            DELETE FROM page
+            WHERE id = ?
+        ');
+        return $query->execute([$id]);
+    }
+    
 }
