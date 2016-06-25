@@ -25,6 +25,8 @@
 				<div class="collapsible-body">
 					<a href="<?php echo BASE_URL;?>search/praticien">Consulter nos praticiens</a>
 					<a href="<?php echo BASE_URL;?>question">Consulter les questions</a>
+					<a href="<?php echo BASE_URL;?>article">Nos articles</a>
+					<a href="<?php echo BASE_URL;?>video">Nos vidéos</a>
 				</div>
 			</li>
 			<!-- AUTHORS & ADMINISTRATORS -->

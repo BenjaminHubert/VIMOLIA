@@ -57,5 +57,11 @@ class pageController extends baseController {
             }else $this->registry->template->show('404', true);
         }else $this->registry->template->show('404', true);
     }
+    
+    public function delete($args){
+        if(isset($args[0]) && is_numeric($args[0])){
+            echo json_encode($this->registry->db->deletePage($args[0]));
+        }else $this->registry->template->show('404', true);
+    }
 }
 ?>
