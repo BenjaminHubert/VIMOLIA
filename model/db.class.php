@@ -805,12 +805,17 @@ class DB {
 
     public function getListVideo($filter = false){
         if($filter){
-            $where = '';
+            if(array_key_exists('id_category', $filter)){
+                $where = 'id_category = '.$filter['id_category'];
+                if(array_key_exists('id_thematic', $filter)){
+                    $where .= ' AND id_thematic = '.$filter['id_thematic'];
+                }
+            }else $where = 'id_thematic = '.$filter['id_thematic'];
         }else
-            $where = '';
+            $where = '1';
 
         $query = $this->connection->prepare('
-            SELECT * FROM video '.$where.' ORDER BY date_create DESC
+            SELECT * FROM video WHERE '.$where.' ORDER BY date_create DESC
         ');
         if($query->execute()){
             return $query->fetchAll(PDO::FETCH_ASSOC);

@@ -2,7 +2,7 @@
 <div class="row">
     <form method="POST" class="col s12" enctype="multipart/form-data">
         <div class="row">
-            <div class="input-field col s6">
+            <div class="input-field col l6 s12">
                 <input id="title" type="text" class="validate" name="title" value="<?php echo $article['title']; ?>">
                 <label for="title">Titre</label>
             </div>
@@ -10,7 +10,7 @@
         <div class="row">
             <img class="article_thumbnail" src="<?php echo $article['main_picture']; ?>">
             <input type="hidden" name="original_file" value="<?php echo $article['main_picture']; ?>">
-            <div class="input-field col s6">
+            <div class="input-field col l6">
                 <div class="file-field input-field">
                     <div class="btn">
                         <span>Modifier l'image</span>
@@ -40,11 +40,11 @@
         $time = explode(':', $datetime[1]);
         ?>
         <div class="row">
-            <div class="input-field col s4">
+            <div class="input-field col l4 s12">
                 <input id="datepub" type="date" class="datepicker" name="date_publish" data-value="<?php echo $datetime[0]; ?>">
                 <label for="datepub">Date de publication</label>
             </div>
-            <div class="input-field col s2">
+            <div class="input-field col l2 s6">
                 <select name="hour_publish">
                     <?php for($i=0; $i<24; $i++) { ?>
                     <option value="<?php echo $i; ?>" <?php echo (($i==$time[0])?'selected':''); ?>><?php echo (($i<10)?'0'.$i:$i); ?></option>
@@ -52,7 +52,7 @@
                 </select>
                 <label>Heure</label>
             </div>
-            <div class="input-field col s2">
+            <div class="input-field col l2 s6">
                 <select name="minute_publish">
                     <?php for($i=0; $i<60; $i+=15) { ?>
                     <option value="<?php echo $i; ?>" <?php echo (($i==$time[1])?'selected':''); ?>><?php echo (($i<10)?'0'.$i:$i); ?></option>

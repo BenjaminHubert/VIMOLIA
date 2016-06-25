@@ -2,6 +2,39 @@
 <?php
 if(!empty($listVideo)){ 
 ?>
+
+<div class="row">
+    <form method="post">
+        <div class="input-field col l4">
+            <select name="id_category">
+                <option value="-1" selected>Tout</option>
+                <?php foreach($listCategory as $category){ ?>
+                <option value="<?php echo $category['id']; ?>">
+                    <?php echo $category['category']; ?>
+                </option>
+                <?php } ?>
+            </select>  
+            <label>Catégorie</label>
+        </div>
+        <div class="input-field col l4">
+            <select name="id_thematic">
+                <option value="-1" selected>Tout</option>
+                <?php foreach($listThematic as $thematic){ ?>
+                <option value="<?php echo $thematic['id']; ?>">
+                    <?php echo $thematic['thematic']; ?>
+                </option>
+                <?php } ?>
+            </select>
+            <label>Thématique</label>
+        </div>
+        <div class="input-field col l4">
+            <button class="btn waves-effect waves-light" id="submit-filter">Rechercher
+                <i class="material-icons right">search</i>
+            </button>  
+        </div>
+    </form>
+</div>
+
 <table class="responsive-table striped">
     <thead>
         <tr>
@@ -14,9 +47,9 @@ if(!empty($listVideo)){
     </thead>
     <tbody>
         <?php
-    foreach($listVideo as $video){
-        $category = $this->registry->db->getCategoryById($video['id_category']);
-        $thematic = $this->registry->db->getThematicById($video['id_thematic']);
+                       foreach($listVideo as $video){
+                           $category = $this->registry->db->getCategoryById($video['id_category']);
+                           $thematic = $this->registry->db->getThematicById($video['id_thematic']);
         ?>
         <tr>
             <td><a href="<?php echo BASE_URL.'video/display/'.$video['id']; ?>"><?php echo $video['title']; ?></a></td>
@@ -42,19 +75,19 @@ if(!empty($listVideo)){
             </div>
             <div class="modal-footer">
                 <a data-value="<?php echo $video['id']; ?>" 
-                class="delete-video modal-action modal-close waves-effect waves-green btn-flat">Oui</a>
+                   class="delete-video modal-action modal-close waves-effect waves-green btn-flat">Oui</a>
                 <a class="modal-action modal-close waves-effect waves-green btn-flat">Annuler</a>
             </div>
         </div>
 
         <?php   
-    }
+                       }
         ?>
     </tbody>
 </table>
 
 <?php
-} else{
+                      } else{
 ?>
 <h3>Aucune vidéo pour le moment.</h3>
 <?php 

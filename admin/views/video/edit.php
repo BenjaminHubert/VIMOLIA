@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s6">
+            <div class="input-field col l6">
                 <select name="id_category">
                     <?php foreach($listCategory as $category){ ?>
                     <option value="<?php echo $category['id']; ?>" <?php echo (($category['id'] == $video['id_category'])?'selected':''); ?>>
@@ -30,7 +30,7 @@
                 </select>
                 <label>Catégorie</label>
             </div>
-            <div class="input-field col s6">
+            <div class="input-field col l6">
                 <select name="id_thematic">
                     <?php foreach($listThematic as $thematic){ ?>
                     <option value="<?php echo $thematic['id']; ?>" <?php echo (($thematic['id'] == $video['id_thematic'])?'selected':''); ?>>
