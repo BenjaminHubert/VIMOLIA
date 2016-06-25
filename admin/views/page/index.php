@@ -21,14 +21,14 @@ if(!empty($listPage)){
             <td><?php echo $user['first_name']." ".$user['last_name']; ?></td>
             <td><?php echo date('\L\e d/m/Y \à H\hi', strtotime($page['date_publish'])); ?></td>
             <td>
-                <a <?php echo(($page['id_user'] == $_SESSION['id'])?'href="'.BASE_URL_ADMIN.'page/edit/'.$page['id'].'"':'');?> 
+                <a <?php echo(($page['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur ')?'href="'.BASE_URL_ADMIN.'page/edit/'.$page['id'].'"':'');?> 
                    class="waves-effect waves-light btn <?php echo(($page['id_user'] == $_SESSION['id'])?'':'disabled'); ?>">
                     Modifier
                     <i class="material-icons right">create</i> 
                 </a> 
-                <button data-target="modal-<?php echo $page['id']; ?>" class="btn modal-trigger">
+                <a <?php echo(($page['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur ')?'data-target="modal-'.$page['id'].'" class="btn modal-trigger"':'class="btn disabled"'); ?> >
                     <i class="material-icons">delete</i>
-                </button> 
+                </a> 
             </td>
         </tr>
 

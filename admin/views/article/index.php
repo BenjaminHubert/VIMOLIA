@@ -12,7 +12,7 @@ if(!empty($listArticle)){
         </tr>
     </thead>
     <tbody>
-        <?php
+        <?php 
     foreach($listArticle as $article){
         $user = $this->registry->db->getUser($article['id_user']);
         ?>
@@ -22,14 +22,14 @@ if(!empty($listArticle)){
             <td><?php echo $user['first_name']." ".$user['last_name']; ?></td>
             <td><?php echo date('\L\e d/m/Y \à H\hi', strtotime($article['date_publish'])); ?></td>
             <td>
-                <a <?php echo(($article['id_user'] == $_SESSION['id'])?'href="'.BASE_URL_ADMIN.'article/edit/'.$article['id'].'"':'');?> 
+                <a <?php echo(($article['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur ')?'href="'.BASE_URL_ADMIN.'article/edit/'.$article['id'].'"':'');?> 
                    class="waves-effect waves-light btn <?php echo(($article['id_user'] == $_SESSION['id'])?'':'disabled'); ?>">
                     Modifier
                     <i class="material-icons right">create</i> 
                 </a>
-                <button data-target="modal-<?php echo $article['id']; ?>" class="btn modal-trigger">
+                <a <?php echo(($article['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur ')?'data-target="modal-'.$article['id'].'" class="btn modal-trigger"':'class="btn disabled"'); ?> >
                     <i class="material-icons">delete</i>
-                </button> 
+                </a> 
             </td>
         </tr> 
 

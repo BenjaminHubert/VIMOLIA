@@ -57,14 +57,14 @@ if(!empty($listVideo)){
             <td><?php echo $thematic['thematic']; ?></td>
             <td><?php echo date('\L\e d/m/Y \à H\hi', strtotime($video['date_create'])); ?></td>
             <td>
-                <a <?php echo(($video['id_user'] == $_SESSION['id'])?'href="'.BASE_URL_ADMIN.'video/edit/'.$video['id'].'"':'');?> 
+                <a <?php echo(($video['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur ')?'href="'.BASE_URL_ADMIN.'video/edit/'.$video['id'].'"':'');?> 
                    class="waves-effect waves-light btn <?php echo(($video['id_user'] == $_SESSION['id'])?'':'disabled'); ?>">
                     Modifier
                     <i class="material-icons right">create</i> 
                 </a>
-                <button data-target="modal-<?php echo $video['id']; ?>" class="btn modal-trigger">
+                <a <?php echo(($video['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur ')?'data-target="modal-'.$video['id'].'" class="btn modal-trigger"':'class="btn disabled"'); ?> >
                     <i class="material-icons">delete</i>
-                </button> 
+                </a>
             </td>
         </tr>
 
