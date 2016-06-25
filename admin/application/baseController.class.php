@@ -9,6 +9,11 @@ Abstract Class baseController {
             header('Location: '.BASE_URL.'login');
             die();
         }
+        
+        //REFRESH SESSION
+        if(isset($_SESSION['id'])){
+        	$_SESSION = array_merge($_SESSION, $this->registry->db->getUser($_SESSION['id']));
+        }
     }
 
     abstract function index();
