@@ -87,7 +87,42 @@ if(!empty($listVideo)){
 </table>
 
 <?php
-                      } else{
+                      } elseif(isset($_POST)){
+?>
+<div class="row">
+    <form method="post">
+        <div class="input-field col l4">
+            <select name="id_category">
+                <option value="-1" selected>Tout</option>
+                <?php foreach($listCategory as $category){ ?>
+                <option value="<?php echo $category['id']; ?>">
+                    <?php echo $category['category']; ?>
+                </option>
+                <?php } ?>
+            </select>  
+            <label>Catégorie</label>
+        </div>
+        <div class="input-field col l4">
+            <select name="id_thematic">
+                <option value="-1" selected>Tout</option>
+                <?php foreach($listThematic as $thematic){ ?>
+                <option value="<?php echo $thematic['id']; ?>">
+                    <?php echo $thematic['thematic']; ?>
+                </option>
+                <?php } ?>
+            </select>
+            <label>Thématique</label>
+        </div>
+        <div class="input-field col l4">
+            <button class="btn waves-effect waves-light" id="submit-filter">Rechercher
+                <i class="material-icons right">search</i>
+            </button>  
+        </div>
+    </form>
+</div>
+<h5>Aucune vidéo ne correspond aux critères de recherche</h5>
+<?php
+}else { 
 ?>
 <h3>Aucune vidéo pour le moment.</h3>
 <?php 
