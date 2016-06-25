@@ -767,7 +767,7 @@ class DB {
     public function addVideo($video){
         $query = $this->connection->prepare('
             INSERT INTO video(url, title, description, id_category, id_user, id_thematic)
-            SELECT ?, ?, ?, ?, ?
+            SELECT ?, ?, ?, ?, ?, ?
         ');
         return $query->execute([
             $video['url'],
