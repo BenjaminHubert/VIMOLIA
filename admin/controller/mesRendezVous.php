@@ -31,6 +31,8 @@ class mesRendezVousController extends baseController {
     }
     
     private function doctor(){
+    	$appointments = $this->registry->db->getAllAppointmentsByIdUser($_SESSION['id'], $_SESSION['role']);
+    	$this->registry->template->appointments = $appointments;
     	$this->registry->template->show('doctor');
     }
     
@@ -41,7 +43,7 @@ class mesRendezVousController extends baseController {
     		$appointment = $this->registry->db->getAppointment($_POST['id_appointment']);
     		if($appointment){
     			$json['appointment'] = $appointment;
-    			if($appointment['id_member'] == $_SESSION['id']){
+    			if($appointment['id_member'] == $_SESSION['id'] || $appointment['id_doctor'] == $_SESSION['id'] ){
 	    			if($appointment['is_canceled'] == 0){
 	    				if($appointment['is_validated'] == 0){
 	    					$appointment['is_canceled'] = 1;
