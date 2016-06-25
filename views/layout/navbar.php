@@ -39,6 +39,16 @@
 				</div>
 			</li>
 			<?php }?>
+			<!-- DOCTORS & ADMINISTRATORS -->
+			<?php if(isset($_SESSION['id']) && in_array($_SESSION['role'], ['Praticien', 'Administrateur'])){?>
+			<li class="divider"></li>
+			<li>
+				<div class="collapsible-header"><i class="material-icons left">content_paste</i>Espace Praticien<i class="material-icons right">arrow_drop_down</i></div>
+				<div class="collapsible-body">
+					<a href="<?php echo BASE_URL_ADMIN;?>mesRendezVous">Mes rendez-vous</a>
+				</div>
+			</li>
+			<?php }?>
 			<!-- MEMBERS & ADMINISTRATORS -->
 			<?php if(isset($_SESSION['id']) && in_array($_SESSION['role'], ['Membre', 'Administrateur'])){?>
 			<li class="divider"></li>
@@ -46,6 +56,7 @@
 				<div class="collapsible-header"><i class="material-icons left">assignment_ind</i>Espace Membre<i class="material-icons right">arrow_drop_down</i></div>
 				<div class="collapsible-body">
 					<a href="<?php echo BASE_URL;?>question/index?mesQuestions">Mes questions</a>
+					<a href="<?php echo BASE_URL_ADMIN;?>mesRendezVous">Mes rendez-vous</a>
 				</div>
 			</li>
 			<?php }?>
@@ -53,7 +64,7 @@
 			<?php if(isset($_SESSION['id']) && in_array($_SESSION['role'], ['Administrateur', 'Expert'])){?>
 			<li class="divider"></li>
 			<li>
-				<div class="collapsible-header"><i class="material-icons left">content_paste</i>Espace Expert<i class="material-icons right">arrow_drop_down</i></div>
+				<div class="collapsible-header"><i class="material-icons left">dvr</i>Espace Expert<i class="material-icons right">arrow_drop_down</i></div>
 				<div class="collapsible-body">
 					<a href="<?php echo BASE_URL_ADMIN;?>question/list">Gérer les questions</a>
 				</div>
