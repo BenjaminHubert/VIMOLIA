@@ -1,21 +1,33 @@
 <?php
 class videoController extends baseController {
-	protected $registry;
-	public function __construct($registry){
-		// default behavior
-		parent::__construct($registry);
-		// check rights
-		if(!in_array($_SESSION['role'], [
-			'Administrateur',
-			'Auteur'
-		])){
-			$registry->template->show('403', true);
-			die();
-		}
-	}
+    protected $registry;
+    public function __construct($registry){
+        // default behavior
+        parent::__construct($registry);
+        // check rights
+        if(!in_array($_SESSION['role'], [
+            'Administrateur',
+            'Auteur'
+        ])){
+            $registry->template->show('403', true);
+            die();
+        }
+    }
     public function index(){
         // Liste des vidéos
-        $this->registry->template->listVideo = $this->registry->db->getListVideo();
+        $postExpected = ['id_category', 'id_thematic'];
+        if($postExpected == array_keys($_POST)){
+            $filter = false;
+            foreach($_POST as $key => $val){
+                if($val != -1){
+                    $filter[$key] = $val;
+                }
+            }
+        }else $filter = false;
+
+        $this->registry->template->listCategory = $this->registry->db->listVideoCategory();
+        $this->registry->template->listThematic = $this->registry->db->listVideoThematic();
+        $this->registry->template->listVideo = $this->registry->db->getListVideo($filter);
         $this->registry->template->show('index');
     }
 

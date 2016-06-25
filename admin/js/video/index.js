@@ -1,4 +1,6 @@
 $(function(){
+    $('select').material_select();
+    
     $('.modal-trigger').leanModal();
     
     $(".delete-video").click(function(){
