@@ -24,7 +24,7 @@
 					</td>
 					<!-- ACTION BUTTON -->
 					<?php if($appointment['is_canceled'] == 0 && $appointment['is_validated'] == 0){?>
-					<td style="text-align:right"><a class="waves-effect waves-light btn green lighten-2 cancel" data-id-appointment="<?php echo $appointment['id'];?>"><i class="material-icons right">cancel</i>Annuler le rdv</a></td>
+					<td style="text-align:right"><a class="waves-effect waves-light btn green lighten-2 valid" data-id-appointment="<?php echo $appointment['id'];?>"><i class="material-icons right">check</i>J'ai consulté</a></td>
 					<?php }elseif($appointment['is_validated'] == 1 && $appointment['rating'] == null){?>
 					<td style="text-align:right"><a class="waves-effect waves-light btn green lighten-2 rate" data-id-appointment="<?php echo $appointment['id'];?>"><i class="material-icons right">star_rate</i>Noter</a></td>
 					<?php }elseif($appointment['is_validated'] == 1 && $appointment['rating'] != null){?>
