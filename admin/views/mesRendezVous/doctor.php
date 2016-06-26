@@ -20,7 +20,13 @@
 					</td>
 					<!-- IS CANCEL -->
 					<td style="text-align:left">
-						<div class="chip chip-is-canceled"><?php echo ($appointment['is_canceled'] == 0)?'Non annulé':'Annulé';?></div>
+						<?php if($appointment['is_validated'] == 1){?>
+						<!--  nothing -->
+						<?php }elseif($appointment['is_canceled'] == 0){?>
+						<div class="chip chip-is-canceled">Non annulé</div>
+						<?php }elseif($appointment['is_canceled'] == 1){?>
+						<div class="chip chip-is-canceled">Annulé</div>
+						<?php }?>
 					</td>
 					<!-- ACTION BUTTON -->
 					<?php if($appointment['is_canceled'] == 0 && $appointment['is_validated'] == 0){?>

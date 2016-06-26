@@ -38,9 +38,10 @@ $(document).ready(function(){
                 dataType: 'JSON'
             }).done(function(data, textStatus, jqXHR){
             	if(typeof data.error == 'undefined'){
-        			button.parent().hide('slow', function(){
-        				$('tr[data-id-appointment="'+id_appointment+'"] .chip-is-validated').html('Consulté');
-        			});
+        			button.parent().css('font-style', 'italic');
+            		button.parent().html('En attente de notation');
+    				$('tr[data-id-appointment="'+id_appointment+'"] .chip-is-validated').html('Consulté');
+    				$('tr[data-id-appointment="'+id_appointment+'"] .chip-is-canceled').remove();
         		}else Materialize.toast(data.error, 4000, 'red');
             }).fail(function(jqXHR, textStatus, errorThrown){
                 console.error(jqXHR);
