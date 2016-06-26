@@ -1,0 +1,13 @@
+.br-theme-css-stars .br-widget a {
+	font-size: 70px !important;
+    margin-right: 40px !important;
+    height: 90px !important;
+}
+
+.br-theme-css-stars .br-widget {
+    height: 90px !important;
+}
+
+.br-theme-css-stars .br-widget a.br-selected:after, .br-theme-css-stars .br-widget a.br-active:after {
+    color: #81c784 !important;
+}
