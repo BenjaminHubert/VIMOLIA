@@ -24,7 +24,7 @@
                 <select name="id_category">
                     <?php foreach($listCategory as $category){ ?>
                     <option value="<?php echo $category['id']; ?>" <?php echo (($category['id'] == 1)?'selected':''); ?>>
-                        <?php echo $category['category']; ?>
+                        <?php echo htmlentities($category['category']); ?>
                     </option>
                     <?php } ?>
                 </select>
@@ -34,7 +34,7 @@
                 <select name="id_thematic">
                     <?php foreach($listThematic as $thematic){ ?>
                     <option value="<?php echo $thematic['id']; ?>" <?php echo (($thematic['id'] == 1)?'selected':''); ?>>
-                        <?php echo $thematic['thematic']; ?>
+                        <?php echo htmlentities($thematic['thematic']); ?>
                     </option>
                     <?php } ?>
                 </select>

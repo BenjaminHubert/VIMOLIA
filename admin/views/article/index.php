@@ -18,8 +18,8 @@ if(!empty($listArticle)){
         ?>
         <tr>
             <td><img class="article_thumbnail" src="<?php echo $article['main_picture']; ?>"></td>
-            <td><a href="<?php echo BASE_URL.'article/display/'.$article['id']; ?>" target="_blank"><?php echo $article['title']; ?></a></td>
-            <td><?php echo $user['first_name']." ".$user['last_name']; ?></td>
+            <td><a href="<?php echo BASE_URL.'article/display/'.$article['id']; ?>" target="_blank"><?php echo htmlentities($article['title']); ?></a></td>
+            <td><?php echo htmlentities($user['first_name']." ".$user['last_name']); ?></td>
             <td><?php echo date('\L\e d/m/Y \à H\hi', strtotime($article['date_publish'])); ?></td>
             <td>
                 <a <?php echo(($article['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur ')?'href="'.BASE_URL_ADMIN.'article/edit/'.$article['id'].'"':'');?> 
@@ -36,7 +36,7 @@ if(!empty($listArticle)){
         <div id="modal-<?php echo $article['id']; ?>" class="modal bottom-sheet">
             <div class="modal-content">
                 <h4>Suppression</h4>
-                <p>Êtes vous sûr de vouloir supprimer l'article "<?php echo $article['title']; ?>" ?</p>
+                <p>Êtes vous sûr de vouloir supprimer l'article "<?php echo htmlentities($article['title']); ?>" ?</p>
             </div>
             <div class="modal-footer">
                 <a data-value="<?php echo $article['id']; ?>" 

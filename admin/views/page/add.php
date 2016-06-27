@@ -22,7 +22,7 @@
             <div class="input-field col l2 s6">
                 <select name="hour_publish">
                     <?php for($i=0; $i<24; $i++) { ?>
-                    <option value="<?php echo $i; ?>" <?php echo (($i==12)?'selected':''); ?>><?php echo (($i<10)?'0'.$i:$i); ?></option>
+                    <option value="<?php echo htmlentities($i); ?>" <?php echo (($i==12)?'selected':''); ?>><?php echo (($i<10)?'0'.htmlentities($i):htmlentities($i)); ?></option>
                     <?php } ?>
                 </select>
                 <label>Heure</label>
@@ -30,7 +30,7 @@
             <div class="input-field col l2 s6">
                 <select name="minute_publish">
                     <?php for($i=0; $i<60; $i+=15) { ?>
-                    <option value="<?php echo $i; ?>" <?php echo (($i==0)?'selected':''); ?>><?php echo (($i<10)?'0'.$i:$i); ?></option>
+                    <option value="<?php echo htmlentities($i); ?>" <?php echo (($i==0)?'selected':''); ?>><?php echo (($i<10)?'0'.htmlentities($i):htmlentities($i)); ?></option>
                     <?php } ?>
                 </select>
                 <label>Minute</label>

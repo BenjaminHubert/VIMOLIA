@@ -9,8 +9,8 @@ if(!empty($listVideo)){
             <select name="id_category">
                 <option value="-1" selected>Tout</option>
                 <?php foreach($listCategory as $category){ ?>
-                <option value="<?php echo $category['id']; ?>">
-                    <?php echo $category['category']; ?>
+                <option value="<?php echo htmlentities($category['id']); ?>">
+                    <?php echo htmlentities($category['category']); ?>
                 </option>
                 <?php } ?>
             </select>  
@@ -20,8 +20,8 @@ if(!empty($listVideo)){
             <select name="id_thematic">
                 <option value="-1" selected>Tout</option>
                 <?php foreach($listThematic as $thematic){ ?>
-                <option value="<?php echo $thematic['id']; ?>">
-                    <?php echo $thematic['thematic']; ?>
+                <option value="<?php echo htmlentities($thematic['id']); ?>">
+                    <?php echo htmlentities($thematic['thematic']); ?>
                 </option>
                 <?php } ?>
             </select>
@@ -52,9 +52,9 @@ if(!empty($listVideo)){
                            $thematic = $this->registry->db->getThematicById($video['id_thematic']);
         ?>
         <tr>
-            <td><a href="<?php echo BASE_URL.'video/display/'.$video['id']; ?>"><?php echo $video['title']; ?></a></td>
-            <td><?php echo $category['category']; ?></td>
-            <td><?php echo $thematic['thematic']; ?></td>
+            <td><a href="<?php echo BASE_URL.'video/display/'.$video['id']; ?>"><?php echo htmlentities($video['title']); ?></a></td>
+            <td><?php echo htmlentities($category['category']); ?></td>
+            <td><?php echo htmlentities($thematic['thematic']); ?></td>
             <td><?php echo date('\L\e d/m/Y \à H\hi', strtotime($video['date_create'])); ?></td>
             <td>
                 <a <?php echo(($video['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur ')?'href="'.BASE_URL_ADMIN.'video/edit/'.$video['id'].'"':'');?> 
@@ -71,7 +71,7 @@ if(!empty($listVideo)){
         <div id="modal-<?php echo $video['id']; ?>" class="modal bottom-sheet">
             <div class="modal-content">
                 <h4>Suppression</h4>
-                <p>Êtes vous sûr de vouloir supprimer la vidéo "<?php echo $video['title']; ?>" ?</p>
+                <p>Êtes vous sûr de vouloir supprimer la vidéo "<?php echo htmlentities($video['title']); ?>" ?</p>
             </div>
             <div class="modal-footer">
                 <a data-value="<?php echo $video['id']; ?>" 
@@ -96,7 +96,7 @@ if(!empty($listVideo)){
                 <option value="-1" selected>Tout</option>
                 <?php foreach($listCategory as $category){ ?>
                 <option value="<?php echo $category['id']; ?>">
-                    <?php echo $category['category']; ?>
+                    <?php echo htmlentities($category['category']); ?>
                 </option>
                 <?php } ?>
             </select>  
@@ -107,7 +107,7 @@ if(!empty($listVideo)){
                 <option value="-1" selected>Tout</option>
                 <?php foreach($listThematic as $thematic){ ?>
                 <option value="<?php echo $thematic['id']; ?>">
-                    <?php echo $thematic['thematic']; ?>
+                    <?php echo htmlentities($thematic['thematic']); ?>
                 </option>
                 <?php } ?>
             </select>

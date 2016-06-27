@@ -6,7 +6,7 @@
 		<b>Statut : </b> <?php echo htmlentities($question['status']);?>
 	</div>
 	<div class="col s12 m6">
-		<b>Auteur : </b> <?php echo htmlentities(($user['pseudo'] != null)?$user['pseudo']:$user['first_name']. ' '. $user['last_name']);?>
+		<b>Auteur : </b> <?php echo ($user['pseudo'] != null)?htmlentities($user['pseudo']):htmlentities($user['first_name']). ' '. htmlentities($user['last_name']);?>
 	</div>
 	<div class="col s12 m6">
 		<b>Date de la question : </b> <?php echo date('d/m/Y à H\hm', strtotime($question['question_date']));?>
@@ -37,7 +37,7 @@
 		  	</div>
 		</div>
 		<p id="name">
-			<i class="material-icons left">perm_identity</i> <?php echo ($question['pseudo']!=null)?$question['pseudo']:$question['first_name'].' '.$question['last_name'];?></p>
+			<i class="material-icons left">perm_identity</i> <?php echo ($question['pseudo']!=null)?htmlentities($question['pseudo']):htmlentities($question['first_name']).' '.htmlentities($question['last_name']);?></p>
 		<div class="divider"></div>
 		<p id="question"><?php echo $question['question_title'];?></p>
 		<p id="details"><?php echo $question['question_text'];?></p>
@@ -56,7 +56,7 @@
 		<?php }?>
 		<div class="col s12">
 			<label for="answer">Réponse</label>
-			<textarea id="answer" name="answer" class="materialize-textarea" length="1000" placeholder="Ajouter une réponse..." required><?php echo (isset($answer['answer_text'])?$answer['answer_text']:'');?></textarea>
+			<textarea id="answer" name="answer" class="materialize-textarea" length="1000" placeholder="Ajouter une réponse..." required><?php echo (isset($answer['answer_text'])?htmlentities($answer['answer_text']):'');?></textarea>
 		</div>
 		<div class="col s12 offset-m9 m3">
 			<br>
@@ -83,8 +83,8 @@
 			<tbody>
 				<?php foreach($proposed_doctors as $proposed_doctor){?>
 				<tr>
-					<td><?php echo $proposed_doctor['first_name_praticien'].' '.$proposed_doctor['last_name_praticien'];?></td>
-					<td><?php echo implode(', ', $proposed_doctor['skills']);?></td>
+					<td><?php echo htmlentities($proposed_doctor['first_name_praticien'].' '.$proposed_doctor['last_name_praticien']);?></td>
+					<td><?php echo implode(', ', htmlentities($proposed_doctor['skills']));?></td>
 					<td>
 						<form action="" method="post">
 							<button type="submit" name="deleteProposedDoctor" value="<?php echo $proposed_doctor['id'];?>" class="btn-floating waves-effect waves-light blue-grey delete"><i class="material-icons">delete_forever</i></button>
@@ -126,8 +126,8 @@
 				}
 				if(!$found){
 					?>
-					<option data-praticien="<?php echo $doctor['first_name'].' '.$doctor['last_name']; ?>" data-skills="<?php echo implode(', ', $doctor['skills']);?>" value="<?php echo $doctor['id'];?>">
-						<?php echo $doctor['first_name'].' '.$doctor['last_name'].' - '.implode(', ', $doctor['skills'])?>
+					<option data-praticien="<?php echo htmlentities($doctor['first_name'].' '.$doctor['last_name']); ?>" data-skills="<?php echo implode(', ', htmlentities($doctor['skills']));?>" value="<?php echo $doctor['id'];?>">
+						<?php echo htmlentities($doctor['first_name'].' '.$doctor['last_name'].' - '.implode(', ', $doctor['skills']));?>
 					</option>
 			<?php
 				}

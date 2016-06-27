@@ -14,7 +14,7 @@ if(!empty($listCategory)){
     foreach($listCategory as $category){
         ?>
         <tr>
-            <td><?php echo $category['category']; ?></td>
+            <td><?php echo htmlentities($category['category']); ?></td>
             <td>
                 <?php
                     if($category['id'] == 1){

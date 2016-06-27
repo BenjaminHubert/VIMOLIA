@@ -67,11 +67,11 @@
 					<?php foreach($questions as $question){?>
 					<?php if(($_POST['privacy'] == 'all' || $_POST['privacy'] == $question['is_public']) && ($_POST['satisfaction'] == 'all' || $_POST['satisfaction'] == $question['satisfaction']) && ($_POST['status'] == 'all' || $_POST['status'] == $question['status'])){?>
 					<tr>
-						<td><a href="<?php echo BASE_URL_ADMIN.'question/consult/'.$question['id'];?>"><?php echo $question['question_title'];?></a></td>
+						<td><a href="<?php echo BASE_URL_ADMIN.'question/consult/'.$question['id'];?>"><?php echo htmlentities($question['question_title']);?></a></td>
 						<td><?php echo ($question['is_public'] == 1)?'Publié':'Non publié';?></td>
 						<td><?php echo date('d/m/Y', strtotime($question['question_date']));?></td>
-						<td><?php echo $question['status'];?></td>
-						<td><?php echo ($question['satisfaction'] != null)?$question['satisfaction']:'?';?></td>
+						<td><?php echo htmlentities($question['status']);?></td>
+						<td><?php echo ($question['satisfaction'] != null)?htmlentities($question['satisfaction']):'?';?></td>
 					</tr>
 					<?php }?>
 					<?php }?>
