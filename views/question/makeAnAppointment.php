@@ -24,7 +24,7 @@
 			<img class="responsive-img materialboxed" src="<?php echo $doctor['url_avatar_praticien'];?>" data-caption="<?php echo htmlentities($doctor['first_name_praticien'].' '.$doctor['last_name_praticien']);?>">
 		</p>
 		<p>
-			<a href="#methodRDV" class="waves-effect waves-light btn blue-grey btn modal-trigger" style="width: 100%">
+			<a href="#methodRDV" class="waves-effect waves-light btn blue-grey btn modal-trigger"  data-id-doctor="<?php echo $doctor['id_praticien'];?>" style="width: 100%">
 				<i class="material-icons">done</i>
 			</a>
 		</p>
@@ -33,22 +33,46 @@
 <?php }?>
 
 <!-- Modal Structure -->
-<div id="methodRDV" class="modal bottom-sheet">
+<div id="methodRDV" class="modal bottom-sheet" data-id-question="<?php echo $doctor['id_question'];?>" data-id-doctor="">
 	<div class="modal-content">
-		<h5>Votre méthode de rendez-vous</h5>
 		<div class="container">
-			<div class="row">
-				<div class="col s6 center">
+			<div class="row step-1">
+				<div class="col s12">
+					<div class="progress" style="display:none">
+						<div class="indeterminate"></div>
+					</div>
+					<p class="error red-text"></p>
+				</div>
+				<div class="col s6 center hoverable visio-conference" style="cursor:pointer">
 					<i class="material-icons large">laptop_mac</i>
 					<br>
 					<p>Visio-conférence</p>
 				</div>
-				<div class="col s6 center">
+				<div class="col s6 center hoverable physique" style="cursor:pointer">
 					<i class="material-icons large">directions_walk</i>
 					<br>
 					<p>Se déplacer dans son cabinet</p>
 				</div>
 			</div>
+			<div class="row step-2" style="display:none">
+				<div class="col s12 center green lighten-2">
+					<p>Votre demande de rendez-vous a été indiquée à votre praticien</p>
+					<p>Pour définir une date, veuillez contacter votre praticien à l'aide des coordonnées ci-dessous</p>
+				</div>
+				<div class="col s12 m6">
+					<p class="name"></p>
+					<p class="address"></p>
+					<p class="skills"></p>
+				</div>
+				<div class="col s12 m6">
+					<p class="phone"></p>
+					<p class="mobile"></p>
+					<p class="email"></p>
+				</div>
+			</div>
 		</div>
 	</div>
+	<div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-green btn-flat ">Annuler</a>
+    </div>
 </div>

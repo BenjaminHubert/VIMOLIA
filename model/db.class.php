@@ -1000,4 +1000,13 @@ class DB {
         return $query->execute([$id]);
     }
     
+    public function addAppointment($is_virtual, $id_member, $id_doctor){
+    	$query = $this->connection->prepare('
+			INSERT INTO appointment(is_virtual, id_member, id_doctor)
+    		SELECT ?, ?, ?
+    	');
+    	
+    	return $query->execute([$is_virtual, $id_member, $id_doctor]);
+    }
+    
 }

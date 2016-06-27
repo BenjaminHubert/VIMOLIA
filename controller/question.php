@@ -170,5 +170,20 @@ class questionController extends baseController {
 			$this->registry->template->show('404', true);
 		}
 	}
+	
+	//AJAX
+	public function addAppointment(){
+		$json = [];
+		if(isset($_POST['id_doctor'], $_POST['is_virtual'], $_POST['id_question'])){
+			$doctor = $this->registry->db->getDoctorById($_POST['id_doctor']);
+			$question = $this->registry->db->getQuestion($_POST['id_question']);
+			if($doctor && $question && $question['id_user'] == $_SESSION['id']){
+				if($this->registry->db->addAppointment($_POST['is_virtual'], $_SESSION['id'], $doctor['id'])){
+					$json['doctor'] = $doctor;	
+				}else $json['error'] = 'Erreur lors de la demande de rendez vous';				
+			}else $json['error'] = 'Praticien non trouvé';
+		}else $json['error'] = 'Paramètre manquant';
+		echo json_encode($json);
+	}
 }
 ?>
