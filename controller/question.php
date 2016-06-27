@@ -177,9 +177,10 @@ class questionController extends baseController {
 		if(isset($_POST['id_doctor'], $_POST['is_virtual'], $_POST['id_question'])){
 			$doctor = $this->registry->db->getDoctorById($_POST['id_doctor']);
 			$question = $this->registry->db->getQuestion($_POST['id_question']);
-			if($doctor && $question && $question['id_user'] == $_SESSION['id']){
+			if($doctor && $question && $question['id_user'] == $_SESSION['id'] && $question['status'] == 'Question en attente du choix d\'un praticien par le patient'){
 				if($this->registry->db->addAppointment($_POST['is_virtual'], $_SESSION['id'], $doctor['id'])){
-					$json['doctor'] = $doctor;	
+					$json['doctor'] = $doctor;
+					$this->registry->db->changeStatusQuestion($_POST['id_question'], 'Question dont le membre est en attente de rendez-vous');
 				}else $json['error'] = 'Erreur lors de la demande de rendez vous';				
 			}else $json['error'] = 'Praticien non trouvé';
 		}else $json['error'] = 'Paramètre manquant';
