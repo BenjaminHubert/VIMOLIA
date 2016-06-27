@@ -10,7 +10,7 @@ if(!empty($listVideo)){
                 <option value="-1" selected>Tout</option>
                 <?php foreach($listCategory as $category){ ?>
                 <option value="<?php echo $category['id']; ?>">
-                    <?php echo $category['category']; ?>
+                    <?php echo htmlentities($category['category']); ?>
                 </option>
                 <?php } ?>
             </select>  
@@ -21,7 +21,7 @@ if(!empty($listVideo)){
                 <option value="-1" selected>Tout</option>
                 <?php foreach($listThematic as $thematic){ ?>
                 <option value="<?php echo $thematic['id']; ?>">
-                    <?php echo $thematic['thematic']; ?>
+                    <?php echo htmlentities($thematic['thematic']); ?>
                 </option>
                 <?php } ?>
             </select>
@@ -58,10 +58,10 @@ if(!empty($listVideo)){
             </div>
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">
-                    <?php echo $video['title']; ?>
+                    <?php echo htmlentities($video['title']); ?>
                     <i class="material-icons right">more_vert</i>
                 </span>
-                <p class="cat-them"><?php echo $category['category']; ?><br><?php echo $thematic['thematic']; ?></p>
+                <p class="cat-them"><?php echo htmlentities($category['category']); ?><br><?php echo htmlentities($thematic['thematic']); ?></p>
                 <p><?php echo date('\L\e d/m/Y \à H\hi', strtotime($video['date_create'])); ?></p>
             </div>
             <div class="card-action">
@@ -69,10 +69,10 @@ if(!empty($listVideo)){
             </div>
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">
-                    <?php echo $video['title']; ?>
+                    <?php echo htmlentities($video['title']); ?>
                     <i class="material-icons right">close</i>
                 </span>
-                <p><?php echo $video['description']; ?></p>
+                <p><?php echo htmlentities($video['description']); ?></p>
             </div>
         </div>
     </div>
@@ -90,7 +90,7 @@ if(!empty($listVideo)){
                 <option value="-1" selected>Tout</option>
                 <?php foreach($listCategory as $category){ ?>
                 <option value="<?php echo $category['id']; ?>">
-                    <?php echo $category['category']; ?>
+                    <?php echo htmlentities($category['category']); ?>
                 </option>
                 <?php } ?>
             </select>  
@@ -101,7 +101,7 @@ if(!empty($listVideo)){
                 <option value="-1" selected>Tout</option>
                 <?php foreach($listThematic as $thematic){ ?>
                 <option value="<?php echo $thematic['id']; ?>">
-                    <?php echo $thematic['thematic']; ?>
+                    <?php echo htmlentities($thematic['thematic']); ?>
                 </option>
                 <?php } ?>
             </select>

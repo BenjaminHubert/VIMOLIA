@@ -9,10 +9,10 @@
 		  	</div>
 		</div>
 		<p id="name">
-			<i class="material-icons left">perm_identity</i> <?php echo ($question['pseudo']!=null)?$question['pseudo']:$question['first_name'].' '.$question['last_name'];?></p>
+			<i class="material-icons left">perm_identity</i> <?php echo ($question['pseudo']!=null)?htmlentities($question['pseudo']):htmlentities($question['first_name'].' '.$question['last_name']);?></p>
 		<div class="divider"></div>
-		<p id="question"><?php echo $question['question_title'];?></p>
-		<p id="details"><?php echo $question['question_text'];?></p>
+		<p id="question"><?php echo htmlentities($question['question_title']);?></p>
+		<p id="details"><?php echo htmlentities($question['question_text']);?></p>
 		<div class="divider"></div>
 		<p id="datetime">
 			<i class="material-icons right">access_time</i><?php echo date('d/m/Y à H\hm', strtotime($question['question_date']))?></p>
@@ -28,7 +28,7 @@
 			</div>
 			<div class="col s11">
 				<p><?php echo $answer['answer_text'];?></p>
-				<p style="text-align: right"><?php echo ($answer['pseudo'] !== NULL)?$answer['pseudo']:$answer['first_name'].' '.$answer['last_name'];?>, expert <?php echo APP_TITLE;?></p>
+				<p style="text-align: right"><?php echo ($answer['pseudo'] !== NULL)?htmlentities($answer['pseudo']):htmlentities($answer['first_name'].' '.$answer['last_name']);?>, expert <?php echo APP_TITLE;?></p>
 				<p style="text-align: right; font-style: italic"><?php echo date('d/m/Y à H\hm', strtotime($answer['answer_date']));?></p>
 			</div>
 		</div>

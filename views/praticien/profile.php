@@ -6,8 +6,8 @@
     <div class="col s9">
         <div class="row">
             <div class="col s6">
-                <p id="name" class="bold"><?php echo $doctor['first_name'].' '.$doctor['last_name'];?></p>
-                <p>Spécialiste en: <span id="skills"><?php echo implode(', ', $doctor['skills']);?></span></p>
+                <p id="name" class="bold"><?php echo htmlentities($doctor['first_name'].' '.$doctor['last_name']);?></p>
+                <p>Spécialiste en: <span id="skills"><?php echo implode(', ', htmlentities($doctor['skills']));?></span></p>
                 <br><br><br>
             </div>
             <div class="col s6 card">
@@ -15,17 +15,17 @@
                 <div>
                     <span class="bold">Adresse:</span>
                     <ul>
-                        <li><?php echo $doctor['address']; ?></li>
-                        <li><?php echo $doctor['city'].' '.$doctor['postal_code']; ?></li>
+                        <li><?php echo htmlentities($doctor['address']); ?></li>
+                        <li><?php echo htmlentities($doctor['city'].' '.$doctor['postal_code']); ?></li>
                     </ul>
                 </div>
-                <p><span class="bold">Tél:</span> <?php echo $doctor['phone']|$doctor['mobile'];?></p>
-                <p><span class="bold">Mail:</span> <a target="_blank" href="mailto:<?php echo $doctor['email'];?>"><?php echo $doctor['email'];?></a></p>
+                <p><span class="bold">Tél:</span> <?php echo htmlentities($doctor['phone']|$doctor['mobile']);?></p>
+                <p><span class="bold">Mail:</span> <a target="_blank" href="mailto:<?php echo htmlentities($doctor['email']);?>"><?php echo htmlentities($doctor['email']);?></a></p>
             </div>
             <div class="col s12">
                 <p id="presentation-title">Présentation:</p>
                 <div id="presentation">
-                    <p><?php echo $doctor['presentation'];?></p>
+                    <p><?php echo htmlentities($doctor['presentation']);?></p>
                 </div>
             </div>
             <div class="col s6">
@@ -37,7 +37,7 @@
             <div class="col s6">
                 <p id="diplomes-title">Diplômes: </p>
                 <ul>
-                    <li><?php echo $doctor['diploma'];?></li>
+                    <li><?php echo htmlentities($doctor['diploma']);?></li>
                 </ul>
             </div>
         </div>

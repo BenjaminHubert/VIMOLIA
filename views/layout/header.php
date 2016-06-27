@@ -22,13 +22,13 @@
         <?php if(isset($article)){ ?>
         <meta property="og:url"           content="<?php echo BASE_URL.'article/display/'.$article['id']; ?>" />
         <meta property="og:type"          content="article" />
-        <meta property="og:title"         content="<?php echo APP_TITLE.' - '.$article['title']; ?>" />
-        <meta property="og:description"   content="<?php echo $article['description']; ?>" />
-        <meta property="og:image"         content="<?php echo BASE_URL.$article['main_picture']; ?>" />
+        <meta property="og:title"         content="<?php echo htmlentities(APP_TITLE.' - '.$article['title']); ?>" />
+        <meta property="og:description"   content="<?php echo htmlentities($article['description']); ?>" />
+        <meta property="og:image"         content="<?php echo htmlentities(BASE_URL.$article['main_picture']); ?>" />
 
-        <meta itemprop="og:headline"      content="<?php echo APP_TITLE.' - '.$article['title']; ?>" />
-        <meta itemprop="og:description"   content="<?php echo $article['description']; ?>" />
-        <meta property="og:image"         content="<?php echo BASE_URL.$article['main_picture']; ?>" />
+        <meta itemprop="og:headline"      content="<?php echo htmlentities(APP_TITLE.' - '.$article['title']); ?>" />
+        <meta itemprop="og:description"   content="<?php echo htmlentities($article['description']); ?>" />
+        <meta property="og:image"         content="<?php echo htmlentities(BASE_URL.$article['main_picture']); ?>" />
         <?php } ?>
 
     </head>
