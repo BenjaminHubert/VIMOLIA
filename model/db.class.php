@@ -901,7 +901,7 @@ class DB {
 	}
 	
 	public function getAllAppointmentsByIdUser($id, $role){
-		$rolesAccepted = ['Membre', 'Expert', 'Praticien'];
+		$rolesAccepted = ['Membre', 'Praticien'];
 		if(!in_array($role, $rolesAccepted)){
 			return false;
 		}
@@ -909,22 +909,17 @@ class DB {
 			case 'Membre':
 				$role = 'id_member';
 				break;
-			case 'Expert':
-				$role = 'id_expert';
-				break;
 			case 'Praticien':
 				$role = 'id_doctor';
 				break;
 		}
 		
 		$query = $this->connection->prepare('
-			SELECT a.id, a.appointment_date, a.recommendation, a.rating, a.is_canceled, a.is_pending,	a.is_validated, a.is_virtual, a.id_member, a.id_expert, a.id_doctor,
+			SELECT a.id, a.appointment_request_date, a.recommendation, a.rating, a.is_canceled, a.is_pending, a.is_validated, a.is_virtual, a.id_member, a.id_doctor,
 				u_mem.first_name AS first_name_member, u_mem.last_name AS last_name_member, u_mem.pseudo AS pseudo_mem,
-				u_exp.first_name AS first_name_expert, u_exp.last_name AS last_name_expert,
 				u_doc.first_name AS first_name_doctor, u_doc.last_name AS last_name_doctor
 			FROM appointment a
 			JOIN user u_mem ON u_mem.id = a.id_member
-			JOIN user u_exp ON u_exp.id = a.id_expert
 			JOIN user u_doc ON u_doc.id = a.id_doctor
 			WHERE a.'.$role.' = ?
 		');
@@ -998,6 +993,15 @@ class DB {
             WHERE id = ?
         ');
         return $query->execute([$id]);
+    }
+    
+    public function addAppointment($is_virtual, $id_member, $id_doctor){
+    	$query = $this->connection->prepare('
+			INSERT INTO appointment(is_virtual, id_member, id_doctor)
+    		SELECT ?, ?, ?
+    	');
+    	
+    	return $query->execute([$is_virtual, $id_member, $id_doctor]);
     }
     
 }

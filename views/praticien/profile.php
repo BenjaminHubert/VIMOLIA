@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col s6">
                 <p id="name" class="bold"><?php echo htmlentities($doctor['first_name'].' '.$doctor['last_name']);?></p>
-                <p>Spécialiste en: <span id="skills"><?php echo implode(', ', htmlentities($doctor['skills']));?></span></p>
+                <p>Spécialiste en: <span id="skills"><?php echo htmlentities(implode(', ', $doctor['skills']));?></span></p>
                 <br><br><br>
             </div>
             <div class="col s6 card">
