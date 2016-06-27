@@ -12,7 +12,7 @@
                         <iframe width="853" height="480" src="<?php echo str_replace('watch?v=', 'embed/', $video['url']); ?>" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="caption center-align">
-                        <h5 class="light white-text text-lighten-3 truncate"><?php echo $video['title']; ?></h5>
+                        <h5 class="light white-text text-lighten-3 truncate"><?php echo htmlentities($video['title']); ?></h5>
                     </div>
                 </li>
                 <?php 
@@ -41,12 +41,12 @@
             <a class="collection-item" href="<?php echo BASE_URL.'article/display/'.$article['id']; ?>">
                 <div class="article_thumbnail">
                     <img src="<?php echo $article['main_picture']; ?>">
-                    <p class="author">Par <?php echo $user['first_name']." ".$user['last_name']; ?><br>
+                    <p class="author">Par <?php echo htmlentities($user['first_name']." ".$user['last_name']); ?><br>
                         <?php echo date('\L\e d/m/Y \à H\hi', strtotime($article['date_publish'])); ?></p>
                 </div>
                 <div class="article_details">
-                    <h5><?php echo $article['title']; ?></h5>
-                    <p class="desc"><?php echo $article['description']; ?></p>
+                    <h5><?php echo htmlentities($article['title']); ?></h5>
+                    <p class="desc"><?php echo htmlentities($article['description']); ?></p>
                 </div>
             </a>
             <?php 

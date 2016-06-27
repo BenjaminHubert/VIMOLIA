@@ -16,10 +16,10 @@ if(!empty($listArticle)){
             </div>
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">
-                    <?php echo $article['title']; ?>
+                    <?php echo htmlentities($article['title']); ?>
                     <i class="material-icons right">more_vert</i>
                 </span>
-                <p>Par <?php echo $user['first_name']." ".$user['last_name']; ?></p>
+                <p>Par <?php echo htmlentities($user['first_name']." ".$user['last_name']); ?></p>
                 <p><?php echo date('\L\e d/m/Y \à H\hi', strtotime($article['date_publish'])); ?></p>
             </div>
             <div class="card-action">
@@ -27,10 +27,10 @@ if(!empty($listArticle)){
             </div>
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">
-                    <?php echo $article['title']; ?>
+                    <?php echo htmlentities($article['title']); ?>
                     <i class="material-icons right">close</i>
                 </span>
-                <p><?php echo $article['description']; ?></p>
+                <p><?php echo htmlentities($article['description']); ?></p>
             </div>
         </div>
     </div>

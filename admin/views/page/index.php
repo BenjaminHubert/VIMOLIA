@@ -17,8 +17,8 @@ if(!empty($listPage)){
         $user = $this->registry->db->getUser($page['id_user']);
         ?>
         <tr>
-            <td><a href="#"><?php echo $page['title']; ?></a></td>
-            <td><?php echo $user['first_name']." ".$user['last_name']; ?></td>
+            <td><a href="#"><?php echo htmlentities($page['title']); ?></a></td>
+            <td><?php echo htmlentities($user['first_name']." ".$user['last_name']); ?></td>
             <td><?php echo date('\L\e d/m/Y \à H\hi', strtotime($page['date_publish'])); ?></td>
             <td>
                 <a <?php echo(($page['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur ')?'href="'.BASE_URL_ADMIN.'page/edit/'.$page['id'].'"':'');?> 

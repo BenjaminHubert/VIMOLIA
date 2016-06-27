@@ -124,7 +124,7 @@
 		<ul class="right hide-on-med-and-down">
 			<li>
 				<a class="dropdown-button" href="#!" data-activates="logguedIn">
-					<i class="material-icons left">person</i><?php echo ($_SESSION['pseudo'] != null)?$_SESSION['pseudo']:$_SESSION['first_name'].' '.$_SESSION['last_name']?><i class="material-icons right">arrow_drop_down</i>
+					<i class="material-icons left">person</i><?php echo ($_SESSION['pseudo'] != null)?htmlentities($_SESSION['pseudo']):htmlentities($_SESSION['first_name'].' '.$_SESSION['last_name']);?><i class="material-icons right">arrow_drop_down</i>
 				</a>
 			</li>
 		</ul>

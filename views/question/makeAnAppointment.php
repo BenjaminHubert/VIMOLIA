@@ -12,7 +12,7 @@
 		<h4 class="ellipsis" style="direction: rtl;"><?php echo htmlentities($doctor['first_name_praticien'].' '.$doctor['last_name_praticien']);?></h4>
 		<ul style="direction: rtl;">
 			<?php foreach($doctor['skills'] as $skill){?>
-			<li><?php echo $skill;?></li>
+			<li><?php echo htmlentities($skill);?></li>
 			<?php }?>
 		</ul>
 	</div>
@@ -21,7 +21,7 @@
 	</div>
 	<div class="col s12 m2">
 		<p>
-			<img class="responsive-img materialboxed" src="<?php echo $doctor['url_avatar_praticien'];?>" data-caption="<?php echo $doctor['first_name_praticien'].' '.$doctor['last_name_praticien'];?>">
+			<img class="responsive-img materialboxed" src="<?php echo $doctor['url_avatar_praticien'];?>" data-caption="<?php echo htmlentities($doctor['first_name_praticien'].' '.$doctor['last_name_praticien']);?>">
 		</p>
 		<p>
 			<a href="#methodRDV" class="waves-effect waves-light btn blue-grey btn modal-trigger" style="width: 100%">

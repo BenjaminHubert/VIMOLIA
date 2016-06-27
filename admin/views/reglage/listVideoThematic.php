@@ -14,7 +14,7 @@ if(!empty($listThematic)){
     foreach($listThematic as $thematic){
         ?>
         <tr>
-            <td><?php echo $thematic['thematic']; ?></td>
+            <td><?php echo htmlentities($thematic['thematic']); ?></td>
             <td>
                 <?php
                     if($thematic['id'] == 1){

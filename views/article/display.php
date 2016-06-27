@@ -33,14 +33,14 @@
         <li>
             <img src="<?php echo $article['main_picture']; ?>">
             <div class="caption center-align">
-                <h3><?php echo $article['title'] ?></h3>
+                <h3><?php echo htmlentities($article['title']); ?></h3>
             </div>
         </li>
     </ul>
 </div>
 <div class="row">
     <?php $user = $this->registry->db->getUser($article['id_user']); ?>
-    <div class="col s12" id="author">Par <?php echo $user['first_name']." ".$user['last_name']; ?></div>
+    <div class="col s12" id="author">Par <?php echo htmlentities($user['first_name']." ".$user['last_name']); ?></div>
     <div class="col s12" id="date_pub"><?php echo date('\L\e d/m/Y \à H\hi', strtotime($article['date_publish'])); ?></div>
 
     <div class="social_network col s12">
@@ -61,7 +61,7 @@
     </div>
 
     <div class="col s12">
-        <p id="desc"><?php echo $article['description']; ?></p>
+        <p id="desc"><?php echo htmlentities($article['description']); ?></p>
         <div id="content">
             <?php echo $article['content']; ?>
         </div>

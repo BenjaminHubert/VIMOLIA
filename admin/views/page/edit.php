@@ -3,14 +3,14 @@
     <form method="POST" class="col s12">
         <div class="row">
             <div class="input-field col s12">
-                <input id="title" type="text" class="validate" name="title" value="<?php echo $page['title']; ?>">
+                <input id="title" type="text" class="validate" name="title" value="<?php echo htmlentities($page['title']); ?>">
                 <label for="title">Titre</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <h6>Contenu</h6>
-                <textarea id="content" name="content"><?php echo $page['content']; ?></textarea>
+                <textarea id="content" name="content"><?php echo htmlentities($page['content']); ?></textarea>
                 <br>
             </div>
         </div>

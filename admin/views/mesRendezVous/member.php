@@ -13,7 +13,7 @@
 				<?php foreach($appointments as $appointment){?>
 				<tr data-id-appointment="<?php echo $appointment['id'];?>">
 					<!-- NAME -->
-					<td><a target="_blank" href="<?php echo BASE_URL.'praticien/profile/'.$appointment['id_doctor'];?>"><?php echo $appointment['first_name_doctor'].' '.$appointment['last_name_doctor'];?></a></td>
+					<td><a target="_blank" href="<?php echo BASE_URL.'praticien/profile/'.$appointment['id_doctor'];?>"><?php echo htmlentities($appointment['first_name_doctor'].' '.$appointment['last_name_doctor']);?></a></td>
 					<!-- IS VALIDATED -->
 					<td style="text-align:right">
 						<?php if($appointment['is_canceled'] == 1){?>
@@ -42,7 +42,7 @@
 					<?php }elseif($appointment['is_validated'] == 1 && $appointment['rating'] == null){?>
 					<td style="text-align:right"><a href="#rate-modal" class="modal-trigger waves-effect waves-light btn green lighten-2 rate" data-id-appointment="<?php echo $appointment['id'];?>"><i class="material-icons right">star_border</i>Noter</a></td>
 					<?php }elseif($appointment['is_validated'] == 1 && $appointment['rating'] != null){?>
-					<td style="text-align:right"><a href="#history-modal" class="modal-trigger waves-effect waves-light btn green lighten-2 watch" data-id-appointment="<?php echo $appointment['id'];?>" data-rate="<?php echo $appointment['rating'];?>" data-comment="<?php echo $appointment['recommendation'];?>" ><i class="material-icons right">history</i>Voir</a></td>
+					<td style="text-align:right"><a href="#history-modal" class="modal-trigger waves-effect waves-light btn green lighten-2 watch" data-id-appointment="<?php echo $appointment['id'];?>" data-rate="<?php echo $appointment['rating'];?>" data-comment="<?php echo htmlentities($appointment['recommendation']);?>" ><i class="material-icons right">history</i>Voir</a></td>
 					<?php }?>
 				</tr>
 				<?php }?>

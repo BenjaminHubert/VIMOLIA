@@ -4,7 +4,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">mail_outline</i>
-                <input id="email" name="email" type="email" class="validate" value="<?php echo (isset($_POST['email']))?$_POST['email']:'';?>" autofocus>
+                <input id="email" name="email" type="email" class="validate" value="<?php echo (isset($_POST['email']))?htmlentities($_POST['email']):'';?>" autofocus>
                 <label for="email" data-error="Veuillez saisir une adresse email valide" data-success="">Adresse email</label>
             </div>
             <div class="input-field col s12">

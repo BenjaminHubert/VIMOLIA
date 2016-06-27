@@ -30,7 +30,7 @@
 
 <div class="row">
     <div class="col s12 m10 offset-m1">
-        <h3><?php echo $video['title'] ?></h3>
+        <h3><?php echo htmlentities($video['title']); ?></h3>
     </div>
 
     <div class="col s12 m10 offset-m1">
@@ -60,7 +60,7 @@
     </div>
 
     <div class="col s12 m10 offset-m1">
-        <p id="desc"><?php echo $video['description']; ?></p>
+        <p id="desc"><?php echo htmlentities($video['description']); ?></p>
     </div>
 
     <div class="col s12 m10 offset-m1" id="comments">

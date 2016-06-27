@@ -5,7 +5,7 @@
             <select name="skill" required>
                 <option value="all" selected>Tous</option>
                 <?php foreach($skills as $skill){?>
-                <option <?php echo (isset($_GET['skill']) && strtolower($_GET['skill']) == strtolower($skill))?'selected':'';?>><?php echo $skill;?></option>
+                <option <?php echo (isset($_GET['skill']) && strtolower($_GET['skill']) == strtolower($skill))?'selected':'';?>><?php echo htmlentities($skill);?></option>
                 <?php } ?>
             </select>
         </div>
@@ -24,13 +24,13 @@
             <a href="<?php echo BASE_URL.'praticien/profile/'.$doctor['id'];?>">
                 <div class="card-image" style="height:256px;">
                     <img src="<?php echo ($doctor['url_avatar'] == NULL)?BASE_URL.'img/avatar/user.png':$doctor['url_avatar'];?>" alt="Jean MICHEL">
-                    <span class="card-title"><?php echo $doctor['first_name'].' '.$doctor['last_name'];?></span>
+                    <span class="card-title"><?php echo htmlentities($doctor['first_name'].' '.$doctor['last_name']);?></span>
                 </div>
             </a>
             <div class="card-content">
                 <div>
                     <b>Spécialité(s):</b>
-                    <p><?php echo implode(', ', $doctor['skills']);?></p>
+                    <p><?php echo implode(', ', htmlentities($doctor['skills']));?></p>
                 </div>
             </div>
             <div class="card-action">

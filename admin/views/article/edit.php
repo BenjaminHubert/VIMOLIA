@@ -3,7 +3,7 @@
     <form method="POST" class="col s12" enctype="multipart/form-data">
         <div class="row">
             <div class="input-field col l6 s12">
-                <input id="title" type="text" class="validate" name="title" value="<?php echo $article['title']; ?>">
+                <input id="title" type="text" class="validate" name="title" value="<?php echo htmlentities($article['title']); ?>">
                 <label for="title">Titre</label>
             </div>
         </div>
@@ -24,14 +24,14 @@
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <textarea id="description" class="materialize-textarea" name="description"><?php echo $article['description']; ?></textarea>
+                <textarea id="description" class="materialize-textarea" name="description"><?php echo htmlentities($article['description']); ?></textarea>
                 <label for="description">Description</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <h6>Contenu</h6>
-                <textarea id="content" name="content"><?php echo $article['content']; ?></textarea>
+                <textarea id="content" name="content"><?php echo htmlentities($article['content']); ?></textarea>
                 <br>
             </div>
         </div>
