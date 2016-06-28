@@ -12,7 +12,7 @@
                         <iframe width="853" height="480" src="<?php echo str_replace('watch?v=', 'embed/', $video['url']); ?>" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="caption center-align">
-                        <h5 class="light white-text text-lighten-3 truncate"><?php echo htmlentities($video['title']); ?></h5>
+                        <h5 class="light white-text text-lighten-3 truncate"><a href="<?php echo BASE_URL.'video/display/'.$video['id']; ?>"><?php echo htmlentities($video['title']); ?></a></h5>
                     </div>
                 </li>
                 <?php 

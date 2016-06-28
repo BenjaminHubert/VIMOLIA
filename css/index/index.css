@@ -39,3 +39,7 @@
 .desc{
     color: #333;
 }
+
+.caption h5 a{
+    color: inherit;
+}
