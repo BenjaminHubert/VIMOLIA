@@ -106,5 +106,9 @@ class reglageController extends baseController {
         $this->registry->template->listThematic = $this->registry->db->listVideoThematic();
         $this->registry->template->show('listVideoThematic');
     }
+    
+    public function advanced(){
+    	
+    }
 }
 ?>
