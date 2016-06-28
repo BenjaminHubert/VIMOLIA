@@ -12,8 +12,17 @@ class reglageController extends baseController {
 			die();
 		}
 	}
-    public function index(){        
-        $this->registry->template->show('index');
+    public function index(){
+    	if(count($_POST) > 0){
+    		showArray($_POST);
+    		foreach($_POST as $key => $value){
+    			$this->registry->db->updateSetting($key, $value);
+    		}
+    		header('Location: '.BASE_URL_ADMIN.'reglage');
+    		die();
+    	}
+
+    	$this->registry->template->show('index');
     }
 
     public function videoCategories($args){

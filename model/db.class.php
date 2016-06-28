@@ -1014,4 +1014,14 @@ class DB {
     		return $query->fetchAll(PDO::FETCH_ASSOC);
     	}else return false;
     }
+    
+    public function updateSetting($attribute, $value){
+    	$query = $this->connection->prepare('
+    		UPDATE settings
+    		SET value = ?
+    		WHERE attribute = ?
+    	');
+    	
+    	return $query->execute([$value, $attribute]);
+    }
 }

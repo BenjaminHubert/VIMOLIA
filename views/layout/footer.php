@@ -1,5 +1,5 @@
 </div>
-<footer class="page-footer" style="background-color:<?php echo $_SETTINGS['FIRST_FOOTER_BACKGROUND-COLOR'];?>">
+<footer class="page-footer" style="background-color:<?php echo htmlentities($_SETTINGS['FIRST_FOOTER_BACKGROUND-COLOR']);?>">
 	<div class="container">
 		<div class="row">
 			<div class="col l6 s12">
@@ -28,7 +28,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="footer-copyright" style="background-color:<?php echo $_SETTINGS['SECOND_FOOTER_BACKGROUND-COLOR'];?>">
+	<div class="footer-copyright" style="background-color:<?php echo htmlentities($_SETTINGS['SECOND_FOOTER_BACKGROUND-COLOR']);?>">
 		<div class="container">
 			Développé par <a class="white-text text-lighten-1" href="https://github.com/axeldelannay">Axel Delannay</a>, <a class="white-text text-lighten-1" href="https://github.com/bertrandfreylin">Bertrand Freylin</a>, <a class="white-text text-lighten-1" href="https://github.com/benjaminhubert">Benjamin Hubert</a>, <a class="white-text text-lighten-1" href="https://github.com/thibaultlenormand">Thibault Lenormand</a> et <a class="white-text text-lighten-1" href="https://github.com/younessadmi">Younes Sadmi</a>
 		</div>
