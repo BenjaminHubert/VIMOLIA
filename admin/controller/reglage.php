@@ -106,5 +106,21 @@ class reglageController extends baseController {
         $this->registry->template->listThematic = $this->registry->db->listVideoThematic();
         $this->registry->template->show('listVideoThematic');
     }
+    
+    public function advanced(){
+    	if(count($_POST) > 0){
+    		showArray($_POST);
+    		$content = "<?php\n";
+    		foreach($_POST as $key => $val){
+    			$content .= "DEFINE('".$key."', ".var_export($val, true).");\n";
+    		}
+    		$content .= "?>";
+    		if(file_put_contents(__SITE_PATH.'/../conf/config.php', $content)){
+    			header('Location: '.BASE_URL_ADMIN.'reglage/advanced');
+    			die();
+    		}
+    	}    	
+    	$this->registry->template->show('advanced');
+    }
 }
 ?>

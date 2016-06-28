@@ -80,6 +80,7 @@
 				<div class="collapsible-body">
 					<a href="<?php echo BASE_URL_ADMIN;?>utilisateur">Utilisateurs</a>
 					<a href="<?php echo BASE_URL_ADMIN;?>reglage">Réglages</a>
+					<a href="<?php echo BASE_URL_ADMIN;?>reglage/advanced">Réglages avancés</a>
 				</div>
 			</li>
 			<?php }?>
