@@ -1004,4 +1004,14 @@ class DB {
     	return $query->execute([$is_virtual, $id_member, $id_doctor]);
     }
     
+    public function getAllSettings(){
+    	$query = $this->connection->prepare('
+    		SELECT *
+    		FROM settings
+    	');
+    	
+    	if($query->execute()){
+    		return $query->fetchAll(PDO::FETCH_ASSOC);
+    	}else return false;
+    }
 }
