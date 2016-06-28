@@ -14,6 +14,13 @@ Class template {
     }
 
     public function show($name, $error = null){
+    	//SET SETTINGS
+    	$SETTINGS = $this->registry->db->getAllSettings();
+    	$_SETTINGS = [];
+    	foreach($SETTINGS as $setting){
+    		$_SETTINGS[$setting['attribute']] = $setting['value'];
+    	}
+    	unset($SETTINGS);
 
         $controller = debug_backtrace()[0]['object']->registry->vars['router']->controller;
         $action = debug_backtrace()[1]['function'];
