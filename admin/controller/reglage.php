@@ -109,6 +109,7 @@ class reglageController extends baseController {
     
     public function advanced(){
     	
+    	$this->registry->template->show('advanced');
     }
 }
 ?>
