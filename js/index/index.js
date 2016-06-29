@@ -10,4 +10,6 @@ $(document).ready(function(){
     $('.slider').click(function(){
         $('.slider').slider('play');
     });
+    
+    $('.collapsible').collapsible();
 });
