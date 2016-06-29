@@ -1027,10 +1027,11 @@ class DB {
     
     public function getSubscriptionByUser($idUser){
     	$query = $this->connection->prepare('
-    		SELECT 
-    			s.id_user, 
+    		SELECT
+				s.id_user, 
 				type.name, type.description, type.amount, type.currencycode, type.duration_days,
-				st.`status`
+				st.`status`,
+				t.paypal_timestamp AS start_date, DATE_ADD(t.paypal_timestamp, INTERVAL type.duration_days DAY) AS end_date
 			FROM subscription s
 			JOIN transaction t ON t.id = s.id_transaction
 			JOIN subscription_type type ON type.id = s.id_subscription_type

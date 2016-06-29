@@ -6,8 +6,7 @@
 					<th>Type d'abonnement</th>
 					<th>Description</th>
 					<th>Montant</th>
-					<th>Durée d'abonnement</th>
-					<th>Status de l'abonnement</th>
+					<th>Date de validité</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -17,8 +16,7 @@
 					<td><?php echo htmlentities($subscription['name']);?></td>
 					<td><?php echo htmlentities($subscription['description']);?></td>
 					<td><?php echo htmlentities($subscription['amount'].' '.$subscription['currencycode']);?></td>
-					<td><?php echo htmlentities($subscription['duration_days']);?> jours</td>
-					<td><?php echo htmlentities($subscription['status']);?></td>
+					<td><?php echo htmlentities(date('d/m/Y', strtotime($subscription['start_date'])).' au '.date('d/m/Y', strtotime($subscription['end_date'])));?></td>
 				</tr>
 				<?php }?>
 				<?php }else{?>
