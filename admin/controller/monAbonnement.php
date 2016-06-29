@@ -20,5 +20,10 @@ class monAbonnementController extends baseController {
     	$this->registry->template->user_subscriptions = $user_subscriptions;
     	$this->registry->template->show('index');
     }
+    
+    public function add(){
+
+    	$this->registry->template->show('add');
+    }
 }
 ?>
