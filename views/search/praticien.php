@@ -30,7 +30,7 @@
             <div class="card-content">
                 <div>
                     <b>Spécialité(s):</b>
-                    <p><?php echo implode(', ', htmlentities($doctor['skills']));?></p>
+                    <p><?php echo htmlentities(implode(', ', $doctor['skills']));?></p>
                 </div>
             </div>
             <div class="card-action">
