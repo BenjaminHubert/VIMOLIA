@@ -1024,4 +1024,22 @@ class DB {
     	
     	return $query->execute([$value, $attribute]);
     }
+    
+    public function getSubscriptionByUser($idUser){
+    	$query = $this->connection->prepare('
+    		SELECT 
+    			s.id_user, 
+				type.name, type.description, type.amount, type.currencycode, type.duration_days,
+				st.`status`
+			FROM subscription s
+			JOIN transaction t ON t.id = s.id_transaction
+			JOIN subscription_type type ON type.id = s.id_subscription_type
+			JOIN status_transaction st ON st.id = t.id_status
+			WHERE id_user = ?
+    	');
+    	 
+    	if($query->execute([$idUser])){
+    		return $query->fetchAll(PDO::FETCH_ASSOC);
+    	}else return false;
+    }
 }

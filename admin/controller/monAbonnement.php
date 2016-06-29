@@ -13,8 +13,11 @@ class monAbonnementController extends baseController {
 		}
 	}
     public function index(){
+    	$subscription_types = $this->registry->db->getSubscriptionTypes();
+    	$user_subscriptions = $this->registry->db->getSubscriptionByUser($_SESSION['id']);
     	
-    	
+    	$this->registry->template->subscription_types = $subscription_types;
+    	$this->registry->template->user_subscriptions = $user_subscriptions;
     	$this->registry->template->show('index');
     }
 }
