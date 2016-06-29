@@ -58,7 +58,7 @@ if(!empty($listVideo)){
             <td><?php echo date('\L\e d/m/Y \à H\hi', strtotime($video['date_create'])); ?></td>
             <td>
                 <a <?php echo(($video['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur')?'href="'.BASE_URL_ADMIN.'video/edit/'.$video['id'].'"':'');?> 
-                   class="waves-effect waves-light btn <?php echo(($video['id_user'] == $_SESSION['id'])?'':'disabled'); ?>">
+                   class="waves-effect waves-light btn <?php echo(($video['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur')?'':'disabled'); ?>">
                     Modifier
                     <i class="material-icons right">create</i> 
                 </a>

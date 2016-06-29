@@ -22,7 +22,7 @@ if(!empty($listPage)){
             <td><?php echo date('\L\e d/m/Y \à H\hi', strtotime($page['date_publish'])); ?></td>
             <td>
                 <a <?php echo(($page['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur')?'href="'.BASE_URL_ADMIN.'page/edit/'.$page['id'].'"':'');?> 
-                   class="waves-effect waves-light btn <?php echo(($page['id_user'] == $_SESSION['id'])?'':'disabled'); ?>">
+                   class="waves-effect waves-light btn <?php echo(($page['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur')?'':'disabled'); ?>">
                     Modifier
                     <i class="material-icons right">create</i> 
                 </a> 

@@ -23,7 +23,7 @@ if(!empty($listArticle)){
             <td><?php echo date('\L\e d/m/Y \à H\hi', strtotime($article['date_publish'])); ?></td>
             <td>
                 <a <?php echo(($article['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur')?'href="'.BASE_URL_ADMIN.'article/edit/'.$article['id'].'"':'');?> 
-                   class="waves-effect waves-light btn <?php echo(($article['id_user'] == $_SESSION['id'])?'':'disabled'); ?>">
+                   class="waves-effect waves-light btn <?php echo(($article['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur')?'':'disabled'); ?>">
                     Modifier
                     <i class="material-icons right">create</i> 
                 </a>
