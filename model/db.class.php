@@ -20,7 +20,7 @@ class DB {
         $this->registry = $registry;
         if(USING_A_DB == true){
             try{
-                $this->connection = new PDO(DBTYPE . ":host=" . DBHOST . ";charset=UTF8;dbname=" . DBNAME, DBUSER, DBPASSWORD);
+                $this->connection = new PDO(DBTYPE . ":host=" . DBHOST . ";charset=UTF8;port=".DBPORT.";dbname=" . DBNAME, DBUSER, DBPASSWORD);
             }catch(PDOException $e){
                 print "Error new PDO: " . $e->getMessage() . "<br/>";
                 die();
