@@ -31,7 +31,7 @@
 
 <!-- ACTIONS BUTTON -->
 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-	<a href="<?php echo BASE_URL_ADMIN;?>monAbonnement/add" class=" btn-large" style="background-color:<?php echo $_SETTINGS['HEADER_BACKGROUND-COLOR'];?>">
+	<a href="<?php echo BASE_URL_ADMIN;?>monAbonnement/add" class=" btn-large" style="background-color:<?php echo htmlentities($_SETTINGS['HEADER_BACKGROUND-COLOR']);?>">
 		<i class="large material-icons left">add_box</i> Renouveler mon abonnement
 	</a>
 </div>
