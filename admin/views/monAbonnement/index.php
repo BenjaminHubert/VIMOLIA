@@ -12,12 +12,14 @@
 			<tbody>
 				<?php if($user_subscriptions){?>
 				<?php foreach($user_subscriptions as $subscription){?>
+				<?php if($subscription['id_status_transaction'] == 3){?>
 				<tr>
 					<td><?php echo htmlentities($subscription['name']);?></td>
 					<td><?php echo htmlentities($subscription['description']);?></td>
 					<td><?php echo htmlentities($subscription['amount'].' '.$subscription['currencycode']);?></td>
 					<td><?php echo htmlentities(date('d/m/Y', strtotime($subscription['start_date'])).' au '.date('d/m/Y', strtotime($subscription['end_date'])));?></td>
 				</tr>
+				<?php }?>
 				<?php }?>
 				<?php }else{?>
 				<tr>

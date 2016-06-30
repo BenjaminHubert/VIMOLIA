@@ -1030,7 +1030,7 @@ class DB {
     		SELECT
 				s.id_user, 
 				type.name, type.description, type.amount, type.currencycode, type.duration_days,
-				st.`status`,
+				st.`status`, st.id AS id_status_transaction,
 				t.paypal_timestamp AS start_date, DATE_ADD(t.paypal_timestamp, INTERVAL type.duration_days DAY) AS end_date
 			FROM subscription s
 			JOIN transaction t ON t.id = s.id_transaction
