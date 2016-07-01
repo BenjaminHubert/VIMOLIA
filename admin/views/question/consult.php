@@ -126,7 +126,7 @@
 				}
 				if(!$found){
 					?>
-					<option data-praticien="<?php echo htmlentities($doctor['first_name'].' '.$doctor['last_name']); ?>" data-skills="<?php echo implode(', ', htmlentities($doctor['skills']));?>" value="<?php echo $doctor['id'];?>">
+					<option data-praticien="<?php echo htmlentities($doctor['first_name'].' '.$doctor['last_name']); ?>" data-skills="<?php echo htmlentities(implode(', ', $doctor['skills']));?>" value="<?php echo $doctor['id'];?>">
 						<?php echo htmlentities($doctor['first_name'].' '.$doctor['last_name'].' - '.implode(', ', $doctor['skills']));?>
 					</option>
 			<?php
