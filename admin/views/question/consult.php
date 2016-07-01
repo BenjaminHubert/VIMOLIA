@@ -84,7 +84,7 @@
 				<?php foreach($proposed_doctors as $proposed_doctor){?>
 				<tr>
 					<td><?php echo htmlentities($proposed_doctor['first_name_praticien'].' '.$proposed_doctor['last_name_praticien']);?></td>
-					<td><?php echo implode(', ', htmlentities($proposed_doctor['skills']));?></td>
+					<td><?php echo htmlentities(implode(', ', $proposed_doctor['skills']));?></td>
 					<td>
 						<form action="" method="post">
 							<button type="submit" name="deleteProposedDoctor" value="<?php echo $proposed_doctor['id'];?>" class="btn-floating waves-effect waves-light blue-grey delete"><i class="material-icons">delete_forever</i></button>

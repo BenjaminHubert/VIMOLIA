@@ -20,7 +20,7 @@ class DB {
         $this->registry = $registry;
         if(USING_A_DB == true){
             try{
-                $this->connection = new PDO(DBTYPE . ":host=" . DBHOST . ";charset=UTF8;dbname=" . DBNAME, DBUSER, DBPASSWORD);
+                $this->connection = new PDO(DBTYPE . ":host=" . DBHOST . ";charset=UTF8;port=".DBPORT.";dbname=" . DBNAME, DBUSER, DBPASSWORD);
             }catch(PDOException $e){
                 print "Error new PDO: " . $e->getMessage() . "<br/>";
                 die();
@@ -1023,5 +1023,24 @@ class DB {
     	');
     	
     	return $query->execute([$value, $attribute]);
+    }
+    
+    public function getSubscriptionByUser($idUser){
+    	$query = $this->connection->prepare('
+    		SELECT
+				s.id_user, 
+				type.name, type.description, type.amount, type.currencycode, type.duration_days,
+				st.`status`, st.id AS id_status_transaction,
+				t.paypal_timestamp AS start_date, DATE_ADD(t.paypal_timestamp, INTERVAL type.duration_days DAY) AS end_date
+			FROM subscription s
+			JOIN transaction t ON t.id = s.id_transaction
+			JOIN subscription_type type ON type.id = s.id_subscription_type
+			JOIN status_transaction st ON st.id = t.id_status
+			WHERE id_user = ?
+    	');
+    	 
+    	if($query->execute([$idUser])){
+    		return $query->fetchAll(PDO::FETCH_ASSOC);
+    	}else return false;
     }
 }

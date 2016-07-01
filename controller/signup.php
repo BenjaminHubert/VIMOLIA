@@ -95,7 +95,7 @@ class signupController extends baseController {
                                             $payPal->setCurrencyCode($subscriptionType['currencycode']);
                                             $payPal->setLocaleCode('FR');
                                             $payPal->isSandbox(true);
-                                            $payPal->setLogo(BASE_URL.'img/logo.png');
+                                            $payPal->setLogo(BASE_URL.'img/logo_250x84.png');
                                             $payPal->setUsername_facilitator($this->facilitatorUsername);
                                             $payPal->setPassword_facilitator($this->facilitatorPassword);
                                             $payPal->setSignature_facilitator($this->facilitatorSignature);

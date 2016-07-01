@@ -48,6 +48,7 @@
 				<div class="collapsible-header"><i class="material-icons left">content_paste</i>Espace Praticien<i class="material-icons right">arrow_drop_down</i></div>
 				<div class="collapsible-body">
 					<a href="<?php echo BASE_URL_ADMIN;?>mesRendezVous">Mes rendez-vous</a>
+					<a href="<?php echo BASE_URL_ADMIN;?>monAbonnement">Mon abonnements</a>
 				</div>
 			</li>
 			<?php }?>
