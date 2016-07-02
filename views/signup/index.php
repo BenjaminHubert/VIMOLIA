@@ -14,26 +14,35 @@
             <li>- Accès libre à la liste des praticiens</li>
             <li>- Noter un praticien</li>
         </ul>
-        <form method="POST" action="<?php echo BASE_URL;?>signup" class="row">
-            <div class="input-field col s6">
+        <form method="POST" action="<?php echo BASE_URL;?>signup" class="row" enctype="multipart/form-data">
+            <div class="input-field col s4">
                 <i class="material-icons prefix">person</i>
                 <input id="first_name" name="first_name" type="text" class="validate" value="<?php echo (isset($_POST['first_name']) && $_POST['type'] == 'member')?htmlentities($_POST['first_name']):'';?>" required>
                 <label for="first_name">Prénom *</label>
             </div>
-            <div class="input-field col s6">
+            <div class="input-field col s4">
                 <i class="material-icons prefix">person</i>
                 <input id="last_name" name="last_name" type="text" class="validate" value="<?php echo (isset($_POST['last_name']) && $_POST['type'] == 'member')?htmlentities($_POST['last_name']):'';?>" required>
                 <label for="last_name">Nom *</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="material-icons prefix">date_range</i>
+                <input id="birthday" type="date" name="birthday" class="datepicker" value="<?php echo (isset($_POST['birthday']) && $_POST['type'] == 'member')?htmlentities($_POST['birthday']):'';?>" required>
+                <label for="birthday">Date de naissance *</label>
             </div>
             <div class="input-field col s6">
                 <i class="material-icons prefix">person</i>
                 <input id="pseudo" name="pseudo" type="text" class="validate" value="<?php echo (isset($_POST['pseudo']) && $_POST['type'] == 'member')?htmlentities($_POST['pseudo']):'';?>">
                 <label for="pseudo">Pseudo</label>
             </div>
-            <div class="input-field col s6">
-                <i class="material-icons prefix">date_range</i>
-                <input id="birthday" type="date" name="birthday" class="datepicker" value="<?php echo (isset($_POST['birthday']) && $_POST['type'] == 'member')?htmlentities($_POST['birthday']):'';?>" required>
-                <label for="birthday">Date de naissance *</label>
+            <div class="file-field input-field col s6">
+                <div class="btn">
+                    <span>Avatar</span>
+                    <input type="file" accept="image/*" name="avatar_file">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" name="url_avatar">
+                </div>
             </div>
             <div class="input-field col s12">
                 <i class="material-icons prefix">place</i>
@@ -90,26 +99,35 @@
             <li>- Obtenir une notation de la part des patients</li>
         </ul>
         <h5>Etape 1: Vos informations</h5>
-        <form method="POST" action="<?php echo BASE_URL;?>signup" class="row">
-            <div class="input-field col s6">
+        <form method="POST" action="<?php echo BASE_URL;?>signup" class="row" enctype="multipart/form-data">
+            <div class="input-field col s4">
                 <i class="material-icons prefix">person</i>
                 <input id="first_name" name="first_name" type="text" class="validate" value="<?php echo (isset($_POST['first_name']) && $_POST['type'] == 'doctor')?htmlentities($_POST['first_name']):'';?>" required>
                 <label for="first_name">Prénom *</label>
             </div>
-            <div class="input-field col s6">
+            <div class="input-field col s4">
                 <i class="material-icons prefix">person</i>
                 <input id="last_name" name="last_name" type="text" class="validate" value="<?php echo (isset($_POST['last_name']) && $_POST['type'] == 'doctor')?htmlentities($_POST['last_name']):'';?>" required>
                 <label for="last_name">Nom *</label>
+            </div>
+            <div class="input-field col s4">
+                <i class="material-icons prefix">date_range</i>
+                <input id="birthday" type="date" name="birthday" class="datepicker" value="<?php echo (isset($_POST['birthday']) && $_POST['type'] == 'doctor')?htmlentities($_POST['birthday']):'';?>" required>
+                <label for="birthday">Date de naissance *</label>
             </div>
             <div class="input-field col s6">
                 <i class="material-icons prefix">person</i>
                 <input id="pseudo" name="pseudo" type="text" class="validate" value="<?php echo (isset($_POST['pseudo']) && $_POST['type'] == 'doctor')?htmlentities($_POST['pseudo']):'';?>">
                 <label for="pseudo">Pseudo</label>
             </div>
-            <div class="input-field col s6">
-                <i class="material-icons prefix">date_range</i>
-                <input id="birthday" type="date" name="birthday" class="datepicker" value="<?php echo (isset($_POST['birthday']) && $_POST['type'] == 'doctor')?htmlentities($_POST['birthday']):'';?>" required>
-                <label for="birthday">Date de naissance *</label>
+            <div class="file-field input-field col s6">
+                <div class="btn">
+                    <span>Avatar</span>
+                    <input type="file" accept="image/*" name="avatar_file">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" name="url_avatar">
+                </div>
             </div>
             <div class="input-field col s12">
                 <i class="material-icons prefix">place</i>

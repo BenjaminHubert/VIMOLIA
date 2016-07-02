@@ -1,6 +1,6 @@
 <?php
 class signupController extends baseController {
-    
+
     private $facilitatorUsername = 'younes.sadmi-facilitator_api1.gmail.com';
     private $facilitatorPassword = 'Y8L9MQSJL7MEPJSJ';
     private $facilitatorSignature = 'AFcWxV21C7fd0v3bYYYRCpSSRl31Aqkx9PCclDaHbdmVkgfpneMdajEk';
@@ -25,7 +25,8 @@ class signupController extends baseController {
     }
 
     private function member(){
-        $postExpected = ['first_name', 'last_name', 'pseudo', 'birthday', 'birthday_submit', 'address', 'postal_code', 'city', 'phone', 'mobile', 'email', 'password', 'password_confirmation', 'submit', 'type'];
+        $postExpected = ['first_name', 'last_name', 'birthday', 'birthday_submit', 'pseudo', 'url_avatar', 'address', 'postal_code', 'city', 'phone', 'mobile', 'email', 'password', 'password_confirmation', 'submit', 'type'];
+        $fileExpected = ['avatar_file'];
         if($postExpected == array_keys($_POST)){
             foreach($postExpected as $var){
                 $$var = $_POST[$var];
@@ -37,7 +38,21 @@ class signupController extends baseController {
                     if($password == $password_confirmation){
                         if(!$this->registry->db->isUserMailExist($email)){
                             $_POST['pseudo'] = ($_POST['pseudo'] != '')?$_POST['pseudo']:null;
+                            $_POST['url_avatar'] = ($_POST['url_avatar'] != '')?$_POST['url_avatar']:null;
                             if($this->registry->db->addMember($_POST)){
+
+                                if($_POST['url_avatar'] != null){
+                                    $idUser = $this->registry->db->getIDUserByEmail($_POST['email']);
+                                    $user = $this->registry->db->getUser($idUser);
+
+                                    $info = pathinfo($_FILES['avatar_file']['name']);
+                                    $ext = $info['extension'];
+                                    $_POST['url_avatar'] = $idUser.'.'.$ext;
+                                    $user['url_avatar'] = BASE_URL.'img/avatar/'.$_POST['url_avatar'];
+                                    $this->registry->db->updateUser($user);
+                                    uploadFile($_FILES, 'avatar_file', DIRECTORY_SEPARATOR.'img'.DIRECTORY_SEPARATOR.'avatar'.DIRECTORY_SEPARATOR.$_POST['url_avatar']);
+                                }
+
                                 $PHPMailer = new MyMail();
                                 $PHPMailer->setFrom(EMAIL_FROM, EMAIL_FROM_NAME);
                                 $PHPMailer->addReplyTo(EMAIL_REPLY, EMAIL_REPLY_NAME);                               
@@ -64,7 +79,8 @@ class signupController extends baseController {
     }
 
     private function doctor(){
-        $postExpected = ['first_name', 'last_name', 'pseudo', 'birthday', 'birthday_submit', 'address', 'postal_code', 'city', 'phone', 'mobile', 'email', 'password', 'password_confirmation', 'specialities', 'siret', 'presentation', 'subscription_type', 'agreement', 'submit', 'type'];
+        $postExpected = ['first_name', 'last_name', 'birthday', 'birthday_submit', 'pseudo', 'url_avatar', 'address', 'postal_code', 'city', 'phone', 'mobile', 'email', 'password', 'password_confirmation', 'specialities', 'siret', 'presentation', 'subscription_type', 'agreement', 'submit', 'type'];
+        $fileExpected = ['avatar_file'];
         if(isset($_POST['specialities'])){
             if(isset($_POST['agreement'])){
                 if($postExpected == array_keys($_POST)){
@@ -88,6 +104,8 @@ class signupController extends baseController {
                                         }
                                         if($subscriptionTrueID){
                                             $_POST['pseudo'] = ($_POST['pseudo'] != '')?$_POST['pseudo']:null;
+                                            $_POST['url_avatar'] = ($_POST['url_avatar'] != '')?$_POST['url_avatar']:null;
+
                                             $payPal = new MyExpressCheckout();
                                             $payPal->setReturnUrl(BASE_URL.'signup/returnTransaction');
                                             $payPal->setCancelUrl(BASE_URL.'signup/cancelTransaction');
@@ -107,6 +125,17 @@ class signupController extends baseController {
                                                         if(!$this->registry->db->addSkillToUser($idUser, $skill)){
                                                             throw new Exception('Echec de l ajout des specialités ');
                                                         }
+                                                    }
+
+                                                    if($_POST['url_avatar'] != null){
+                                                        $user = $this->registry->db->getUser($idUser);
+
+                                                        $info = pathinfo($_FILES['avatar_file']['name']);
+                                                        $ext = $info['extension'];
+                                                        $_POST['url_avatar'] = $idUser.'.'.$ext;
+                                                        $user['url_avatar'] = BASE_URL.'img/avatar/'.$_POST['url_avatar'];
+                                                        $this->registry->db->updateUser($user);
+                                                        uploadFile($_FILES, 'avatar_file', DIRECTORY_SEPARATOR.'img'.DIRECTORY_SEPARATOR.'avatar'.DIRECTORY_SEPARATOR.$_POST['url_avatar']);
                                                     }
 
                                                     if($this->registry->db->addSubscription($idUser, $_POST['subscription_type'], $token)){
