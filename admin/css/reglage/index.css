@@ -1,0 +1,8 @@
+.toc-wrapper{
+	right: 25px;
+	top: 50px !important
+}
+
+.pin-top, .pinned, .pin-bottom  {
+	position: fixed !important;
+}

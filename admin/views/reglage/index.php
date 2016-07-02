@@ -1,4 +1,18 @@
-<div class="row" style="border: solid 1px grey; margin-top:10px; padding: 10px;">
+<!-- SCROLLSPY -->
+<div class="row">
+	<div class="col hide-on-med-and-down">
+		<div class="toc-wrapper">
+			<div style="height: 1px;">
+				<ul class="section table-of-contents">
+					<li><a href="#colors-section">Couleur</a></li>
+					<li><a href="#subscription-section">Abonnements</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- COLORS SECTION -->
+<div id="colors-section" class="row scrollspy" style="border: solid 1px grey; margin-top:10px; padding: 10px;">
 	<form action="" method="post">
 		<div class="col s12">
 			<h4>Couleurs</h4>
@@ -57,5 +71,10 @@
 		</div>
 	</form>
 </div>
+<!-- SUBSCRIPTION SECTION -->
+<div id="subscription-section" class="row scrollspy" style="border: solid 1px grey; margin-top:10px; padding: 10px;">
+	<form action="" method="post">
 
+	</form>
+</div>
 <script src="<?php echo BASE_URL;?>js/jqColorPicker.min.js"></script>
