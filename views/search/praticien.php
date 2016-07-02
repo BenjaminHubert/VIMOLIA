@@ -23,7 +23,7 @@
         <div class="card large">
             <a href="<?php echo BASE_URL.'praticien/profile/'.$doctor['id'];?>">
                 <div class="card-image" style="height:256px;">
-                    <img src="<?php echo ($doctor['url_avatar'] == NULL)?BASE_URL.'img/avatar/user.png':$doctor['url_avatar'];?>" alt="Jean MICHEL">
+                    <img src="<?php echo $doctor['url_avatar'];?>" alt="Picture not found">
                     <span class="card-title"><?php echo htmlentities($doctor['first_name'].' '.$doctor['last_name']);?></span>
                 </div>
             </a>
