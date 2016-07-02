@@ -30,7 +30,18 @@
         <meta itemprop="og:description"   content="<?php echo htmlentities($article['description']); ?>" />
         <meta property="og:image"         content="<?php echo htmlentities(BASE_URL.$article['main_picture']); ?>" />
         <?php } ?>
-
+		
+		<!-- DYNAMIC COLORS -->
+		<style>
+		/* BACKGROUND-COLOR*/
+		<?php
+		foreach($_SETTINGS as $attribute => $val){
+			echo '.'.$attribute.'{'.PHP_EOL;
+			echo 'background-color: '.$val.' !important;'.PHP_EOL;
+			echo '}'.PHP_EOL;
+		}
+		?>
+		</style>
     </head>
     <body>
         <?php include('navbar.php');?>

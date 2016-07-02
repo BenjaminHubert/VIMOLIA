@@ -1,4 +1,4 @@
-<nav role="navigation" style="background-color:<?php echo htmlentities($_SETTINGS['HEADER_BACKGROUND-COLOR']);?>">
+<nav role="navigation" class="HEADER_BACKGROUND-COLOR">
 	<div class="nav-wrapper container">
 		<a id="logo-container" href="<?php echo BASE_URL;?>" class="brand-logo  center">
 			<img src="<?php echo BASE_URL;?>img/logo.png" alt="<?php echo APP_TITLE;?>">
