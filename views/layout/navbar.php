@@ -1,4 +1,4 @@
-<nav role="navigation" style="background-color:<?php echo htmlentities($_SETTINGS['HEADER_BACKGROUND-COLOR']);?>">
+<nav role="navigation" class="HEADER_BACKGROUND-COLOR">
 	<div class="nav-wrapper container">
 		<a id="logo-container" href="<?php echo BASE_URL;?>" class="brand-logo  center">
 			<img src="<?php echo BASE_URL;?>img/logo.png" alt="<?php echo APP_TITLE;?>">
@@ -20,8 +20,8 @@
 			</li>
 			<?php }?>
 			<!-- EVERYONE -->
-			<li>
-				<div class="collapsible-header"><i class="material-icons left">public</i>Espace Public<i class="material-icons right">arrow_drop_down</i></div>
+			<li class="active">
+				<div class="collapsible-header active"><i class="material-icons left">public</i>Espace Public<i class="material-icons right">arrow_drop_down</i></div>
 				<div class="collapsible-body">
 					<a href="<?php echo BASE_URL;?>search/praticien">Consulter nos praticiens</a>
 					<a href="<?php echo BASE_URL;?>question">Consulter les questions</a>

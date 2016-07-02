@@ -28,7 +28,7 @@ if(!empty($listVideo)){
             <label>Thématique</label>
         </div>
         <div class="input-field col l4">
-            <button class="btn waves-effect waves-light" id="submit-filter">Rechercher
+            <button class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR" id="submit-filter">Rechercher
                 <i class="material-icons right">search</i>
             </button>  
         </div>
@@ -108,7 +108,7 @@ if(!empty($listVideo)){
             <label>Thématique</label>
         </div>
         <div class="input-field col l4">
-            <button class="btn waves-effect waves-light" id="submit-filter">Rechercher
+            <button class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR" id="submit-filter">Rechercher
                 <i class="material-icons right">search</i>
             </button>  
         </div>

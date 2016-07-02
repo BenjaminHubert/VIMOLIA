@@ -10,7 +10,7 @@
             </select>
         </div>
         <div class="input-field col s12 m6 l4">
-            <button class="btn waves-effect waves-light" type="submit" style="width:100%">Chercher</button>
+            <button class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR" type="submit" style="width:100%">Chercher</button>
         </div>
     </div>
 </form>
@@ -23,7 +23,7 @@
         <div class="card large">
             <a href="<?php echo BASE_URL.'praticien/profile/'.$doctor['id'];?>">
                 <div class="card-image" style="height:256px;">
-                    <img src="<?php echo ($doctor['url_avatar'] == NULL)?BASE_URL.'img/avatar/user.png':$doctor['url_avatar'];?>" alt="Jean MICHEL">
+                    <img src="<?php echo $doctor['url_avatar'];?>" alt="Picture not found">
                     <span class="card-title"><?php echo htmlentities($doctor['first_name'].' '.$doctor['last_name']);?></span>
                 </div>
             </a>

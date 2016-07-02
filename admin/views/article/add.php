@@ -10,7 +10,7 @@
         <div class="row">
             <div class="input-field col l6 s12">
                 <div class="file-field input-field">
-                    <div class="btn">
+                    <div class="btn BUTTON_BACKGROUND-COLOR">
                         <span>Image principale</span>
                         <input type="file" accept="image/*" name="main_picture_file">
                     </div>
@@ -57,7 +57,7 @@
         </div>
         <div class="row">
             <div class="col s12">
-                <button class="btn waves-effect waves-light" type="submit" name="submit" id="submit">Enregistrer
+                <button class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR" type="submit" name="submit" id="submit">Enregistrer
                     <i class="material-icons right">done</i>
                 </button>
             </div>

@@ -1,9 +1,9 @@
 <div class="fixed-action-btn hide-on-med-and-down" style="bottom: 45px; right: 24px;">
-    <a class="btn-floating btn-large waves-effect waves-light red" href="<?php echo BASE_URL_ADMIN;?>utilisateur/add">
+    <a class="btn-floating btn-large waves-effect waves-light BUTTON_BACKGROUND-COLOR" href="<?php echo BASE_URL_ADMIN;?>utilisateur/add">
         <i class="large material-icons">add</i>
     </a>
 </div>
-<a class="btn-floating btn-large waves-effect waves-light red hide-on-large-only" href="<?php echo BASE_URL_ADMIN;?>utilisateur/add">
+<a class="btn-floating btn-large waves-effect waves-light BUTTON_BACKGROUND-COLOR hide-on-large-only" href="<?php echo BASE_URL_ADMIN;?>utilisateur/add">
     <i class="large material-icons">add</i>
 </a>
 <h3>Utilisateurs</h3>

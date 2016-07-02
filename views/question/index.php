@@ -1,7 +1,7 @@
 <h4>Questions publiques</h4>
 <div class="row">
 	<div class="col s12 right">
-		<a href="<?php echo BASE_URL;?>question/add" class="waves-effect waves-light btn right"><i class="material-icons left">add</i>QUESTION</a>
+		<a href="<?php echo BASE_URL;?>question/add" class="waves-effect waves-light btn right BUTTON_BACKGROUND-COLOR"><i class="material-icons left">add</i>QUESTION</a>
 	</div>
 	<?php if(isset($_SESSION['id'])){?>
 	<div class="col s12">

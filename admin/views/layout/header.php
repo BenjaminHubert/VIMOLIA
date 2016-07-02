@@ -23,6 +23,18 @@
                 selector: 'textarea#content'
             });
         </script>
+        
+        <!-- DYNAMIC COLORS -->
+		<style>
+		/* BACKGROUND-COLOR*/
+		<?php
+		foreach($_SETTINGS as $attribute => $val){
+			echo '.'.$attribute.'{'.PHP_EOL;
+			echo 'background-color: '.$val.' !important;'.PHP_EOL;
+			echo '}'.PHP_EOL;
+		}
+		?>
+		</style>
     </head>
     <body>
         <?php include('../views/layout/navbar.php');?>

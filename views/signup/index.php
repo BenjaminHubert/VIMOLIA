@@ -76,7 +76,7 @@
                 <label for="password_confirmation" data-error="Le mot de passe n'est pas identique">Confirmation mot de passe *</label>
             </div>
             <div class="col s12 l4 offset-l8">
-                <button style="width:100%" class="btn waves-effect waves-light blue" type="submit" name="submit">Inscription<i class="material-icons right">send</i></button>
+                <button style="width:100%" class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR" type="submit" name="submit">Inscription<i class="material-icons right">send</i></button>
             </div>
 
             <input type="hidden" name="type" value="member">
@@ -192,7 +192,7 @@
                 <label for="agreement">J'accepte les conditions générales d'utilisation de <?php echo APP_TITLE;?></label>
             </div>
             <div class="input-field col s12 l4 offset-l8">
-                <button style="width:100%" class="btn waves-effect waves-light blue" type="submit" name="submit">Inscription<i class="material-icons right">send</i></button>
+                <button style="width:100%" class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR" type="submit" name="submit">Inscription<i class="material-icons right">send</i></button>
             </div>
             <input type="hidden" name="type" value="doctor">
         </form>

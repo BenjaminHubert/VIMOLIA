@@ -13,8 +13,7 @@ class reglageController extends baseController {
 		}
 	}
     public function index(){
-    	if(count($_POST) > 0){
-    		showArray($_POST);
+    	if(isset($_POST['updateColors'])){
     		foreach($_POST as $key => $value){
     			$this->registry->db->updateSetting($key, $value);
     		}

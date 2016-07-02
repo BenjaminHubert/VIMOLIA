@@ -48,7 +48,7 @@
             <label for="send_mail">Envoyer un message au nouvel utilisateur à propos de son compte.</label>
         </div>
         <div class="input-field col s12">
-            <button class="btn waves-effect waves-light blue" type="submit" name="submit">Ajouter<i class="material-icons right">send</i></button>
+            <button class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR" type="submit" name="submit">Ajouter<i class="material-icons right">send</i></button>
         </div>
     </div>
 </form>

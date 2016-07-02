@@ -38,11 +38,11 @@
 					</td>
 					<!-- ACTION BUTTON -->
 					<?php if($appointment['is_canceled'] == 0 && $appointment['is_validated'] == 0){?>
-					<td style="text-align:right"><a class="waves-effect waves-light btn green lighten-2 cancel" data-id-appointment="<?php echo $appointment['id'];?>"><i class="material-icons right">cancel</i>Annuler le rdv</a></td>
+					<td style="text-align:right"><a class="waves-effect waves-light btn BUTTON_BACKGROUND-COLOR cancel" data-id-appointment="<?php echo $appointment['id'];?>"><i class="material-icons right">cancel</i>Annuler le rdv</a></td>
 					<?php }elseif($appointment['is_validated'] == 1 && $appointment['rating'] == null){?>
-					<td style="text-align:right"><a href="#rate-modal" class="modal-trigger waves-effect waves-light btn green lighten-2 rate" data-id-appointment="<?php echo $appointment['id'];?>"><i class="material-icons right">star_border</i>Noter</a></td>
+					<td style="text-align:right"><a href="#rate-modal" class="modal-trigger waves-effect waves-light btn BUTTON_BACKGROUND-COLOR rate" data-id-appointment="<?php echo $appointment['id'];?>"><i class="material-icons right">star_border</i>Noter</a></td>
 					<?php }elseif($appointment['is_validated'] == 1 && $appointment['rating'] != null){?>
-					<td style="text-align:right"><a href="#history-modal" class="modal-trigger waves-effect waves-light btn green lighten-2 watch" data-id-appointment="<?php echo $appointment['id'];?>" data-rate="<?php echo $appointment['rating'];?>" data-comment="<?php echo htmlentities($appointment['recommendation']);?>" ><i class="material-icons right">history</i>Voir</a></td>
+					<td style="text-align:right"><a href="#history-modal" class="modal-trigger waves-effect waves-light btn BUTTON_BACKGROUND-COLOR watch" data-id-appointment="<?php echo $appointment['id'];?>" data-rate="<?php echo $appointment['rating'];?>" data-comment="<?php echo htmlentities($appointment['recommendation']);?>" ><i class="material-icons right">history</i>Voir</a></td>
 					<?php }?>
 				</tr>
 				<?php }?>
