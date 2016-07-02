@@ -43,7 +43,7 @@
 		<div class="col s12 m6 offset-m3 l8 offset-l3"></div>
 		<div class="file-field input-field col s12 m6">
 			<p>Dossier médical (10 Mo autorisé)</p>
-			<div class="btn">
+			<div class="btn BUTTON_BACKGROUND-COLOR">
 				<span>Parcourir</span> <input type="file" accept=".zip" name="medicalFile" required>
 			</div>
 			<div class="file-path-wrapper">
@@ -52,7 +52,7 @@
 		</div>
 		<div class="col s12 m6 offset-m3 l8 offset-l3"></div>
 		<div class="input-field col s12 m6 offset-m3 right">
-			<button class="btn waves-effect waves-light" type="submit" name="valider">
+			<button class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR" type="submit" name="valider">
 				Valider <i class="material-icons right">send</i>
 			</button>
 		</div>

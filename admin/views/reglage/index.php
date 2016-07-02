@@ -38,7 +38,7 @@
 		</div>
 		
 		<div class="col s4 offset-s8">
-			<button class="btn waves-effect waves-light" type="submit" style="width:100%" name="updateColors">Valider
+			<button class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR" type="submit" style="width:100%" name="updateColors">Valider
 				<i class="material-icons right">send</i>
 			</button>
 		</div>

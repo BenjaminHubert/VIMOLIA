@@ -23,11 +23,11 @@ if(!empty($listThematic)){
                 <?php
                     }else {
                 ?>
-                <a class="waves-effect waves-light btn edit-thematic" data-value="<?php echo $thematic['id']; ?>">
+                <a class="waves-effect waves-light btn BUTTON_BACKGROUND-COLOR edit-thematic" data-value="<?php echo $thematic['id']; ?>">
                     Modifier
                     <i class="material-icons right">create</i> 
                 </a> 
-                <a class="waves-effect waves-light btn delete-thematic" data-value="<?php echo $thematic['id']; ?>">
+                <a class="waves-effect waves-light btn BUTTON_BACKGROUND-COLOR delete-thematic" data-value="<?php echo $thematic['id']; ?>">
                     Supprimer
                     <i class="material-icons right">delete</i> 
                 </a>
@@ -53,7 +53,7 @@ if(!empty($listThematic)){
 <div class="input-field" id="add-input">
     <input id="new-thematic" type="text" class="validate">
     <label for="new-thematic">Nom</label>
-    <button class="btn waves-effect waves-light" id="add-thematic">Ajouter
+    <button class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR" id="add-thematic">Ajouter
         <i class="material-icons right">library_add</i>
     </button>
 </div>

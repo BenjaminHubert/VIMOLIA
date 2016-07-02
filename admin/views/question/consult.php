@@ -20,7 +20,7 @@
 			</select>
 		</div>
 		<div class="col s12 m2">
-			<button class="btn-large waves-effect waves-light blue-grey" type="submit" name="changeStatus" style="width: 100%">Valider</button>
+			<button class="btn-large waves-effect waves-light BUTTON_BACKGROUND-COLOR" type="submit" name="changeStatus" style="width: 100%">Valider</button>
 		</div>
 		<input type="hidden" name="idQuestion" value="<?php echo $question['id'];?>">
 	</form>
@@ -61,7 +61,7 @@
 		<div class="col s12 offset-m9 m3">
 			<br>
 			<br>
-			<button class="btn waves-effect waves-light blue-grey" type="submit" name="reply" style="width: 100%" value="<?php echo (!isset($answer['answer_text'])?'addAnswer':$answer['id']);?>"><?php echo (isset($answer['answer_text'])?'Mettre à jour':'Ajouter');?></button>
+			<button class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR" type="submit" name="reply" style="width: 100%" value="<?php echo (!isset($answer['answer_text'])?'addAnswer':$answer['id']);?>"><?php echo (isset($answer['answer_text'])?'Mettre à jour':'Ajouter');?></button>
 		</div>
 		<input type="hidden" name="idQuestion" value="<?php echo $question['id'];?>">
 	</form>
@@ -87,7 +87,7 @@
 					<td><?php echo htmlentities(implode(', ', $proposed_doctor['skills']));?></td>
 					<td>
 						<form action="" method="post">
-							<button type="submit" name="deleteProposedDoctor" value="<?php echo $proposed_doctor['id'];?>" class="btn-floating waves-effect waves-light blue-grey delete"><i class="material-icons">delete_forever</i></button>
+							<button type="submit" name="deleteProposedDoctor" value="<?php echo $proposed_doctor['id'];?>" class="btn-floating waves-effect waves-light BUTTON_BACKGROUND-COLOR delete"><i class="material-icons">delete_forever</i></button>
 						</form>
 					</td>
 				</tr>
@@ -136,14 +136,14 @@
 		</select>
 	</div>
 	<div class="col s12 m2">
-		<button class="btn-large waves-effect waves-light blue-grey" type="submit" name="addDoctor" style="width: 100%">Ajouter</button>
+		<button class="btn-large waves-effect waves-light BUTTON_BACKGROUND-COLOR" type="submit" name="addDoctor" style="width: 100%">Ajouter</button>
 	</div>
 	<form action="" method="post">
 		<div class="col s12">
 			<p class="right">
 				<input type="checkbox" id="sendMail" name="sendMail" checked>
 				<label for="sendMail">Souhaitez-vous avertir l'auteur par mail ?</label>
-				<button class="btn waves-effect waves-light blue-grey disabled" type="submit" name="setProposedPraticien" value="submit" disabled>Enregistrer</button>
+				<button class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR disabled" type="submit" name="setProposedPraticien" value="submit" disabled>Enregistrer</button>
 			</p>
 		</div>
 		<div class="col s12 proposedPraticien">

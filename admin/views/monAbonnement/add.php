@@ -20,7 +20,7 @@
 	        <?php }?>
 		</div>
 		<div class="input-field col s12 m4 offset-m8">
-			<button class="btn waves-effect waves-light" type="submit" style="width:100%" name="valid">Valider
+			<button class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR" type="submit" style="width:100%" name="valid">Valider
 				<i class="material-icons right">send</i>
 			</button>
 		</div>

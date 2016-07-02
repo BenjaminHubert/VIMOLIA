@@ -2,7 +2,7 @@
     <div class="col s12 m6">
         <h4>
             Dernières vidéos 
-            <a id="more_video" class="btn-floating btn-small waves-effect waves-light" href="<?php echo BASE_URL.'video/'; ?>">
+            <a id="more_video" class="btn-floating btn-small waves-effect waves-light BUTTON_BACKGROUND-COLOR" href="<?php echo BASE_URL.'video/'; ?>">
                 <i class="material-icons right">navigate_next</i>
             </a>
         </h4>
@@ -32,7 +32,7 @@
     <div class="col s12 m6">
         <h4>
             Dernières questions 
-            <a id="more_question" class="btn-floating btn-small waves-effect waves-light" href="<?php echo BASE_URL.'question/'; ?>">
+            <a id="more_question" class="btn-floating btn-small waves-effect waves-light BUTTON_BACKGROUND-COLOR" href="<?php echo BASE_URL.'question/'; ?>">
                 <i class="material-icons right">navigate_next</i>
             </a>
         </h4>
@@ -69,7 +69,7 @@
     <div class="col s12">
         <h4>
             Derniers articles 
-            <a id="more_article" class="waves-effect waves-light btn" href="<?php echo BASE_URL.'article/'; ?>">
+            <a id="more_article" class="waves-effect waves-light btn BUTTON_BACKGROUND-COLOR" href="<?php echo BASE_URL.'article/'; ?>">
                 Voir tout
                 <i class="material-icons right">navigate_next</i>
             </a>

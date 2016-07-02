@@ -10,7 +10,7 @@
             </select>
         </div>
         <div class="input-field col s12 m6 l4">
-            <button class="btn waves-effect waves-light" type="submit" style="width:100%">Chercher</button>
+            <button class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR" type="submit" style="width:100%">Chercher</button>
         </div>
     </div>
 </form>

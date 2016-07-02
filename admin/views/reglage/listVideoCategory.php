@@ -23,11 +23,11 @@ if(!empty($listCategory)){
                 <?php
                     }else {
                 ?>
-                <a class="waves-effect waves-light btn edit-category" data-value="<?php echo $category['id']; ?>">
+                <a class="waves-effect waves-light btn BUTTON_BACKGROUND-COLOR edit-category" data-value="<?php echo $category['id']; ?>">
                     Modifier
                     <i class="material-icons right">create</i> 
                 </a> 
-                <a class="waves-effect waves-light btn delete-category" data-value="<?php echo $category['id']; ?>">
+                <a class="waves-effect waves-light btn BUTTON_BACKGROUND-COLOR delete-category" data-value="<?php echo $category['id']; ?>">
                     Supprimer
                     <i class="material-icons right">delete</i> 
                 </a>
@@ -53,7 +53,7 @@ if(!empty($listCategory)){
 <div class="input-field" id="add-input">
     <input id="new-category" type="text" class="validate">
     <label for="new-category">Nom</label>
-    <button class="btn waves-effect waves-light" id="add-category">Ajouter
+    <button class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR" id="add-category">Ajouter
         <i class="material-icons right">library_add</i>
     </button>
 </div>

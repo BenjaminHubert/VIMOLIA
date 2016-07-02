@@ -19,7 +19,7 @@
 			</div>
 		</div>
 		<div class="col s12">
-			<a class="waves-effect waves-light btn right modal-trigger" href="#privacy"><i class="material-icons right">keyboard_arrow_right</i>Je valide ma question</a>
+			<a class="waves-effect waves-light btn right modal-trigger BUTTON_BACKGROUND-COLOR" href="#privacy"><i class="material-icons right">keyboard_arrow_right</i>Je valide ma question</a>
 			<div id="privacy" class="modal">
 				<div class="modal-content">
 					<h4>Souhaitez-vous rendre votre question publique ?</h4>

@@ -39,8 +39,8 @@
 <div class="row">
 	<div class="col s12">
 		<div class="right">
-			<a href="<?php echo BASE_URL.'question/addDetails/'.$question['id'];?>" class="waves-effect waves-light btn">Je souhaite plus de détails</a>
-			<a href="<?php echo BASE_URL.'question/close/'.$question['id'];?>" class="waves-effect waves-light btn">Cette réponse me convient</a>
+			<a href="<?php echo BASE_URL.'question/addDetails/'.$question['id'];?>" class="waves-effect waves-light btn BUTTON_BACKGROUND-COLOR">Je souhaite plus de détails</a>
+			<a href="<?php echo BASE_URL.'question/close/'.$question['id'];?>" class="waves-effect waves-light btn BUTTON_BACKGROUND-COLOR">Cette réponse me convient</a>
 		</div>
 	</div>
 </div>
@@ -50,8 +50,8 @@
 <div class="row">
 	<div class="col s12">
 		<div class="right">
-			<a href="<?php echo BASE_URL.'question/makeAnAppointment/'.$question['id'];?>" class="waves-effect waves-light btn">Prendre un rendez-vous</a>
-			<a href="<?php echo BASE_URL.'question/close/'.$question['id'];?>" class="waves-effect waves-light btn">Clôturer la question</a>
+			<a href="<?php echo BASE_URL.'question/makeAnAppointment/'.$question['id'];?>" class="waves-effect waves-light btn BUTTON_BACKGROUND-COLOR">Prendre un rendez-vous</a>
+			<a href="<?php echo BASE_URL.'question/close/'.$question['id'];?>" class="waves-effect waves-light btn BUTTON_BACKGROUND-COLOR">Clôturer la question</a>
 		</div>
 	</div>
 </div>
@@ -67,7 +67,7 @@
 <!--  FLOATING BUTTON -->
 <?php if(isset($_SESSION['id']) && in_array($_SESSION['role'], ['Administrateur', 'Expert'])){ ?>
 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-	<a href="<?php echo BASE_URL.'admin/question/consult/'.$question['id'];?>" class="btn-floating btn-large red">
+	<a href="<?php echo BASE_URL.'admin/question/consult/'.$question['id'];?>" class="btn-floating btn-large BUTTON_BACKGROUND-COLOR">
 		<i class="large material-icons">mode_edit</i>
 	</a>
 </div>

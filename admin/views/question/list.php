@@ -43,7 +43,7 @@
 					<button class="btn waves-effect waves-light grey reset-filter" type="button">
 						<i class="material-icons left">filter_list</i> Réinitialiser 
 					</button>
-					<button class="btn waves-effect waves-light" type="submit">
+					<button class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR" type="submit">
 						Submit <i class="material-icons right">send</i>
 					</button>
 				</p>

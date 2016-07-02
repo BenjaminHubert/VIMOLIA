@@ -28,7 +28,7 @@ if(!empty($listVideo)){
             <label>Thématique</label>
         </div>
         <div class="input-field col l4">
-            <button class="btn waves-effect waves-light" id="submit-filter">Rechercher
+            <button class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR" id="submit-filter">Rechercher
                 <i class="material-icons right">search</i>
             </button>  
         </div>
@@ -58,11 +58,11 @@ if(!empty($listVideo)){
             <td><?php echo date('\L\e d/m/Y \à H\hi', strtotime($video['date_create'])); ?></td>
             <td>
                 <a <?php echo(($video['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur')?'href="'.BASE_URL_ADMIN.'video/edit/'.$video['id'].'"':'');?> 
-                   class="waves-effect waves-light btn <?php echo(($video['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur')?'':'disabled'); ?>">
+                   class="waves-effect waves-light btn BUTTON_BACKGROUND-COLOR <?php echo(($video['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur')?'':'disabled'); ?>">
                     Modifier
                     <i class="material-icons right">create</i> 
                 </a>
-                <a <?php echo(($video['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur')?'data-target="modal-'.$video['id'].'" class="btn modal-trigger"':'class="btn disabled"'); ?> >
+                <a <?php echo(($video['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur')?'data-target="modal-'.$video['id'].'" class="btn modal-trigger BUTTON_BACKGROUND-COLOR"':'class="btn disabled BUTTON_BACKGROUND-COLOR"'); ?> >
                     <i class="material-icons">delete</i>
                 </a>
             </td>
@@ -114,7 +114,7 @@ if(!empty($listVideo)){
             <label>Thématique</label>
         </div>
         <div class="input-field col l4">
-            <button class="btn waves-effect waves-light" id="submit-filter">Rechercher
+            <button class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR" id="submit-filter">Rechercher
                 <i class="material-icons right">search</i>
             </button>  
         </div>
@@ -129,6 +129,6 @@ if(!empty($listVideo)){
 }
 ?>
 <br>
-<a href="<?php echo BASE_URL_ADMIN.'video/add'; ?>" class="waves-effect waves-light btn">
+<a href="<?php echo BASE_URL_ADMIN.'video/add'; ?>" class="waves-effect waves-light btn BUTTON_BACKGROUND-COLOR">
     <i class="material-icons left">create</i>Ajouter une vidéo
 </a>

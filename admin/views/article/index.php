@@ -23,11 +23,11 @@ if(!empty($listArticle)){
             <td><?php echo date('\L\e d/m/Y \à H\hi', strtotime($article['date_publish'])); ?></td>
             <td>
                 <a <?php echo(($article['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur')?'href="'.BASE_URL_ADMIN.'article/edit/'.$article['id'].'"':'');?> 
-                   class="waves-effect waves-light btn <?php echo(($article['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur')?'':'disabled'); ?>">
+                   class="waves-effect waves-light btn BUTTON_BACKGROUND-COLOR <?php echo(($article['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur')?'':'disabled'); ?>">
                     Modifier
                     <i class="material-icons right">create</i> 
                 </a>
-                <a <?php echo(($article['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur')?'data-target="modal-'.$article['id'].'" class="btn modal-trigger"':'class="btn disabled"'); ?> >
+                <a <?php echo(($article['id_user'] == $_SESSION['id'] || $_SESSION['role'] == 'Administrateur')?'data-target="modal-'.$article['id'].'" class="btn modal-trigger BUTTON_BACKGROUND-COLOR"':'class="btn disabled BUTTON_BACKGROUND-COLOR"'); ?> >
                     <i class="material-icons">delete</i>
                 </a> 
             </td>
@@ -58,6 +58,6 @@ if(!empty($listArticle)){
 }
 ?>
 <br>
-<a href="<?php echo BASE_URL_ADMIN.'article/add'; ?>" class="waves-effect waves-light btn">
+<a href="<?php echo BASE_URL_ADMIN.'article/add'; ?>" class="waves-effect waves-light btn BUTTON_BACKGROUND-COLOR">
     <i class="material-icons left">create</i>Ecrire un article
 </a>

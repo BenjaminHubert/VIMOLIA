@@ -103,7 +103,7 @@
 		</div>
 	</div>
 	<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-	    <button type="submit" class="btn-floating btn-large blue-grey">
+	    <button type="submit" class="btn-floating btn-large BUTTON_BACKGROUND-COLOR">
 	    	<i class="large material-icons">check</i>
 	    </button>
   	</div>	
