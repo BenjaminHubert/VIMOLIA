@@ -36,7 +36,7 @@
                 <label for="pseudo">Pseudo</label>
             </div>
             <div class="file-field input-field col s6">
-                <div class="btn">
+                <div class="btn BUTTON_BACKGROUND-COLOR">
                     <span>Avatar</span>
                     <input type="file" accept="image/*" name="avatar_file">
                 </div>
@@ -121,7 +121,7 @@
                 <label for="pseudo">Pseudo</label>
             </div>
             <div class="file-field input-field col s6">
-                <div class="btn">
+                <div class="btn BUTTON_BACKGROUND-COLOR">
                     <span>Avatar</span>
                     <input type="file" accept="image/*" name="avatar_file">
                 </div>

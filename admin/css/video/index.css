@@ -1,0 +1,10 @@
+.fixed-action-btn{
+    right: 35px;
+}
+
+.fixed-action-btn ul li #fab-cat{
+    margin-left: -15%;
+}
+.fixed-action-btn ul li #fab-them{
+    margin-left: -25%;
+}

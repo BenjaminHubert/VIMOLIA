@@ -8,6 +8,10 @@
     text-align: center;
 }
 
+.slider .indicators .indicator-item.active {
+    background-color: <?php echo $_SETTINGS['BUTTON_BACKGROUND-COLOR']; ?>;
+}
+
 #more_article, #more_question, #more_video{
     float: right;
     font-size: 12pt;

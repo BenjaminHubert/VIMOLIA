@@ -6,6 +6,17 @@ if(!empty($listVideo)){
 <div class="row">
     <form method="post">
         <div class="input-field col l4">
+            <?php if($_SESSION['role'] == 'Administrateur'){ ?>
+            <div class="fixed-action-btn">
+                <a class="btn-floating btn-large BUTTON_BACKGROUND-COLOR">
+                    <i class="large material-icons">mode_edit</i>
+                </a>
+                <ul>
+                    <li><span id="fab-cat">Catégories</span><a class="btn-floating FIRST_FOOTER_BACKGROUND-COLOR" href="<?php echo BASE_URL_ADMIN.'reglage/videoCategories/list'; ?>"><i class="material-icons">settings</i></a></li>
+                    <li><span id="fab-them">Thématiques</span><a class="btn-floating SECOND_FOOTER_BACKGROUND-COLOR" href="<?php echo BASE_URL_ADMIN.'reglage/videoThematics/list'; ?>"><i class="material-icons">settings</i></a></li>
+                </ul>
+            </div>
+            <?php } ?>
             <select name="id_category">
                 <option value="-1" selected>Tout</option>
                 <?php foreach($listCategory as $category){ ?>
@@ -47,9 +58,9 @@ if(!empty($listVideo)){
     </thead>
     <tbody>
         <?php
-                       foreach($listVideo as $video){
-                           $category = $this->registry->db->getCategoryById($video['id_category']);
-                           $thematic = $this->registry->db->getThematicById($video['id_thematic']);
+        foreach($listVideo as $video){
+            $category = $this->registry->db->getCategoryById($video['id_category']);
+            $thematic = $this->registry->db->getThematicById($video['id_thematic']);
         ?>
         <tr>
             <td><a href="<?php echo BASE_URL.'video/display/'.$video['id']; ?>"><?php echo htmlentities($video['title']); ?></a></td>
@@ -81,13 +92,13 @@ if(!empty($listVideo)){
         </div>
 
         <?php   
-                       }
+        }
         ?>
     </tbody>
 </table>
 
 <?php
-                      } elseif(isset($_POST)){
+} elseif(isset($_POST)){
 ?>
 <div class="row">
     <form method="post">
@@ -122,7 +133,7 @@ if(!empty($listVideo)){
 </div>
 <h5>Aucune vidéo ne correspond aux critères de recherche</h5>
 <?php
-}else { 
+                       }else { 
 ?>
 <h3>Aucune vidéo pour le moment.</h3>
 <?php 
