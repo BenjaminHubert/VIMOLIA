@@ -14,7 +14,7 @@
             <li>- Accès libre à la liste des praticiens</li>
             <li>- Noter un praticien</li>
         </ul>
-        <form method="POST" action="<?php echo BASE_URL;?>signup" class="row">
+        <form method="POST" action="<?php echo BASE_URL;?>signup" class="row" enctype="multipart/form-data">
             <div class="input-field col s4">
                 <i class="material-icons prefix">person</i>
                 <input id="first_name" name="first_name" type="text" class="validate" value="<?php echo (isset($_POST['first_name']) && $_POST['type'] == 'member')?htmlentities($_POST['first_name']):'';?>" required>
@@ -41,7 +41,7 @@
                     <input type="file" accept="image/*" name="avatar_file">
                 </div>
                 <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text" name="avatar">
+                    <input class="file-path validate" type="text" name="url_avatar">
                 </div>
             </div>
             <div class="input-field col s12">
@@ -99,7 +99,7 @@
             <li>- Obtenir une notation de la part des patients</li>
         </ul>
         <h5>Etape 1: Vos informations</h5>
-        <form method="POST" action="<?php echo BASE_URL;?>signup" class="row">
+        <form method="POST" action="<?php echo BASE_URL;?>signup" class="row" enctype="multipart/form-data">
             <div class="input-field col s4">
                 <i class="material-icons prefix">person</i>
                 <input id="first_name" name="first_name" type="text" class="validate" value="<?php echo (isset($_POST['first_name']) && $_POST['type'] == 'doctor')?htmlentities($_POST['first_name']):'';?>" required>
@@ -126,7 +126,7 @@
                     <input type="file" accept="image/*" name="avatar_file">
                 </div>
                 <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text" name="avatar">
+                    <input class="file-path validate" type="text" name="url_avatar">
                 </div>
             </div>
             <div class="input-field col s12">
@@ -215,4 +215,4 @@
             <input type="hidden" name="type" value="doctor">
         </form>
     </div>
-</div>
+</div><?php var_dump($_POST); ?>
