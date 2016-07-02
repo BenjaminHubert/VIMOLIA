@@ -1,0 +1,1 @@
+$('.colorpicker').colorPicker(/* optinal options */); // that's it
