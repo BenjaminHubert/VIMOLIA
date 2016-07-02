@@ -62,6 +62,11 @@ class questionController extends baseController {
 					}
 					if($action){
 						$this->registry->template->message = 'Votre réponse a bien été prise en compte';
+						if($question['status'] == 'Question sans réponse'){
+							if($this->registry->db->changeStatusQuestion($_POST['idQuestion'], 'Question en attente de validation de réponse')){
+								$question['status'] = 'Question en attente de validation de réponse';
+							}
+						}
 						if($_POST['reply'] == 'addAnswer'){
 							$PHPMailer = new MyMail();
 							$PHPMailer->setFrom(EMAIL_FROM, EMAIL_FROM_NAME);
