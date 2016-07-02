@@ -4,7 +4,7 @@
 	</div>
 	<div class="question col s12 grey lighten-2">
 		<div id="status">
-			<div class="chip right  blue-grey">
+			<div class="chip right PRIMARY_BACKGROUND-COLOR PRIMARY_COLOR">
 		    	<?php echo $question['status'];?>
 		  	</div>
 		</div>

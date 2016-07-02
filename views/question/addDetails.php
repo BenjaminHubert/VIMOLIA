@@ -44,7 +44,7 @@
 		<div class="file-field input-field col s12 m6">
 			<p>Dossier médical (10 Mo autorisé)</p>
 			<div class="btn BUTTON_BACKGROUND-COLOR">
-				<span>Parcourir</span> <input type="file" accept=".zip" name="medicalFile" required>
+				<span>Parcourir</span> <input type="file" accept=".zip" name="medicalFile">
 			</div>
 			<div class="file-path-wrapper">
 				<input class="file-path validate" type="text" placeholder="Fichier ZIP seulement">

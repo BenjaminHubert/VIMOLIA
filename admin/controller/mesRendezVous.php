@@ -76,6 +76,8 @@ class mesRendezVousController extends baseController {
     	$json = [];
     	if(isset($_POST['id_appointment']) && is_numeric($_POST['id_appointment'])){
     		$appointment = $this->registry->db->getAppointment($_POST['id_appointment']);
+    		$json['$_POST'] = $_POST;
+    		$json['$appointment'] = $appointment;
     		if($appointment){
     			$json['appointment'] = $appointment;
     			if($appointment['id_doctor'] == $_SESSION['id'] ){

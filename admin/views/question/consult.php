@@ -66,12 +66,13 @@
 		<input type="hidden" name="idQuestion" value="<?php echo $question['id'];?>">
 	</form>
 </div>
+<?php if($question['status'] != 'Question sans réponse'){?>
 <div class="row" style="border: solid 1px black; padding-bottom: 10px">
 	<div class="col s12">
 		<h5>Praticiens proposés:</h5>
 	</div>
 	<div class="col s12">
-		<?php if($proposed_doctors){?>
+		<?php if($proposed_doctors_to_me){?>
 		<table class="bordered centered doctors">
 			<thead>
 				<tr>
@@ -81,7 +82,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<?php foreach($proposed_doctors as $proposed_doctor){?>
+				<?php foreach($proposed_doctors_to_me as $proposed_doctor){?>
 				<tr>
 					<td><?php echo htmlentities($proposed_doctor['first_name_praticien'].' '.$proposed_doctor['last_name_praticien']);?></td>
 					<td><?php echo htmlentities(implode(', ', $proposed_doctor['skills']));?></td>
@@ -120,7 +121,7 @@
 			foreach($doctors as $doctor){
 				$found = false;
 				foreach($proposed_doctors as $proposed_doctor){
-					if($doctor['id'] == $proposed_doctor['id_praticien']){
+					if($doctor['id'] == $proposed_doctor['id_praticien'] && $question['id'] == $proposed_doctor['id_question']){
 						$found = true;
 					}
 				}
@@ -151,3 +152,4 @@
 		</div>
 	</form>
 </div>
+<?php }?>

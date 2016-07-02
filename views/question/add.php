@@ -10,11 +10,11 @@
 		<div class="col s11">
 			<div class="row">
 				<div class="input-field col s6">
-					<input id="question_title" name="question_title" type="text" class="validate" placeholder="Votre question..." value="<?php echo (isset($_POST['question_title']))?htmlentities($_POST['question_title']):'';?>" required>
+					<input id="question_title" name="question_title" type="text" class="validate" placeholder="Votre question..." value="<?php echo (isset($_POST['question_title']))?htmlentities($_POST['question_title']):'';?>" length="250" required>
 					<label for="question_title">Question*</label>
 				</div>
 				<div class="input-field col s12">
-					<textarea id="question_text" name="question_text" class="materialize-textarea ask" placeholder="Détails..." length="250"><?php echo (isset($_POST['question_text']))?htmlentities($_POST['question_text']):'';?></textarea>
+					<textarea id="question_text" name="question_text" class="materialize-textarea ask" placeholder="Détails..." length="500"><?php echo (isset($_POST['question_text']))?htmlentities($_POST['question_text']):'';?></textarea>
 				</div>
 			</div>
 		</div>
