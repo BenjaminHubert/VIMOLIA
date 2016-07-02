@@ -98,10 +98,10 @@
 		<?php if(!isset($_SESSION['id'])){?>
 		<ul class="right hide-on-med-and-down">
 			<li>
-				<a href="<?php echo BASE_URL.'login?url='.getCurrentUrl();?>">Connexion</a>
+				<a class="PRIMARY_COLOR" href="<?php echo BASE_URL.'login?url='.getCurrentUrl();?>">Connexion</a>
 			</li>
 			<li>
-				<a href="<?php echo BASE_URL;?>signup">Créer un compte</a>
+				<a class="PRIMARY_COLOR" href="<?php echo BASE_URL;?>signup">Créer un compte</a>
 			</li>
 		</ul>
 		<?php }?>		
@@ -109,20 +109,20 @@
 		<?php if(isset($_SESSION['id'])){?>
 		<ul id="logguedIn" class="dropdown-content">
 			<li>
-				<a href="<?php echo BASE_URL_ADMIN;?>">
+				<a href="<?php echo BASE_URL_ADMIN;?>" class="ACCENT_COLOR">
 					<i class="material-icons left">account_circle</i>
 					Mon compte
 				</a>
 			</li>
 			<?php if(in_array($_SESSION['role'], ['Membre', 'Administrateur'])){?><li>
-				<a href="<?php echo BASE_URL;?>question/index?mesQuestions">
+				<a href="<?php echo BASE_URL;?>question/index?mesQuestions" class="ACCENT_COLOR">
 					<i class="material-icons left">feedback</i>
 					Mes questions
 				</a>
 			</li><?php }?>
 			<li class="divider"></li>
 			<li>
-				<a href="<?php echo BASE_URL.'login/logout?url='.getCurrentUrl();?>">
+				<a href="<?php echo BASE_URL.'login/logout?url='.getCurrentUrl();?>" class="ACCENT_COLOR">
 					<i class="material-icons left">exit_to_app</i>
 					Déconnexion
 				</a>
@@ -130,7 +130,7 @@
 		</ul>
 		<ul class="right hide-on-med-and-down">
 			<li>
-				<a class="dropdown-button" href="#!" data-activates="logguedIn">
+				<a class="dropdown-button PRIMARY_COLOR" href="#!" data-activates="logguedIn">
 					<i class="material-icons left">person</i><?php echo ($_SESSION['pseudo'] != null)?htmlentities($_SESSION['pseudo']):htmlentities($_SESSION['first_name'].' '.$_SESSION['last_name']);?><i class="material-icons right">arrow_drop_down</i>
 				</a>
 			</li>
@@ -139,7 +139,7 @@
 		
 		
 		<a href="#" data-activates="slide-out" class="button-collapse show-on-large">
-			<i class="material-icons">menu</i>
+			<i class="material-icons PRIMARY_COLOR">menu</i>
 		</a>
 	</div>
 </nav>
