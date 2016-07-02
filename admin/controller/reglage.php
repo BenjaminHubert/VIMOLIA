@@ -13,6 +13,7 @@ class reglageController extends baseController {
 		}
 	}
     public function index(){
+        $this->registry->template->subscriptionTypes = $this->registry->db->getSubscriptionTypes();
     	$this->registry->template->show('index');
     }
     

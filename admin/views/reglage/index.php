@@ -74,7 +74,44 @@
 <!-- SUBSCRIPTION SECTION -->
 <div id="subscription-section" class="row scrollspy" style="border: solid 1px grey; margin-top:10px; padding: 10px;">
 	<form action="" method="post">
-		
+		<table class="table">
+			<thead>
+				<tr>
+					<td>Nom de l'offre</td>
+					<td>Description</td>
+					<td>Montant</td>
+					<td>Durée (jours)</td>
+					<td>Dernière mise à jour</td>
+					<td></td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody>
+				<?php if($subscriptionTypes){?>
+				<?php foreach($subscriptionTypes as $subscriptionType){?>
+				<tr>
+					<td><?php echo $subscriptionType['name'];?></td>
+					<td><?php echo $subscriptionType['description'];?></td>
+					<td><?php echo $subscriptionType['amount'].' '.$subscriptionType['currencycode'];?></td>
+					<td><?php echo $subscriptionType['duration_days'];?></td>
+					<td><?php echo date('d/m/Y H:i:s', strtotime($subscriptionType['last_update']));?></td>
+					<td>
+						<button class="btn waves-effect waves-light grey lighten-2" type="button" name="action">
+							<i class="material-icons">edit</i>
+						</button>
+					</td>
+					<td>
+						<button class="btn waves-effect waves-light red lighten-3" type="button" name="action">
+							<i class="material-icons">delete</i>
+						</button>
+					</td>
+				</tr>
+				<?php }?>
+				<?php }else{?>
+				<tr><td colspan="7" class="center">Aucun abonnement existant sur le site</td></tr>
+				<?php }?>
+			</tbody>
+		</table>
 	</form>
 </div>
 <script src="<?php echo BASE_URL;?>js/jqColorPicker.min.js"></script>
