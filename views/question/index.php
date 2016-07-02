@@ -48,7 +48,7 @@
 		<!-- Seulement les questions autorisées à être publiées ou mes questions privées-->
 		<?php if($question['is_public'] == 1 && $question['id_user'] == $_SESSION['id'] || ($question['is_public'] == 0 && $question['id_user'] == $_SESSION['id'])){?> 
 		<div class="question col s12">
-			<p><i class="material-icons right" data-position="left" data-delay="50" data-tooltip="Privée">visibility_off</i></p>
+			<?php if($question['is_public'] == 0 && isset($_SESSION['id']) && $question['id_user'] == $_SESSION['id']){?><p><i class="material-icons right" data-position="left" data-delay="50" data-tooltip="Privée">visibility_off</i></p><?php }?>
 			<h5><?php echo htmlentities($question['question_title']);?></h5>
 			<div class="question_text">
 				<?php
