@@ -6,7 +6,7 @@
 		</div>
 		
 		<div class="col s12 m6">
-			<h5>Bar horizontal haut de page</h5>
+			<h5>Barre horizontale haut de page</h5>
 			<label for="HEADER_BACKGROUND-COLOR">Couleur d'arrière plan</label>
 			<input id="HEADER_BACKGROUND-COLOR" name="HEADER_BACKGROUND-COLOR" type="text" value="<?php echo $_SETTINGS['HEADER_BACKGROUND-COLOR'];?>" class="colorpicker right">
 		</div>

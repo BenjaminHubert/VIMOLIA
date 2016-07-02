@@ -44,7 +44,7 @@
                     if($question['is_public'] == 1){
             ?>
             <li>
-                <div class="collapsible-header truncate <?php echo (($k == 0)?'active':''); ?>"><i class="material-icons">help_outline</i><?php echo htmlentities($question['question_title']); ?></div>
+                <div class="collapsible-header ACCENT_COLOR truncate <?php echo (($k == 0)?'active':''); ?>"><i class="material-icons">help_outline</i><?php echo htmlentities($question['question_title']); ?></div>
                 <div class="collapsible-body">
                     <p>
                         <?php
@@ -88,7 +88,7 @@
                         <?php echo date('\L\e d/m/Y \à H\hi', strtotime($article['date_publish'])); ?></p>
                 </div>
                 <div class="article_details">
-                    <h5><?php echo htmlentities($article['title']); ?></h5>
+                    <h5 class="ACCENT_COLOR"><?php echo htmlentities($article['title']); ?></h5>
                     <p class="desc"><?php echo htmlentities($article['description']); ?></p>
                 </div>
             </a>
