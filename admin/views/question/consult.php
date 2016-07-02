@@ -72,7 +72,7 @@
 		<h5>Praticiens proposés:</h5>
 	</div>
 	<div class="col s12">
-		<?php if($proposed_doctors){?>
+		<?php if($proposed_doctors_to_me){?>
 		<table class="bordered centered doctors">
 			<thead>
 				<tr>
@@ -82,7 +82,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<?php foreach($proposed_doctors as $proposed_doctor){?>
+				<?php foreach($proposed_doctors_to_me as $proposed_doctor){?>
 				<tr>
 					<td><?php echo htmlentities($proposed_doctor['first_name_praticien'].' '.$proposed_doctor['last_name_praticien']);?></td>
 					<td><?php echo htmlentities(implode(', ', $proposed_doctor['skills']));?></td>

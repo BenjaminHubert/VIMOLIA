@@ -139,6 +139,7 @@ class questionController extends baseController {
 				$this->registry->template->answer = $this->registry->db->getAnswerQuestion($question['id']);
 				$this->registry->template->user = $user;
 				$this->registry->template->proposed_doctors = $this->registry->db->getProposedDoctors();
+				$this->registry->template->proposed_doctors_to_me = $this->registry->db->getProposedDoctorsByQuestion($question['id']);
 				$this->registry->template->doctors = $doctors;
 				$this->registry->template->questionStatus = $questionStatus;
 				$this->registry->template->question = $question;
