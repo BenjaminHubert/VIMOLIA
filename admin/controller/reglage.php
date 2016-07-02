@@ -13,15 +13,20 @@ class reglageController extends baseController {
 		}
 	}
     public function index(){
+    	$this->registry->template->show('index');
+    }
+    
+    public function updateColors(){
     	if(isset($_POST['updateColors'])){
     		foreach($_POST as $key => $value){
     			$this->registry->db->updateSetting($key, $value);
     		}
     		header('Location: '.BASE_URL_ADMIN.'reglage');
     		die();
-    	}
-
-    	$this->registry->template->show('index');
+    	}else{
+			$registry->template->show('404', true);
+			die();
+		}
     }
 
     public function videoCategories($args){

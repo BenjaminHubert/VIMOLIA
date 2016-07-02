@@ -13,7 +13,7 @@
 </div>
 <!-- COLORS SECTION -->
 <div id="colors-section" class="row scrollspy" style="border: solid 1px grey; margin-top:10px; padding: 10px;">
-	<form action="" method="post">
+	<form action="<?php echo BASE_URL_ADMIN;?>reglage/updateColors" method="post">
 		<div class="col s12">
 			<h4>Couleurs</h4>
 			<div class="divider"></div>
@@ -74,7 +74,7 @@
 <!-- SUBSCRIPTION SECTION -->
 <div id="subscription-section" class="row scrollspy" style="border: solid 1px grey; margin-top:10px; padding: 10px;">
 	<form action="" method="post">
-
+		
 	</form>
 </div>
 <script src="<?php echo BASE_URL;?>js/jqColorPicker.min.js"></script>
