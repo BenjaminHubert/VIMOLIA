@@ -121,7 +121,7 @@
 			foreach($doctors as $doctor){
 				$found = false;
 				foreach($proposed_doctors as $proposed_doctor){
-					if($doctor['id'] == $proposed_doctor['id_praticien']){
+					if($doctor['id'] == $proposed_doctor['id_praticien'] && $question['id'] == $proposed_doctor['id_question']){
 						$found = true;
 					}
 				}
