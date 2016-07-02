@@ -66,6 +66,7 @@
 		<input type="hidden" name="idQuestion" value="<?php echo $question['id'];?>">
 	</form>
 </div>
+<?php if($question['status'] != 'Question sans réponse'){?>
 <div class="row" style="border: solid 1px black; padding-bottom: 10px">
 	<div class="col s12">
 		<h5>Praticiens proposés:</h5>
@@ -151,3 +152,4 @@
 		</div>
 	</form>
 </div>
+<?php }?>
