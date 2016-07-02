@@ -932,13 +932,11 @@ class DB {
 	
 	public function getAppointment($idAppointment){
 		$query = $this->connection->prepare('
-			SELECT a.id, a.appointment_date, a.recommendation, a.rating, a.is_canceled, a.is_pending,	a.is_validated, a.is_virtual, a.id_member, a.id_expert, a.id_doctor,
+			SELECT a.id, a.appointment_request_date, a.recommendation, a.rating, a.is_canceled, a.is_pending,	a.is_validated, a.is_virtual, a.id_member, a.id_doctor,
 				u_mem.first_name AS first_name_member, u_mem.last_name AS last_name_member, u_mem.pseudo AS pseudo_mem,
-				u_exp.first_name AS first_name_expert, u_exp.last_name AS last_name_expert,
 				u_doc.first_name AS first_name_doctor, u_doc.last_name AS last_name_doctor
 			FROM appointment a
 			JOIN user u_mem ON u_mem.id = a.id_member
-			JOIN user u_exp ON u_exp.id = a.id_expert
 			JOIN user u_doc ON u_doc.id = a.id_doctor
 			WHERE a.id = ?
 		');
@@ -950,7 +948,7 @@ class DB {
 	public function updateAppointment($appointment){
 		$query = $this->connection->prepare('
 			UPDATE appointment
-			SET appointment_date = ?,
+			SET appointment_request_date = ?,
 				recommendation = ?,
 				rating = ?,
 				is_canceled = ?,
@@ -958,13 +956,12 @@ class DB {
 				is_validated = ?,
 				is_virtual = ?,
 				id_member = ?,
-				id_expert = ?,
 				id_doctor = ?
 			WHERE id = ?
 		');
 		
 		$execute = [
-			$appointment['appointment_date'],
+			$appointment['appointment_request_date'],
 			$appointment['recommendation'],
 			$appointment['rating'],
 			$appointment['is_canceled'],
@@ -972,7 +969,6 @@ class DB {
 			$appointment['is_validated'],
 			$appointment['is_virtual'],
 			$appointment['id_member'],
-			$appointment['id_expert'],
 			$appointment['id_doctor'],
 			$appointment['id'],
 		];
