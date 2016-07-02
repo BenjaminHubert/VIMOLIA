@@ -598,10 +598,10 @@ class DB {
             $idAnswer
         ]);
     }
-    public function addQuestionnaire($symptoms, $pain, $history, $other, $id_user, $id_question, $id_doctor = null){
+    public function addQuestionnaire($symptoms, $pain, $history, $other, $id_user, $id_question, $file = null, $id_doctor = null){
         $query = $this->connection->prepare('
-			INSERT INTO questionnaire(symptome, pain, history, other, id_doctor, id_user, id_question)
-			SELECT ?, ?, ?, ?, ?, ?, ?
+			INSERT INTO questionnaire(symptome, pain, history, other, id_doctor, id_user, id_question, file)
+			SELECT ?, ?, ?, ?, ?, ?, ?, ?
 		');
         return $query->execute([
             $symptoms,
@@ -610,7 +610,8 @@ class DB {
             $other,
             $id_doctor,
             $id_user,
-            $id_question
+            $id_question,
+        	$file
         ]);
     }
     public function getProposedDoctors(){

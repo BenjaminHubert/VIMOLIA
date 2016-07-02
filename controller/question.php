@@ -61,7 +61,7 @@ class questionController extends baseController {
 													if($_FILES['medicalFile']['size'] < 10485760){
 														$fileName = 'img/medical-files/' . $_FILES['medicalFile']['name'] . '_' . time();
 														if(move_uploaded_file($_FILES['medicalFile']['tmp_name'], __SITE_PATH . DIRECTORY_SEPARATOR . $fileName)){
-															if($this->registry->db->addQuestionnaire($_POST['symptoms'], $_POST['particularPains'], $_POST['antecedents'], $_POST['usefulInfo'], $question['id_user'], $question['id'])){
+															if($this->registry->db->addQuestionnaire($_POST['symptoms'], $_POST['particularPains'], $_POST['antecedents'], $_POST['usefulInfo'], $question['id_user'], $question['id'], $fileName)){
 																$this->registry->db->changeStatusQuestion($question['id'], 'Question qui demande une liste de praticiens');
 																
 																header('Location: ' . BASE_URL . 'question/addDetails/successful');
@@ -95,7 +95,13 @@ class questionController extends baseController {
 										}
 									case UPLOAD_ERR_NO_FILE:
 										{
-											$this->registry->template->error = 'Aucun fichier n a été téléchargé.';
+											if($this->registry->db->addQuestionnaire($_POST['symptoms'], $_POST['particularPains'], $_POST['antecedents'], $_POST['usefulInfo'], $question['id_user'], $question['id'])){
+												$this->registry->db->changeStatusQuestion($question['id'], 'Question qui demande une liste de praticiens');
+											
+												header('Location: ' . BASE_URL . 'question/addDetails/successful');
+												die();
+											}else
+												$this->registry->template->error = 'Une erreur a été rencontrée lors de la création du questionnaire remplie';											
 											break;
 										}
 									case UPLOAD_ERR_NO_TMP_DIR:
