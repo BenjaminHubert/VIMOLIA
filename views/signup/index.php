@@ -2,8 +2,8 @@
     <h4>Rejoignez la plateforme <?php echo APP_TITLE;?></h4>
     <div class="col s12 l6 offset-l3">
         <ul class="tabs">
-            <li class="tab col s6"><a class="<?php echo (!isset($_POST['type']) || (isset($_POST['type']) && $_POST['type'] == 'member'))?'active':'';?>" href="#particulier">Je suis particulier</a></li>
-            <li class="tab col s6"><a class="<?php echo (isset($_POST['type']) && $_POST['type'] == 'doctor')?'active':'';?>"  href="#praticien">Je suis praticien</a></li>
+            <li class="tab col s6"><a class="ACCENT_COLOR <?php echo (!isset($_POST['type']) || (isset($_POST['type']) && $_POST['type'] == 'member'))?'active':'';?>" href="#particulier">Je suis particulier</a></li>
+            <li class="tab col s6"><a class="ACCENT_COLOR <?php echo (isset($_POST['type']) && $_POST['type'] == 'doctor')?'active':'';?>"  href="#praticien">Je suis praticien</a></li>
         </ul>
     </div>
     <div id="particulier" class="col s12">

@@ -1,0 +1,3 @@
+.tabs .indicator {
+	background-color: <?php echo $_SETTINGS['ACCENT_COLOR'];?>;
+}

@@ -2,3 +2,7 @@
 	border:black 1px solid;
 	margin-top: 10px;
 }
+
+.tabs .indicator {
+	background-color: <?php echo $_SETTINGS['ACCENT_COLOR'];?>;
+}
