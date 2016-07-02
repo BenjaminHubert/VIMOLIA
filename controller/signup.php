@@ -104,12 +104,7 @@ class signupController extends baseController {
                                         }
                                         if($subscriptionTrueID){
                                             $_POST['pseudo'] = ($_POST['pseudo'] != '')?$_POST['pseudo']:null;
-                                            if($_POST['url_avatar'] != ''){
-                                                $info = pathinfo($_FILES['avatar_file']['name']);
-                                                $ext = $info['extension'];
-                                                $_POST['url_avatar'] = '/img/avatar/'.$_SESSION['id'].'.'.$ext;
-                                                uploadFile($_FILES, 'avatar_file', $_POST['url_avatar']);
-                                            }else $_POST['url_avatar'] = null;
+                                            $_POST['url_avatar'] = ($_POST['url_avatar'] != '')?$_POST['url_avatar']:null;
 
                                             $payPal = new MyExpressCheckout();
                                             $payPal->setReturnUrl(BASE_URL.'signup/returnTransaction');
@@ -130,6 +125,17 @@ class signupController extends baseController {
                                                         if(!$this->registry->db->addSkillToUser($idUser, $skill)){
                                                             throw new Exception('Echec de l ajout des specialités ');
                                                         }
+                                                    }
+
+                                                    if($_POST['url_avatar'] != null){
+                                                        $user = $this->registry->db->getUser($idUser);
+
+                                                        $info = pathinfo($_FILES['avatar_file']['name']);
+                                                        $ext = $info['extension'];
+                                                        $_POST['url_avatar'] = $idUser.'.'.$ext;
+                                                        $user['url_avatar'] = BASE_URL.'img/avatar/'.$_POST['url_avatar'];
+                                                        $this->registry->db->updateUser($user);
+                                                        uploadFile($_FILES, 'avatar_file', DIRECTORY_SEPARATOR.'img'.DIRECTORY_SEPARATOR.'avatar'.DIRECTORY_SEPARATOR.$_POST['url_avatar']);
                                                     }
 
                                                     if($this->registry->db->addSubscription($idUser, $_POST['subscription_type'], $token)){

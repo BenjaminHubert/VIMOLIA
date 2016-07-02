@@ -215,4 +215,4 @@
             <input type="hidden" name="type" value="doctor">
         </form>
     </div>
-</div><?php var_dump($_POST); ?>
+</div>
