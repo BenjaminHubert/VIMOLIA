@@ -3,25 +3,25 @@
 		<a id="logo-container" href="<?php echo BASE_URL;?>" class="brand-logo  center">
 			<img src="<?php echo BASE_URL;?>img/logo.png" alt="<?php echo APP_TITLE;?>">
 		</a>
-		<ul id="slide-out" class="side-nav collapsible" data-collapsible="accordion">
+		<ul id="slide-out" class="side-nav collapsible PRIMARY_BACKGROUND-COLOR" style="border-color: transparent;" data-collapsible="accordion">
 			<li>
 				<img src="<?php echo BASE_URL;?>img/logo.png" style="width: 100%;" alt="<?php echo APP_TITLE;?>">
 			</li>
 			<!-- Displaying "login" or "logoff" -->
 			<?php if(isset($_SESSION['id'])){?>
 			<li class="row">
-				<a class="col s6 center" href="<?php echo BASE_URL_ADMIN;?>">Mon compte</a>
-				<a class="col s6 center" href="<?php echo BASE_URL.'login/logout?url='.getCurrentUrl();?>">Déconnexion</a>
+				<a class="col s6 center PRIMARY_COLOR" href="<?php echo BASE_URL_ADMIN;?>">Mon compte</a>
+				<a class="col s6 center PRIMARY_COLOR" href="<?php echo BASE_URL.'login/logout?url='.getCurrentUrl();?>">Déconnexion</a>
 			</li>
 			<?php }else{?>
 			<li class="row">
-				<a class="col s6 center" href="<?php echo BASE_URL.'login?url='.getCurrentUrl();?>">Connexion</a>
-				<a class="col s6 center" href="<?php echo BASE_URL;?>signup">Créer un compte</a>
+				<a class="col s6 center PRIMARY_COLOR" href="<?php echo BASE_URL.'login?url='.getCurrentUrl();?>">Connexion</a>
+				<a class="col s6 center PRIMARY_COLOR" href="<?php echo BASE_URL;?>signup">Créer un compte</a>
 			</li>
 			<?php }?>
 			<!-- EVERYONE -->
 			<li class="active">
-				<div class="collapsible-header active"><i class="material-icons left">public</i>Espace Public<i class="material-icons right">arrow_drop_down</i></div>
+				<div class="collapsible-header active PRIMARY_COLOR"><i class="material-icons left ACCENT_COLOR">public</i>Espace Public<i class="material-icons right">arrow_drop_down</i></div>
 				<div class="collapsible-body">
 					<a href="<?php echo BASE_URL;?>search/praticien">Consulter nos praticiens</a>
 					<a href="<?php echo BASE_URL;?>question">Consulter les questions</a>
@@ -33,7 +33,7 @@
 			<?php if(isset($_SESSION['id']) && in_array($_SESSION['role'], ['Auteur', 'Administrateur'])){?>
 			<li class="divider"></li>
 			<li>
-				<div class="collapsible-header"><i class="material-icons left">description</i>Espace Auteur<i class="material-icons right">arrow_drop_down</i></div>
+				<div class="collapsible-header PRIMARY_COLOR"><i class="material-icons left ACCENT_COLOR">description</i>Espace Auteur<i class="material-icons right">arrow_drop_down</i></div>
 				<div class="collapsible-body">
 					<a href="<?php echo BASE_URL_ADMIN;?>article">Gérer les articles</a>
 					<a href="<?php echo BASE_URL_ADMIN;?>page">Gérer les pages</a>
@@ -45,7 +45,7 @@
 			<?php if(isset($_SESSION['id']) && in_array($_SESSION['role'], ['Praticien', 'Administrateur'])){?>
 			<li class="divider"></li>
 			<li>
-				<div class="collapsible-header"><i class="material-icons left">content_paste</i>Espace Praticien<i class="material-icons right">arrow_drop_down</i></div>
+				<div class="collapsible-header PRIMARY_COLOR"><i class="material-icons left ACCENT_COLOR">content_paste</i>Espace Praticien<i class="material-icons right">arrow_drop_down</i></div>
 				<div class="collapsible-body">
 					<a href="<?php echo BASE_URL_ADMIN;?>mesRendezVous">Mes rendez-vous</a>
 					<a href="<?php echo BASE_URL_ADMIN;?>monAbonnement">Mon abonnements</a>
@@ -56,7 +56,7 @@
 			<?php if(isset($_SESSION['id']) && in_array($_SESSION['role'], ['Membre', 'Administrateur'])){?>
 			<li class="divider"></li>
 			<li>
-				<div class="collapsible-header"><i class="material-icons left">assignment_ind</i>Espace Membre<i class="material-icons right">arrow_drop_down</i></div>
+				<div class="collapsible-header PRIMARY_COLOR"><i class="material-icons left ACCENT_COLOR">assignment_ind</i>Espace Membre<i class="material-icons right">arrow_drop_down</i></div>
 				<div class="collapsible-body">
 					<a href="<?php echo BASE_URL;?>question/index?mesQuestions">Mes questions</a>
 					<a href="<?php echo BASE_URL_ADMIN;?>mesRendezVous">Mes rendez-vous</a>
@@ -67,7 +67,7 @@
 			<?php if(isset($_SESSION['id']) && in_array($_SESSION['role'], ['Administrateur', 'Expert'])){?>
 			<li class="divider"></li>
 			<li>
-				<div class="collapsible-header"><i class="material-icons left">dvr</i>Espace Expert<i class="material-icons right">arrow_drop_down</i></div>
+				<div class="collapsible-header PRIMARY_COLOR"><i class="material-icons left ACCENT_COLOR">dvr</i>Espace Expert<i class="material-icons right">arrow_drop_down</i></div>
 				<div class="collapsible-body">
 					<a href="<?php echo BASE_URL_ADMIN;?>question/list">Gérer les questions</a>
 				</div>
@@ -77,7 +77,7 @@
 			<?php if(isset($_SESSION['id']) && in_array($_SESSION['role'], ['Administrateur'])){?>
 			<li class="divider"></li>
 			<li>
-				<div class="collapsible-header"><i class="material-icons left">settings_applications</i>Espace Admin<i class="material-icons right">arrow_drop_down</i></div>
+				<div class="collapsible-header PRIMARY_COLOR"><i class="material-icons left ACCENT_COLOR">settings_applications</i>Espace Admin<i class="material-icons right">arrow_drop_down</i></div>
 				<div class="collapsible-body">
 					<a href="<?php echo BASE_URL_ADMIN;?>utilisateur">Utilisateurs</a>
 					<a href="<?php echo BASE_URL_ADMIN;?>reglage">Réglages</a>
