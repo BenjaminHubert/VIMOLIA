@@ -18,14 +18,14 @@ function setClassFromSettings($settings){
 		
 		// BACKGROUND COLOR
 		if(strripos($attribute, '_background-color')){
-			echo '.'.$attribute.'{'.PHP_EOL;
-			echo 'background-color: '.$val.' !important;'.PHP_EOL;
+			echo '.'.htmlentities($attribute).'{'.PHP_EOL;
+			echo 'background-color: '.htmlentities($val).' !important;'.PHP_EOL;
 			echo '}'.PHP_EOL;
 		}
 		// TEXT COLOR
 		if(strripos($attribute, '_color')){
-			echo '.'.$attribute.'{'.PHP_EOL;
-			echo 'color: '.$val.' !important;'.PHP_EOL;
+			echo '.'.htmlentities($attribute).'{'.PHP_EOL;
+			echo 'color: '.htmlentities($val).' !important;'.PHP_EOL;
 			echo '}'.PHP_EOL;
 		}
 	}

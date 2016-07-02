@@ -4,8 +4,13 @@
 			<img src="<?php echo BASE_URL;?>img/logo.png" alt="<?php echo APP_TITLE;?>">
 		</a>
 		<ul id="slide-out" class="side-nav collapsible PRIMARY_BACKGROUND-COLOR" style="border-color: transparent;" data-collapsible="accordion">
+			<!-- USER AVATAR -->
 			<li>
-				<img src="<?php echo BASE_URL;?>img/logo.png" style="width: 100%;" alt="<?php echo APP_TITLE;?>">
+				<?php if(isset($_SESSION['url_avatar'])){?>
+					<img src="<?php echo htmlentities($_SESSION['url_avatar']);?>" style="width: 30%;display: block;margin-left: auto;margin-right: auto;border-radius: 100%;" alt="Picture not found">
+					<p class="center truncate"><?php echo htmlentities($_SESSION['email']);?></p>
+				<?php }else{?>
+				<?php }?>
 			</li>
 			<!-- Displaying "login" or "logoff" -->
 			<?php if(isset($_SESSION['id'])){?>
