@@ -164,7 +164,10 @@ class reglageController extends baseController {
     		if(isset($_POST['name'], $_POST['description'], $_POST['amount'], $_POST['currencycode'], $_POST['duration_days'])){
     			if(is_numeric($_POST['amount']) && $_POST['amount'] > 0.01){
     				if(is_numeric($_POST['duration_days']) && $_POST['duration_days'] > 1 && !is_float($_POST['duration_days'])){
-    					
+    					if($this->registry->db->addSubscriptionType($_POST['name'], $_POST['description'], $_POST['amount'], $_POST['currencycode'], $_POST['duration_days'])){
+    						header('Location: '.BASE_URL_ADMIN.'reglage#subscription-section');
+    						die();
+    					}else $this->registry->template->error = "Erreur lors de l'insertion";
     				}else $this->registry->template->error = "Le nombre de jours est incorrect";
     			}else $this->registry->template->error = "Le montant est incorrect";
     		}else $this->registry->template->error = "Erreur de formulaire";

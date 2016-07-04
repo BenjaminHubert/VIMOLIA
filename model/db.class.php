@@ -1040,4 +1040,13 @@ class DB {
     		return $query->fetchAll(PDO::FETCH_ASSOC);
     	}else return false;
     }
+    
+    public function addSubscriptionType($name, $description, $amount, $currencycode, $duration_days){
+    	$query = $this->connection->prepare('
+    		INSERT INTO subscription_type(name, description, amount, currencycode, duration_days)
+    		SELECT ?, ?, ?, ?, ?
+    	');
+    	
+    	return $query->execute([$name, $description, $amount, $currencycode, $duration_days]);
+    }
 }
