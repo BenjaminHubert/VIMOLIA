@@ -73,6 +73,15 @@
 </div>
 <!-- SUBSCRIPTION SECTION -->
 <div id="subscription-section" class="row scrollspy" style="border: solid 1px grey; margin-top:10px; padding: 10px;">
+	<div class="col s12">
+		<h4>Abonnements</h4>
+		<div class="divider"></div>
+	</div>
+	<div class="col s12">
+		<a href="<?php echo BASE_URL_ADMIN;?>reglage/subscription/add" class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR right" type="button">
+			<i class="material-icons">add</i>
+		</a>
+	</div>
 	<form action="" method="post">
 		<table class="table">
 			<thead>
@@ -96,14 +105,14 @@
 					<td><?php echo $subscriptionType['duration_days'];?></td>
 					<td><?php echo date('d/m/Y H:i:s', strtotime($subscriptionType['last_update']));?></td>
 					<td>
-						<button class="btn waves-effect waves-light grey lighten-2" type="button" name="action">
+						<a class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR" type="button">
 							<i class="material-icons">edit</i>
-						</button>
+						</a>
 					</td>
 					<td>
-						<button class="btn waves-effect waves-light red lighten-3" type="button" name="action">
+						<a class="btn waves-effect waves-light red lighten-3" type="button">
 							<i class="material-icons">delete</i>
-						</button>
+						</a>
 					</td>
 				</tr>
 				<?php }?>

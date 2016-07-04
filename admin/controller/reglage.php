@@ -136,5 +136,38 @@ class reglageController extends baseController {
     	}    	
     	$this->registry->template->show('advanced');
     }
+    
+    public function subscription($args){
+    	if(isset($args[0])){
+	    	switch($args[0]){
+	    		case 'add':
+	    			$this->addSubscription($args);
+	    			break;
+	    		case 'edit':
+	    			$this->editSubscription($args);
+	    			break;
+	    		case 'delete':
+	    			$this->deleteSubscription($args);
+	    			break;
+	    		default:
+	    			$this->registry->template->show('404', true);
+	    			break;
+	    	}
+    	}else{
+    		$this->registry->template->show('404', true);
+    	}
+    }
+    
+    private function addSubscription($args){
+    	$this->registry->template->show('addSubscription');
+    }
+    
+    private function editSubscription($args){
+    	
+    }
+    
+    private function deleteSubscription($args){
+    	
+    }
 }
 ?>

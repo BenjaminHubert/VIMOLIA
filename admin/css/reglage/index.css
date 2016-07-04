@@ -6,3 +6,7 @@
 .pin-top, .pinned, .pin-bottom  {
 	position: fixed !important;
 }
+
+.table-of-contents a:hover, .table-of-contents a.active{
+	border-color: <?php echo $_SETTINGS['ACCENT_COLOR'];?>;	
+}
