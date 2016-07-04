@@ -159,6 +159,16 @@ class reglageController extends baseController {
     }
     
     private function addSubscription($args){
+    	if(count($_POST) > 0){
+    		showArray($_POST);
+    		if(isset($_POST['name'], $_POST['description'], $_POST['amount'], $_POST['currencycode'], $_POST['duration_days'])){
+    			if(is_numeric($_POST['amount']) && $_POST['amount'] > 0.01){
+    				if(is_numeric($_POST['duration_days']) && $_POST['duration_days'] > 1 && !is_float($_POST['duration_days'])){
+    					
+    				}else $this->registry->template->error = "Le nombre de jours est incorrect";
+    			}else $this->registry->template->error = "Le montant est incorrect";
+    		}else $this->registry->template->error = "Erreur de formulaire";
+    	}
     	$this->registry->template->show('addSubscription');
     }
     
