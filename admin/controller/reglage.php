@@ -13,15 +13,21 @@ class reglageController extends baseController {
 		}
 	}
     public function index(){
+        $this->registry->template->subscriptionTypes = $this->registry->db->getSubscriptionTypes();
+    	$this->registry->template->show('index');
+    }
+    
+    public function updateColors(){
     	if(isset($_POST['updateColors'])){
     		foreach($_POST as $key => $value){
     			$this->registry->db->updateSetting($key, $value);
     		}
     		header('Location: '.BASE_URL_ADMIN.'reglage');
     		die();
-    	}
-
-    	$this->registry->template->show('index');
+    	}else{
+			$registry->template->show('404', true);
+			die();
+		}
     }
 
     public function videoCategories($args){
@@ -129,6 +135,72 @@ class reglageController extends baseController {
     		}
     	}    	
     	$this->registry->template->show('advanced');
+    }
+    
+    public function subscription($args){
+    	if(isset($args[0])){
+	    	switch($args[0]){
+	    		case 'add':
+	    			$this->addSubscription($args);
+	    			break;
+	    		case 'edit':
+	    			$this->editSubscription($args);
+	    			break;
+	    		case 'delete':
+	    			$this->deleteSubscription($args);
+	    			break;
+	    		default:
+	    			$this->registry->template->show('404', true);
+	    			break;
+	    	}
+    	}else{
+    		$this->registry->template->show('404', true);
+    	}
+    }
+    
+    private function addSubscription($args){
+    	if(count($_POST) > 0){
+    		if(isset($_POST['name'], $_POST['description'], $_POST['amount'], $_POST['currencycode'], $_POST['duration_days'])){
+    			if(is_numeric($_POST['amount']) && $_POST['amount'] > 0.01){
+    				if(is_numeric($_POST['duration_days']) && $_POST['duration_days'] > 1 && !is_float($_POST['duration_days'])){
+    					if($this->registry->db->addSubscriptionType($_POST['name'], $_POST['description'], $_POST['amount'], $_POST['currencycode'], $_POST['duration_days'])){
+    						header('Location: '.BASE_URL_ADMIN.'reglage#subscription-section');
+    						die();
+    					}else $this->registry->template->error = "Erreur lors de l'insertion";
+    				}else $this->registry->template->error = "Le nombre de jours est incorrect";
+    			}else $this->registry->template->error = "Le montant est incorrect";
+    		}else $this->registry->template->error = "Erreur de formulaire";
+    	}
+    	$this->registry->template->show('addSubscription');
+    }
+    
+    private function editSubscription($args){
+    	if(isset($args[1]) && is_numeric($args[1])){
+    		$subscriptionType = $this->registry->db->getSubscriptionTypesByID($args[1]);
+    		if($subscriptionType){
+    			if(count($_POST) > 0){
+    				if(count($_POST) == 5 && isset($_POST['name'], $_POST['description'], $_POST['amount'], $_POST['currencycode'], $_POST['duration_days'])){
+    					$s = array_merge($subscriptionType, $_POST);
+    					if($this->registry->db->updateSubscriptionType($s)){
+    						$this->registry->template->message= "Mise à jour effectuée";
+    						$subscriptionType = $s;
+    					}else $this->registry->template->error = "Erreur lors de la mise à jour";
+    				}else $this->registry->template->error = "Erreur de formulaire";
+    			}
+    			$this->registry->template->subscriptionType = $subscriptionType;
+    			$this->registry->template->show('editSubscription');
+    		}else $this->registry->template->show('404', true);
+    	}else $this->registry->template->show('404', true);
+    }
+    
+    private function deleteSubscription($args){
+    	if(isset($_POST['method']) && $_POST['method'] == 'ajax' && isset($args[1]) && is_numeric($args[1])){
+    		$json = [];
+    		if(!$this->registry->db->deleteSubscriptionType($args[1])){
+    			$json['error'] = 'Un ou plusieurs praticiens souscrivent actuellement à cet abonnement';
+    		}
+    		echo json_encode($json);
+    	}else die();
     }
 }
 ?>

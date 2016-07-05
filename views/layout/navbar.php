@@ -8,7 +8,7 @@
 			<li>
 				<?php if(isset($_SESSION['url_avatar'])){?>
 					<img src="<?php echo htmlentities($_SESSION['url_avatar']);?>" style="width: 30%;display: block;margin-left: auto;margin-right: auto;border-radius: 100%;" alt="Picture not found">
-					<p class="center truncate"><?php echo htmlentities($_SESSION['email']);?></p>
+					<p class="center truncate PRIMARY_COLOR"><?php echo htmlentities($_SESSION['email']);?></p>
 				<?php }else{?>
 				<?php }?>
 			</li>

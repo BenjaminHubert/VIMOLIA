@@ -1040,4 +1040,44 @@ class DB {
     		return $query->fetchAll(PDO::FETCH_ASSOC);
     	}else return false;
     }
+    
+    public function addSubscriptionType($name, $description, $amount, $currencycode, $duration_days){
+    	$query = $this->connection->prepare('
+    		INSERT INTO subscription_type(name, description, amount, currencycode, duration_days)
+    		SELECT ?, ?, ?, ?, ?
+    	');
+    	
+    	return $query->execute([$name, $description, $amount, $currencycode, $duration_days]);
+    }
+    
+    public function deleteSubscriptionType($idSubscriptionType){
+    	$query = $this->connection->prepare('
+    		DELETE 
+    		FROM subscription_type
+    		WHERE id = ?
+    	');
+    	
+    	return $query->execute([$idSubscriptionType]);
+    }
+    
+    public function getSubscriptionTypesByID($id){
+    	$query = $this->connection->prepare('
+    		SELECT *
+    		FROM subscription_type
+    		WHERE id = ?
+    	');
+    	if($query->execute([$id])){
+    		return $query->fetch(PDO::FETCH_ASSOC);
+    	}else return false;
+    }
+    
+    public function updateSubscriptionType($s){
+    	$query = $this->connection->prepare('
+    		UPDATE subscription_type
+    		SET name = ?, description = ?, amount = ?, currencycode = ?, duration_days = ?
+    		WHERE id = ?
+    	');
+    	
+    	return $query ->execute([$s['name'], $s['description'], $s['amount'], $s['currencycode'], $s['duration_days'], $s['id']]);    	
+    }
 }

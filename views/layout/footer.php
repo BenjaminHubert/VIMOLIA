@@ -9,25 +9,25 @@
 			<div class="col l3 s12">
 				<h5 class="">Settings</h5>
 				<ul>
-					<li><a class="" href="#!">Link 1</a></li>
-					<li><a class="" href="#!">Link 2</a></li>
-					<li><a class="" href="#!">Link 3</a></li>
-					<li><a class="" href="#!">Link 4</a></li>
+					<li>Link 1</li>
+					<li>Link 1</li>
+					<li>Link 1</li>
+					<li>Link 1</li>
 				</ul>
 			</div>
 			<div class="col l3 s12">
 				<h5 class="">Connect</h5>
 				<ul>
-					<li><a class="" href="#!">Link 1</a></li>
-					<li><a class="" href="#!">Link 2</a></li>
-					<li><a class="" href="#!">Link 3</a></li>
-					<li><a class="" href="#!">Link 4</a></li>
+					<li>Link 1</li>
+					<li>Link 1</li>
+					<li>Link 1</li>
+					<li>Link 1</li>
 				</ul>
 			</div>
 		</div>
 	</div>
 	<div class="footer-copyright SECOND_FOOTER_BACKGROUND-COLOR">
-		<div class="container">
+		<div class="container PRIMARY_COLOR">
 			Développé par <a class="PRIMARY_COLOR" href="https://github.com/axeldelannay">Axel Delannay</a>, <a class="PRIMARY_COLOR" href="https://github.com/bertrandfreylin">Bertrand Freylin</a>, <a class="PRIMARY_COLOR" href="https://github.com/benjaminhubert">Benjamin Hubert</a>, <a class="PRIMARY_COLOR" href="https://github.com/thibaultlenormand">Thibault Lenormand</a> et <a class="PRIMARY_COLOR" href="https://github.com/younessadmi">Younes Sadmi</a>
 		</div>
 	</div>
