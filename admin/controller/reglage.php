@@ -175,7 +175,22 @@ class reglageController extends baseController {
     }
     
     private function editSubscription($args){
-    	
+    	if(isset($args[1]) && is_numeric($args[1])){
+    		$subscriptionType = $this->registry->db->getSubscriptionTypesByID($args[1]);
+    		if($subscriptionType){
+    			if(count($_POST) > 0){
+    				if(count($_POST) == 5 && isset($_POST['name'], $_POST['description'], $_POST['amount'], $_POST['currencycode'], $_POST['duration_days'])){
+    					$s = array_merge($subscriptionType, $_POST);
+    					if($this->registry->db->updateSubscriptionType($s)){
+    						$this->registry->template->message= "Mise à jour effectuée";
+    						$subscriptionType = $s;
+    					}else $this->registry->template->error = "Erreur lors de la mise à jour";
+    				}else $this->registry->template->error = "Erreur de formulaire";
+    			}
+    			$this->registry->template->subscriptionType = $subscriptionType;
+    			$this->registry->template->show('editSubscription');
+    		}else $this->registry->template->show('404', true);
+    	}else $this->registry->template->show('404', true);
     }
     
     private function deleteSubscription($args){

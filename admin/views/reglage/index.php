@@ -105,7 +105,7 @@
 					<td><?php echo htmlentities($subscriptionType['duration_days']);?></td>
 					<td><?php echo date('d/m/Y H:i:s', strtotime($subscriptionType['last_update']));?></td>
 					<td>
-						<a class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR edit-button">
+						<a href="<?php echo BASE_URL_ADMIN.'reglage/subscription/edit/'.$subscriptionType['id'];?>" class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR edit-button">
 							<i class="material-icons">edit</i>
 						</a>
 					</td>

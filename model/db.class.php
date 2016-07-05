@@ -1059,4 +1059,25 @@ class DB {
     	
     	return $query->execute([$idSubscriptionType]);
     }
+    
+    public function getSubscriptionTypesByID($id){
+    	$query = $this->connection->prepare('
+    		SELECT *
+    		FROM subscription_type
+    		WHERE id = ?
+    	');
+    	if($query->execute([$id])){
+    		return $query->fetch(PDO::FETCH_ASSOC);
+    	}else return false;
+    }
+    
+    public function updateSubscriptionType($s){
+    	$query = $this->connection->prepare('
+    		UPDATE subscription_type
+    		SET name = ?, description = ?, amount = ?, currencycode = ?, duration_days = ?
+    		WHERE id = ?
+    	');
+    	
+    	return $query ->execute([$s['name'], $s['description'], $s['amount'], $s['currencycode'], $s['duration_days'], $s['id']]);    	
+    }
 }
