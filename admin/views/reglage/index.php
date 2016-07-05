@@ -99,18 +99,18 @@
 				<?php if($subscriptionTypes){?>
 				<?php foreach($subscriptionTypes as $subscriptionType){?>
 				<tr>
-					<td><?php echo $subscriptionType['name'];?></td>
-					<td><?php echo $subscriptionType['description'];?></td>
-					<td><?php echo $subscriptionType['amount'].' '.$subscriptionType['currencycode'];?></td>
-					<td><?php echo $subscriptionType['duration_days'];?></td>
+					<td><?php echo htmlentities($subscriptionType['name']);?></td>
+					<td><?php echo htmlentities($subscriptionType['description']);?></td>
+					<td><?php echo htmlentities($subscriptionType['amount'].' '.$subscriptionType['currencycode']);?></td>
+					<td><?php echo htmlentities($subscriptionType['duration_days']);?></td>
 					<td><?php echo date('d/m/Y H:i:s', strtotime($subscriptionType['last_update']));?></td>
 					<td>
-						<a class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR" type="button">
+						<a class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR edit-button">
 							<i class="material-icons">edit</i>
 						</a>
 					</td>
 					<td>
-						<a class="btn waves-effect waves-light red lighten-3" type="button">
+						<a data-href="<?php echo BASE_URL_ADMIN.'reglage/subscription/delete/'.$subscriptionType['id'];?>" class="btn waves-effect waves-light red lighten-3 delete-button">
 							<i class="material-icons">delete</i>
 						</a>
 					</td>

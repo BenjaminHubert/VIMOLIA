@@ -1049,4 +1049,14 @@ class DB {
     	
     	return $query->execute([$name, $description, $amount, $currencycode, $duration_days]);
     }
+    
+    public function deleteSubscriptionType($idSubscriptionType){
+    	$query = $this->connection->prepare('
+    		DELETE 
+    		FROM subscription_type
+    		WHERE id = ?
+    	');
+    	
+    	return $query->execute([$idSubscriptionType]);
+    }
 }

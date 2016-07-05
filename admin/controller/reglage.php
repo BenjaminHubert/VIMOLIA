@@ -160,7 +160,6 @@ class reglageController extends baseController {
     
     private function addSubscription($args){
     	if(count($_POST) > 0){
-    		showArray($_POST);
     		if(isset($_POST['name'], $_POST['description'], $_POST['amount'], $_POST['currencycode'], $_POST['duration_days'])){
     			if(is_numeric($_POST['amount']) && $_POST['amount'] > 0.01){
     				if(is_numeric($_POST['duration_days']) && $_POST['duration_days'] > 1 && !is_float($_POST['duration_days'])){
@@ -180,7 +179,13 @@ class reglageController extends baseController {
     }
     
     private function deleteSubscription($args){
-    	
+    	if(isset($_POST['method']) && $_POST['method'] == 'ajax' && isset($args[1]) && is_numeric($args[1])){
+    		$json = [];
+    		if(!$this->registry->db->deleteSubscriptionType($args[1])){
+    			$json['error'] = 'Un ou plusieurs praticiens souscrivent actuellement à cet abonnement';
+    		}
+    		echo json_encode($json);
+    	}else die();
     }
 }
 ?>
