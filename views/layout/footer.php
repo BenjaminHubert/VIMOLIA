@@ -1,4 +1,5 @@
 </div>
+</main>
 <footer class="page-footer FIRST_FOOTER_BACKGROUND-COLOR PRIMARY_COLOR">
     <div class="container">
         <div class="row">
