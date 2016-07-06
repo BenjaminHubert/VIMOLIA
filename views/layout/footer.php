@@ -7,11 +7,11 @@
                    data-widget-id="<?php echo TWITTER_ID; ?>"
                    href="https://twitter.com/VimoliaSante"
                    width="300"
-                   height="300">
+                   height="200">
                     Tweets de @VimoliaSante
                 </a>
             </div>
-            <div class="col l4 s12">
+            <div class="col l5 s12">
                 <h5 class="">Pages</h5>
                 <ul>
                     <?php 
@@ -20,7 +20,7 @@
                         foreach($listPage as $page){
                     ?>
                     <li>
-                        <a class="PRIMARY_COLOR" href="<?php echo BASE_URL.'page/display/'.$page['id']; ?>"><?php echo $page['title']; ?></a>
+                        <a class="ACCENT_COLOR" href="<?php echo BASE_URL.'page/display/'.$page['id']; ?>"><?php echo $page['title']; ?></a>
                     </li>
                     <?php
                         }
@@ -28,20 +28,21 @@
                     ?>
                 </ul>
             </div>
-            <div class="col l4 s12">
-                <h5 class="">Connect</h5>
+            <div class="col l3 s12">
+                <h5 class=""> Développé par </h5>
                 <ul>
-                    <li>Link 1</li>
-                    <li>Link 1</li>
-                    <li>Link 1</li>
-                    <li>Link 1</li>
+                    <li><a class="ACCENT_COLOR" href="https://github.com/axeldelannay">Axel Delannay</a></li>
+                    <li><a class="ACCENT_COLOR" href="https://github.com/bertrandfreylin">Bertrand Freylin</a></li>
+                    <li><a class="ACCENT_COLOR" href="https://github.com/benjaminhubert">Benjamin Hubert</a></li>
+                    <li><a class="ACCENT_COLOR" href="https://github.com/thibaultlenormand">Thibault Lenormand</a></li>
+                    <li><a class="ACCENT_COLOR" href="https://github.com/younessadmi">Younes Sadmi</a></li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="footer-copyright SECOND_FOOTER_BACKGROUND-COLOR">
-        <div class="container PRIMARY_COLOR">
-            Développé par <a class="PRIMARY_COLOR" href="https://github.com/axeldelannay">Axel Delannay</a>, <a class="PRIMARY_COLOR" href="https://github.com/bertrandfreylin">Bertrand Freylin</a>, <a class="PRIMARY_COLOR" href="https://github.com/benjaminhubert">Benjamin Hubert</a>, <a class="PRIMARY_COLOR" href="https://github.com/thibaultlenormand">Thibault Lenormand</a> et <a class="PRIMARY_COLOR" href="https://github.com/younessadmi">Younes Sadmi</a>
+        <div class="container PRIMARY_COLOR" style="text-align:center">
+            Copyright 2016 © <a class="ACCENT_COLOR" href="<?php echo BASE_URL; ?>"><?php echo APP_TITLE; ?></a> Tous droits réservés.
         </div>
     </div>
 </footer>
