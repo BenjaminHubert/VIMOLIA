@@ -30,14 +30,16 @@
         <meta itemprop="og:description"   content="<?php echo htmlentities($article['description']); ?>" />
         <meta property="og:image"         content="<?php echo htmlentities(BASE_URL.$article['main_picture']); ?>" />
         <?php } ?>
-		
-		<!-- DYNAMIC COLORS -->
-		<style>
-		<?php
-			setClassFromSettings($_SETTINGS);
-		?>
-		</style>
+
+        <!-- DYNAMIC COLORS -->
+        <style>
+            <?php
+            setClassFromSettings($_SETTINGS);
+            ?>
+        </style>
     </head>
     <body>
+
         <?php include('navbar.php');?>
-        <div class="container">
+        <main>
+            <div class="container">
