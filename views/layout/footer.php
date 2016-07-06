@@ -2,7 +2,7 @@
 <footer class="page-footer FIRST_FOOTER_BACKGROUND-COLOR PRIMARY_COLOR">
     <div class="container">
         <div class="row">
-            <div class="col l6 s12">
+            <div class="col l4 s12">
                 <a class="twitter-timeline"
                    data-widget-id="<?php echo TWITTER_ID; ?>"
                    href="https://twitter.com/VimoliaSante"
@@ -11,16 +11,24 @@
                     Tweets de @VimoliaSante
                 </a>
             </div>
-            <div class="col l3 s12">
-                <h5 class="">Settings</h5>
+            <div class="col l4 s12">
+                <h5 class="">Pages</h5>
                 <ul>
-                    <li>Link 1</li>
-                    <li>Link 1</li>
-                    <li>Link 1</li>
-                    <li>Link 1</li>
+                    <?php 
+                    $listPage = $this->registry->db->getListPage();
+                    if(!empty($listPage)){
+                        foreach($listPage as $page){
+                    ?>
+                    <li>
+                        <a class="PRIMARY_COLOR" href="<?php echo BASE_URL.'page/display/'.$page['id']; ?>"><?php echo $page['title']; ?></a>
+                    </li>
+                    <?php
+                        }
+                    }
+                    ?>
                 </ul>
             </div>
-            <div class="col l3 s12">
+            <div class="col l4 s12">
                 <h5 class="">Connect</h5>
                 <ul>
                     <li>Link 1</li>
