@@ -63,7 +63,7 @@ if(!empty($listVideo)){
             $thematic = $this->registry->db->getThematicById($video['id_thematic']);
         ?>
         <tr>
-            <td><a href="<?php echo BASE_URL.'video/display/'.$video['id']; ?>"><?php echo htmlentities($video['title']); ?></a></td>
+            <td><a href="<?php echo BASE_URL.'video/display/'.$video['id']; ?>" target="_blank"><?php echo htmlentities($video['title']); ?></a></td>
             <td><?php echo htmlentities($category['category']); ?></td>
             <td><?php echo htmlentities($thematic['thematic']); ?></td>
             <td><?php echo date('\L\e d/m/Y \à H\hi', strtotime($video['date_create'])); ?></td>

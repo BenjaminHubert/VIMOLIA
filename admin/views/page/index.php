@@ -17,7 +17,7 @@ if(!empty($listPage)){
         $user = $this->registry->db->getUser($page['id_user']);
         ?>
         <tr>
-            <td><a href="#"><?php echo htmlentities($page['title']); ?></a></td>
+            <td><a href="<?php echo BASE_URL.'page/display/'.$page['id']; ?>" target="_blank"><?php echo htmlentities($page['title']); ?></a></td>
             <td><?php echo htmlentities($user['first_name']." ".$user['last_name']); ?></td>
             <td><?php echo date('\L\e d/m/Y \à H\hi', strtotime($page['date_publish'])); ?></td>
             <td>
