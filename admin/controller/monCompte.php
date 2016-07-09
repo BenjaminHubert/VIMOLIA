@@ -27,7 +27,7 @@ class monCompteController extends baseController {
     }
     
     public function member(){
-    	if($_SESSION['role'] == 'Member'){
+    	if($_SESSION['role'] == 'Membre'){
 			if(isset($_POST['submit'])){
 				//parameters settings
 				$_POST['birthday_date'] = $_POST['birthday_submit'];
