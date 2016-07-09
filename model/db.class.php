@@ -168,8 +168,26 @@ class DB {
                 $idUser,
                 $skill
             ]);
-        }else
-            return false;
+        }else return false;
+    }
+    public function updateSkills($idUser, $skills){
+    	//on supprime d'abord les anciens skills
+    	$deleteAllSkills = $this->connection->prepare('
+    		DELETE 
+    		FROM possesses
+    		WHERE id_user = ?
+    	');
+    	if(!$deleteAllSkills->execute([$idUser])){
+    		return false;
+    	}
+    	//on ajoute les nouveaux skills
+    	foreach($skills as $skill){
+    		if(!$this->addSkillToUser($idUser, $skill)){
+    			return false;
+    		}
+    	}
+    	
+    	return true;
     }
     public function getIDUserByEmail($e){
         $query = $this->connection->prepare('SELECT id FROM user WHERE email = ?');
