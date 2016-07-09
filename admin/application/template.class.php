@@ -90,7 +90,7 @@ Class template {
     private function displayError($e){
         return "
             $(document).ready(function(){
-                Materialize.toast('".htmlentities($e)."', 4000, 'red')
+                Materialize.toast('".addslashes($e)."', 4000, 'red')
             });
         ";
     }
@@ -98,7 +98,7 @@ Class template {
     private function displayMessage($m){
         return "
             $(document).ready(function(){
-                Materialize.toast('".htmlentities($m)."', 4000)
+                Materialize.toast('".addslashes($m)."', 4000)
             });
         ";
     }
@@ -106,7 +106,7 @@ Class template {
     private function displayWarning($m){
         return "
             $(document).ready(function(){
-                Materialize.toast('".htmlentities($m)."', 4000, 'yellow')
+                Materialize.toast('".addslashes($m)."', 4000, 'yellow')
             });
         ";
     }
