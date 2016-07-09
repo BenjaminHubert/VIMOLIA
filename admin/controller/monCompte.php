@@ -174,5 +174,23 @@ class monCompteController extends baseController {
     	}else $this->registry->template->show('404', true);
     }
     
+    public function updatePassword(){
+    	if(isset($_POST['update'])){
+    		if($this->registry->db->hashPwd($_POST['currentPassword']) == $_SESSION['password']){
+    			if($_POST['newPassword'] === $_POST['newPasswordConfirmation']){
+    				$user = array_merge($_SESSION, ['password' => $this->registry->db->hashPwd($_POST['newPassword'])]);//mise à jour de l'utilisateur
+					if($this->registry->db->updateUser($user)){
+						$this->registry->template->message = 'Mise à jour effectuée avec succès';
+						showArray($_SESSION);
+						$_SESSION = $user;
+						showArray($_SESSION);
+					}else $this->registry->template->error = 'La mise à jour de vos informations a échoué suite à une erreur inattendue';
+    			}else $this->registry->template->error = 'Les mots de passe ne correspondent pas';
+    		}else $this->registry->template->error = 'Le mot de passe actuel n\'est pas celui saisie';
+    	}
+    	
+    	$this->registry->template->show('updatePassword');
+    }
+    
 }
 ?>
