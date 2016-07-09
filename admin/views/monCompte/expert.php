@@ -4,6 +4,14 @@
 				<img class="right hide-on-med-and-down materialboxed" width="100" src="<?php echo htmlentities($_SESSION['url_avatar']);?>">
 				<h4>Mon compte</h4>
 			</div>
+			<div class="input-field col s12">
+				<a class="waves-effect waves-light btn-flat right" href="<?php echo BASE_URL_ADMIN;?>monCompte/updatePassword">
+					Changer mon mot de passe
+					<i class="material-icons right">edit</i>
+				</a>
+			</div>
+		</div>
+		<div class="row">
 			<div class="input-field col s4">
                 <i class="material-icons prefix">person</i>
                 <input id="first_name" name="first_name" type="text" class="validate" value="<?php echo htmlentities($_SESSION['first_name']);?>" required>
