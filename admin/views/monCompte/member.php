@@ -63,8 +63,10 @@
                 <input id="email" name="email" type="email" class="validate" value="<?php echo htmlentities($_SESSION['email']);?>" required>
                 <label for="email" data-error="Veuillez saisir une adresse email valide">Email *</label>
             </div>
-            <div class="col s12 l4 offset-l8">
-                <button style="width:100%" class="btn waves-effect waves-light BUTTON_BACKGROUND-COLOR" type="submit" name="submit">Inscription<i class="material-icons right">send</i></button>
+            <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+                <button class="btn-floating btn-large waves-effect waves-light BUTTON_BACKGROUND-COLOR" type="submit" name="submit">
+                	<i class="material-icons right">send</i>
+                </button>
             </div>
 		</div>
 </form>
