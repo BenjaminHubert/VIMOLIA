@@ -15,7 +15,7 @@
 		<p id="details"><?php echo htmlentities($question['question_text']);?></p>
 		<div class="divider"></div>
 		<p id="datetime">
-			<i class="material-icons right">access_time</i><?php echo date('d/m/Y à H\hm', strtotime($question['question_date']))?></p>
+			<i class="material-icons right">access_time</i><?php echo date('d/m/Y \à H:i', strtotime($question['question_date']))?></p>
 	</div>
 </div>
 <p style="font-weight: bold">Réponse de notre expert</p>
