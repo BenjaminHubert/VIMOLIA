@@ -1,0 +1,4 @@
+PHPUNIT: PHPUnit 5.4.6 by Sebastian Bergmann and contributors.
+CASPERJS: 1.1.2
+PHANTOMJS: 2.1.1
+PHP: PHP 7.0.8-4+deb.sury.org~trusty+1 (cli) ( NTS )
