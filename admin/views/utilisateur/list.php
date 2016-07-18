@@ -15,7 +15,7 @@
             <th>Nom</th>
             <th>Email</th>
             <th>Rôle</th>
-            <th>Status</th>
+            <th>Statut</th>
             <th></th>
             <th></th>
         </tr>

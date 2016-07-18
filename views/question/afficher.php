@@ -29,7 +29,7 @@
 			<div class="col s11">
 				<p><?php echo $answer['answer_text'];?></p>
 				<p style="text-align: right"><?php echo ($answer['pseudo'] !== NULL)?htmlentities($answer['pseudo']):htmlentities($answer['first_name'].' '.$answer['last_name']);?>, expert <?php echo APP_TITLE;?></p>
-				<p style="text-align: right; font-style: italic"><?php echo date('d/m/Y à H\hm', strtotime($answer['answer_date']));?></p>
+				<p style="text-align: right; font-style: italic"><?php echo date('d/m/Y \à H:i', strtotime($answer['answer_date']));?></p>
 			</div>
 		</div>
 	</div>
