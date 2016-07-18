@@ -33,4 +33,5 @@
     </head>
     <body>
         <?php include('../views/layout/navbar.php');?>
+        <main>
         <div class="container">
