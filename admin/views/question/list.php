@@ -58,7 +58,7 @@
 						<td>Question</td>
 						<td>Publication</td>
 						<td>Date</td>
-						<td>Status</td>
+						<td>Statut</td>
 						<td>Satisfaction</td>
 					</tr>
 				</thead>

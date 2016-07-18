@@ -4,7 +4,7 @@
 			<thead>
 				<tr>
 					<th>Praticien</th>
-					<th colspan="2" style="text-align:center">Status</th>
+					<th colspan="2" style="text-align:center">Statut</th>
 					<th></th>
 				</tr>
 			</thead>
