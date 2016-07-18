@@ -9,7 +9,7 @@
 		<b>Auteur : </b> <?php echo ($user['pseudo'] != null)?htmlentities($user['pseudo']):htmlentities($user['first_name']). ' '. htmlentities($user['last_name']);?>
 	</div>
 	<div class="col s12 m6">
-		<b>Date de la question : </b> <?php echo date('d/m/Y à H\hm', strtotime($question['question_date']));?>
+		<b>Date de la question : </b> <?php echo date('d/m/Y \à H:i', strtotime($question['question_date']));?>
 	</div>
 	<form action="" method="POST">
 		<div class="col s12 m10">
@@ -43,7 +43,7 @@
 		<p id="details"><?php echo $question['question_text'];?></p>
 		<div class="divider"></div>
 		<p id="datetime">
-			<i class="material-icons right">access_time</i><?php echo date('d/m/Y à H\hm', strtotime($question['question_date']))?></p>
+			<i class="material-icons right">access_time</i><?php echo date('d/m/Y \à H:i', strtotime($question['question_date']))?></p>
 	</div>
 </div>
 
