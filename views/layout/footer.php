@@ -32,11 +32,11 @@
             <div class="col l3 s12">
                 <h5 class=""> Développé par </h5>
                 <ul>
-                    <li><a class="ACCENT_COLOR" href="https://github.com/axeldelannay">Axel Delannay</a></li>
-                    <li><a class="ACCENT_COLOR" href="https://github.com/bertrandfreylin">Bertrand Freylin</a></li>
-                    <li><a class="ACCENT_COLOR" href="https://github.com/benjaminhubert">Benjamin Hubert</a></li>
-                    <li><a class="ACCENT_COLOR" href="https://github.com/thibaultlenormand">Thibault Lenormand</a></li>
-                    <li><a class="ACCENT_COLOR" href="https://github.com/younessadmi">Younes Sadmi</a></li>
+                    <li><a class="ACCENT_COLOR" href="mailto:delannay.axel@gmail.com" target="_blank">Axel Delannay</a></li>
+                    <li><a class="ACCENT_COLOR" href="mailto:bfreylin@gmail.com" target="_blank">Bertrand Freylin</a></li>
+                    <li><a class="ACCENT_COLOR" href="mailto:benjam.hubert@gmail.com" target="_blank">Benjamin Hubert</a></li>
+                    <li><a class="ACCENT_COLOR" href="mailto:thibaultlenormand@yahoo.fr" target="_blank">Thibault Lenormand</a></li>
+                    <li><a class="ACCENT_COLOR" href="mailto:younes.sadmi@gmail.com" target="_blank">Younes Sadmi</a></li>
                 </ul>
             </div>
         </div>
